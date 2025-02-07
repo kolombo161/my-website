@@ -19,7 +19,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-image: url('imeges/фон_шапки.jpg');
+    background-image: url('imeges/shapka.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -223,7 +223,7 @@ footer {
     padding: 22.4px;
     min-height: 160px;
     background: 
-        url('imeges/подвал.png'), 
+        url('imeges/podval.png'), 
         linear-gradient(
             to bottom,
             #cac7b9 15%,
