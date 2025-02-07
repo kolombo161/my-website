@@ -69,3 +69,27 @@ document.addEventListener('click', (event) => {
         nav.classList.remove('active');
     }
 });
+
+// Выбираем все карточки .service-card
+const serviceCards = document.querySelectorAll('.service-card');
+
+// Функция для изменения освещения
+function updateLighting() {
+    serviceCards.forEach(card => {
+        const scrollTop = window.scrollY; // Текущая позиция скролла
+        const cardPosition = card.getBoundingClientRect().top + scrollTop; // Позиция блока относительно верха страницы
+
+        // Рассчитываем новую горизонтальную позицию света
+        let lightPositionX = (scrollTop - cardPosition) / 5; // Коэффициент 5 для скорости движения
+        lightPositionX = Math.min(Math.max(lightPositionX, 0), 100); // Ограничение от 0 до 100%
+
+        // Обновляем CSS-переменную для каждого блока
+        card.style.setProperty('--light-position-x', `${lightPositionX}%`);
+    });
+}
+
+// Обновляем освещение при скролле
+window.addEventListener('scroll', updateLighting);
+
+// Инициализируем освещение при загрузке страницы
+updateLighting();
