@@ -32,6 +32,31 @@ if (form) {
     });
 }
 
+// Функция для проверки, прошло ли 3-4 секунды
+let isTimeoutPassed = false;
+setTimeout(() => {
+    isTimeoutPassed = true;
+}, 4000); // 4 секунды
+
+// Обработка прокрутки для кнопки "Позвонить" (35%)
+window.addEventListener('scroll', function() {
+    const callButton = document.getElementById('callButton');
+    const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+
+    // Показывать кнопку только после 4 секунд и при прокрутке на 35%
+    if (isTimeoutPassed && scrollPercentage > 35) {
+        callButton.classList.add('visible');
+    } else {
+        callButton.classList.remove('visible');
+    }
+});
+
+// Функция для скрытия кнопки
+function hideCallButton() {
+    const callButton = document.getElementById('callButton');
+    callButton.classList.remove('visible');
+}
+
 // Кнопка "Наверх"
 const scrollToTopButton = document.querySelector('.scroll-to-top');
 
