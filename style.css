@@ -13,26 +13,39 @@ html, body {
     overflow-x: hidden;
 }
 
+body {
+    background-color: #f0f0f0; /* Резервный цвет */
+    background-image: url('imeges/dorojkifon.jpg'); /* Путь к изображению */
+    background-repeat: repeat; /* Повторение фона */
+    background-size: auto; /* Размер изображения */
+    background-attachment: fixed; /* Fixes the background */
+    margin: 0; /* Убираем отступы по умолчанию */
+    padding: 0; /* Убираем внутренние отступы */
+}
+
 /* Основные стили для шапки сайта */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-image: url('imeges/shapka.jpg');
+    background-image: url('imeges/shapka1.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center top; /* Поднимаем текстуру */
     background-repeat: no-repeat;
-    height: calc(100% - 7px);
+    height: 220px; /* Фиксированная высота */
     color: #cac7b9;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     font-family: 'Roboto Mono', monospace;
     flex-wrap: wrap;
     position: relative;
-    border-radius: 0 0 7px 7px;
-    width: calc(100% - 12px);
-    margin-left: -4px;
-    transform: translateX(11px);
+    width: 100%; /* Ширина на весь экран */
+}
+
+/* Для широких экранов */
+@media (min-width: 1200px) {
+    header {       
+        background-size: 100% 100%; /* Растягиваем изображение на всю ширину и высоту */   
+    }
 }
 
 /* Стили для логотипа в шапке */
@@ -95,6 +108,7 @@ header .logo img {
 }
 .hero h1 {
     font-size: 36px;
+    color: #2d2c2c
 }
 .hero button {
     padding: 10px 20px;
@@ -110,24 +124,24 @@ header .logo img {
 
 /* Общие стили для секций (услуги, преимущества, отзывы, контакты) */
 #services, #advantages, #reviews, #contact {
-    padding: 20px;
+    padding: 25px;
     text-align: center;
 }
 
 /* Стили для карточек услуг */
 .service-card {
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
+    margin: 25px;
+    padding: 5px;
+    border-radius: 7px;
     background: 
         repeating-linear-gradient(
             to bottom,
-            #6b6a6a86 0px,
-            #fcfff5c9 10px,
+            #41414186 0px,
+            #ffffff 10px,
             #6b6a6a86 20px
         ),
         linear-gradient(to bottom, #f7f6e4, #fbf7e0);
-    background-size: 100% calc(100% / 6), 100% 100%;
+    background-size: 100% calc(100% / 7), 100% 100%;
     background-blend-mode: multiply;
     border: 2px solid rgba(186, 180, 180, 0.792);
     box-shadow: 
@@ -178,7 +192,7 @@ header .logo img {
 /* Для средних экранов (например, ноутбуки) */
 @media (min-width: 992px) and (max-width: 1199px) {
     .service-card {
-        background-size: 100% calc(100% / 10); /* 6 полос */
+        background-size: 100% calc(100% / 6); /* 6 полос */
     }
 }
 
@@ -194,21 +208,22 @@ header .logo img {
 @media (min-width: 1600px) {
     .service-card {
         background-size: 100% calc(100% / 10); /* 11 полос */
-        height: 25vh; /* 25% от высоты viewport */
+        height: 28vh; /* 20% от высоты viewport */
     }
 }
 
 /* Медиа-запрос для мобильных устройств */
 @media (max-width: 768px) {
     .service-card {
-    background-size: 100% calc(100% / 7); /* 6 полос */
+    height: 70vh; /* 20% от высоты viewport */
+    background-size: 100% calc(100% / 13); /* 6 полос */
     }
 }
 
 .service-card h3 {
     margin: 0 0 10px;
     font-size: 1.5em;
-    color: gold;
+    color: rgb(55, 55, 55);
 }
 
 .service-card p {
@@ -223,7 +238,7 @@ footer {
     padding: 22.4px;
     min-height: 160px;
     background: 
-        url('imeges/podval.png'), 
+        url('imeges/podval.svg'), 
         linear-gradient(
             to bottom,
             #cac7b9 15%,
@@ -266,9 +281,63 @@ footer::before {
     opacity: 1; /* Убеждаемся, что вырез виден */
 }
 
+/* Скрыть кнопку "Позвонить" на компьютерной версии */
+@media (min-width: 768px) {
+    .call-button {
+        display: none !important;
+    }
+}
+
+/* Стили для кнопки "Позвонить" */
+.call-button {
+    position: fixed;
+    right: -100px; /* Начальное положение за пределами экрана */
+    top: 30%;
+    background-color: transparent; /* Прозрачный фон */
+    color: #007bff; /* Цвет иконки */
+    font-size: 24px; /* Размер иконки */
+    transition: right 0.7s ease-in-out;
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Расстояние между иконкой и кнопкой закрытия */
+}
+
+.call-button.visible {
+    right: 17px; /* Положение, когда кнопка видна */
+}
+
+.call-button .fa-phone {
+    color: #007bff; /* Цвет иконки */
+    transition: color 0.3s ease;
+}
+
+.call-button:hover .fa-phone {
+    color: #34d0ef; /* Цвет при наведении */
+}
+
+/* Стили для кнопки закрытия */
+.close-button {
+    background-color: transparent;
+    border: none;
+    color: #3434349d; /* Цвет кнопки закрытия */
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    color: #e40707c1; /* Цвет при наведении */
+}
+
 /* Стили для основных надписей */
 footer p.contact-info {
-    font-size: 19px;
+    font-size: 17px;
     font-weight: bold;
     font-style: italic;
     margin: 9px 0;
@@ -279,7 +348,7 @@ footer p.contact-info {
 
 /* Стиль для строки с правами */
 footer .copyright {
-    font-size: 8px;
+    font-size: 10px;
     font-weight: normal;
     font-style: normal;
     margin: 7px 0;
@@ -324,7 +393,7 @@ footer p.contact-info:hover .fa-map-marker-alt {
     }
 
     footer .copyright {
-        font-size: 7px; /* Уменьшаем размер шрифта для строки с правами */
+        font-size: 9px; /* Уменьшаем размер шрифта для строки с правами */
     }
 }
 
@@ -335,11 +404,11 @@ footer p.contact-info:hover .fa-map-marker-alt {
     }
 
     footer p.contact-info {
-        font-size: 22px; /* Увеличиваем размер шрифта для основных надписей */
+        font-size: 16px; /* Увеличиваем размер шрифта для основных надписей */
     }
 
     footer .copyright {
-        font-size: 8px; /* Увеличиваем размер шрифта для строки с правами */
+        font-size: 12px; /* Увеличиваем размер шрифта для строки с правами */
     }
 }
 
