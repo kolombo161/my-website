@@ -62,32 +62,36 @@ header .logo img {
 .header-contacts {
     flex: 1;
     text-align: right;
-    display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 .header-phone {
-    display: flex;
     align-items: center;
 }
+.header-contacts,
+.header-phone {
+    display: flex;
+}
+
 .header-phone a {
-    color: #484848;
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
-    transition: color 0.3s ease;
     margin-left: 10px;
 }
-.header-phone a:hover {
-    color: #007bff;
-}
-.header-phone .fa-phone {
+
+.header-phone .fa-phone,
+.header-phone a {
     color: #484848;
     transition: color 0.3s ease;
 }
-.header-phone:hover .fa-phone {
+
+.header-phone a:hover,
+.header-phone:hover .fa-phone,
+.header-city a:hover {
     color: #007bff;
 }
+
 .header-city a {
     color: #636161;
     text-decoration: none;
@@ -95,9 +99,6 @@ header .logo img {
     font-weight: bold;
     font-style: italic;
     transition: color 0.3s ease;
-}
-.header-city a:hover {
-    color: #007bff;
 }
 
 /* Стили для главного экрана (hero section) */
@@ -216,16 +217,21 @@ header .logo img {
 @media (max-width: 768px) {
     .service-card {
     height: 70vh; /* 20% от высоты viewport */
-    background-size: 100% calc(100% / 13); /* 6 полос */
+    background-size: 100% calc(100% / 7); /* 6 полос */
     }
 }
 
+/* Скрыть кнопку "Позвонить" на компьютерной версии */
+@media (min-width: 768px) {
+    .call-button {
+        display: none !important;
+    }
+}
 .service-card h3 {
     margin: 0 0 10px;
     font-size: 1.5em;
     color: rgb(55, 55, 55);
 }
-
 .service-card p {
     margin: 0;
     font-size: 1em;
@@ -279,13 +285,6 @@ footer::before {
     border-radius: 10px;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
     opacity: 1; /* Убеждаемся, что вырез виден */
-}
-
-/* Скрыть кнопку "Позвонить" на компьютерной версии */
-@media (min-width: 768px) {
-    .call-button {
-        display: none !important;
-    }
 }
 
 /* Стили для кнопки "Позвонить" */
@@ -364,20 +363,15 @@ footer p.contact-info a {
     transition: color 0.3s ease;
 }
 
-/* Изменение цвета при наведении */
-footer p.contact-info a:hover {
-    color: #007bff; /* Цвет при наведении */
-}
-
 /* Стили для иконок */
 footer p.contact-info .fa-phone,
 footer p.contact-info .fa-map-marker-alt {
     color: #484848;
     transition: color 0.3s ease;
 }
-
 footer p.contact-info:hover .fa-phone,
-footer p.contact-info:hover .fa-map-marker-alt {
+footer p.contact-info:hover .fa-map-marker-alt,
+footer p.contact-info a:hover {
     color: #007bff;
 }
 
@@ -387,11 +381,9 @@ footer p.contact-info:hover .fa-map-marker-alt {
         width: 350px; /* Уменьшаем ширину выреза */
         height: 100px; /* Уменьшаем высоту выреза */
     }
-
     footer p.contact-info {
         font-size: 16px; /* Уменьшаем размер шрифта для основных надписей */
     }
-
     footer .copyright {
         font-size: 9px; /* Уменьшаем размер шрифта для строки с правами */
     }
@@ -402,11 +394,6 @@ footer p.contact-info:hover .fa-map-marker-alt {
         width: 500px; /* Увеличиваем ширину выреза */
         height: 120px; /* Увеличиваем высоту выреза */
     }
-
-    footer p.contact-info {
-        font-size: 16px; /* Увеличиваем размер шрифта для основных надписей */
-    }
-
     footer .copyright {
         font-size: 12px; /* Увеличиваем размер шрифта для строки с правами */
     }
@@ -425,12 +412,13 @@ footer p.contact-info:hover .fa-map-marker-alt {
     height: 50px;
     border-radius: 8px;
     text-align: center;
+    border: none;
 }
 .scroll-to-top img {
     width: 50px;
-    height: 30px;
+    height: 31px;
     transition: opacity 0.3s ease;
-    margin-top: 9px;
+    margin-top: 7px;
 }
 .scroll-to-top .scroll-default {
     opacity: 1;
@@ -521,11 +509,6 @@ footer p.contact-info:hover .fa-map-marker-alt {
         order: 1;
         text-align: center;
         margin-bottom: 10px;
-    }
-    .header-contacts {
-        order: 2;
-        text-align: center;
-        align-items: center;
     }
     .header-city .desktop-only {
         display: none;
