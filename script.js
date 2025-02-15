@@ -118,3 +118,17 @@ window.addEventListener('scroll', updateLighting);
 
 // Инициализируем освещение при загрузке страницы
 updateLighting();
+
+// Чтобы кнопка "Вверх" работала при нажатии "Enter" или "Space"
+// Обработчик клика
+document.querySelector('.scroll-to-top').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Обработчик клавиш Enter и Space
+document.querySelector('.scroll-to-top').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); // Предотвращаем стандартное поведение
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Прокрутка наверх
+    }
+});
