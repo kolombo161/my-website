@@ -12,14 +12,11 @@
 
 
     <!-- Относится к кнопки позвонить -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кнопка "Позвонить"</title>
     <link rel="stylesheet" href="styles.css">   
 </head>
 <body>
     <!-- Шапка -->
     <header>
-
         <!-- Кнопка меню -->
         <div class="menu-icon">
             <a href="#" aria-label="Открыть меню">
@@ -31,7 +28,7 @@
         <!-- Логотип -->
         <div class="logo">
             <a href="/" aria-label="Главная страница">
-                <img src="imeges/logo.png" alt="Логотип компании Ремонт роллет">
+                <img src="imeges/logo.png" alt="Логотип компании Рстов-сервис" width="120" height="120">
             </a>
         </div>
     
@@ -50,7 +47,7 @@
                 </a>
             </div>
             <p class="header-city">
-                <a href="https://yandex.ru/maps/-/CHe6f6I7" class="desktop-only" target="_blank" rel="noopener noreferrer" aria-label="Наш город на карте">
+                <a href="https://yandex.ru/maps/-/CHe6f6I7" class="desktop-only" target="_blank" rel="noopener noreferrer" aria-label="Как нас найти">
                     г. Ростов-на-Дону
                 </a>
             </p>
@@ -114,7 +111,7 @@
     <!-- Кнопка "Позвонить" -->
     <div id="callButton" class="call-button">
         <a href="tel:+79518264429" class="call-link">
-            <i class="fas fa-phone"></i> <!-- Иконка телефона -->
+            <i class="fas fa-phone" aria-hidden="true"></i> <!-- Иконка телефона -->
         </a>
         <button class="close-button" onclick="hideCallButton()">×</button>
     </div>
@@ -126,10 +123,10 @@
         <p class="copyright">&copy; 2025 Ремонт рольворот и рольставней. Все права защищены.</p>
     </footer>
     <!-- Кнопка "Наверх" -->
-    <div class="scroll-to-top" aria-label="Вернуться наверх">
+    <button class="scroll-to-top" aria-label="Вернуться наверх">
         <img src="imeges/vverh.svg" alt="Наверх" class="scroll-default">
         <img src="imeges/vverhN.svg" alt="Наверх (активное)" class="scroll-hover">
-    </div>
+    </button>
     <!-- Подключение JavaScript -->
     <script src="script.js"></script>
 </body>
