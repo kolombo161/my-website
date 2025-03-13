@@ -9,18 +9,26 @@
 }
 
 /* Убираем горизонтальный скроллбар */
-html, body {
+html,
+body {
     overflow-x: hidden;
 }
 
 body {
-    background-color: #f0f0f0; /* Резервный цвет */
-    background-image: url('imeges/dorojkifon.jpg'); /* Путь к изображению */
-    background-repeat: repeat; /* Повторение фона */
-    background-size: auto; /* Размер изображения */
-    background-attachment: fixed; /* Fixes the background */
-    margin: 0; /* Убираем отступы по умолчанию */
-    padding: 0; /* Убираем внутренние отступы */
+    background-color: #f0f0f0;
+    /* Резервный цвет */
+    background-image: url('imeges/dorojkifon.jpg');
+    /* Путь к изображению */
+    background-repeat: repeat;
+    /* Повторение фона */
+    background-size: auto;
+    /* Размер изображения */
+    background-attachment: fixed;
+    /* Fixes the background */
+    margin: 0;
+    /* Убираем отступы по умолчанию */
+    padding: 0;
+    /* Убираем внутренние отступы */
 }
 
 /* Основные стили для шапки сайта */
@@ -31,31 +39,240 @@ header {
     padding: 15px;
     background-image: url('imeges/shapka1.jpg');
     background-size: cover;
-    background-position: center top; /* Поднимаем текстуру */
+    background-position: center top;
     background-repeat: no-repeat;
-    height: 220px; /* Фиксированная высота */
+    height: 220px;
+    /* Фиксированная высота шапки */
     color: #cac7b9;
     font-family: 'Roboto Mono', monospace;
     flex-wrap: wrap;
     position: relative;
-    width: 100%; /* Ширина на весь экран */
+    /* Для позиционирования луча */
+    width: 100%;
+    /* Ширина на весь экран */
+    overflow: hidden;
+    /* Чтобы луч не выходил за границы шапки */
+}
+
+/* Луч, который пробегает по шапке */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    /* Начальная позиция за пределами шапки */
+    width: 200%;
+    /* Ширина луча */
+    height: 100%;
+    /* Высота луча как у шапки */
+    background: linear-gradient(45deg,
+            /* Угол наклона луча */
+            rgba(255, 255, 255, 0) 20%,
+            /* Прозрачный цвет */
+            rgba(255, 255, 255, 0.8) 50%,
+            /* Яркий цвет луча */
+            rgba(255, 255, 255, 0) 80%
+            /* Прозрачный цвет */
+        );
+    animation: beam 4s ease-in-out infinite;
+    /* Анимация луча */
+    z-index: 1;
+    /* Луч выше фона шапки, но ниже содержимого */
+    opacity: 0;
+    /* Начальная прозрачность */
+}
+
+/* Анимация луча */
+@keyframes beam {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateX(100%) rotate(45deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(200%) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Медиазапрос для мобильных устройств */
+@media (max-width: 768px) {
+
+    /* Шапка в мобильном режиме */
+    header {
+        flex-direction: column !important;
+        /* Элементы в столбик */
+        align-items: center !important;
+        /* Центрируем всё по горизонтали */
+        height: auto !important;
+        /* Высота автоматическая */
+        padding: 10px !important;
+        /* Уменьшаем отступы */
+    }
+
+    /* Кнопка меню остается на своем месте */
+    .menu-icon {
+        align-self: flex-start !important;
+        /* Кнопка меню слева */
+        margin-bottom: 10px !important;
+        /* Отступ снизу */
+    }
+
+    /* Логотип в центре */
+    .logo {
+        order: 2 !important;
+        /* Логотип будет вторым */
+        width: 100% !important;
+        /* Логотип на всю ширину */
+        text-align: center !important;
+        /* Центрируем логотип */
+        margin-bottom: 10px !important;
+        /* Отступ снизу */
+    }
+
+    /* Номер телефона в центре */
+    .header-contacts {
+        order: 3 !important;
+        /* Телефон будет третьим */
+        width: 100% !important;
+        /* Телефон на всю ширину */
+        text-align: center !important;
+        /* Центрируем телефон */
+        align-items: center !important;
+        /* Центрируем содержимое */
+    }
+
+    /* Сбрасываем выравнивание для .header-phone */
+    .header-phone {
+        justify-content: center !important;
+        /* Центрируем номер телефона */
+    }
+
+    /* Скрываем навигацию и адрес на телефонах */
+    nav,
+    .header-city {
+        display: none !important;
+        /* Скрываем навигацию и адрес */
+    }
 }
 
 /* Для широких экранов */
 @media (min-width: 1200px) {
-    header {       
-        background-size: 100% 100%; /* Растягиваем изображение на всю ширину и высоту */   
+    header {
+        background-size: 100% 100%;
+        /* Растягиваем изображение на всю ширину и высоту */
     }
+}
+
+#logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    /* Ширина логотипа */
+    height: 120px;
+    /* Высота логотипа */
+    z-index: 1;
 }
 
 /* Стили для логотипа в шапке */
 header .logo {
     flex: 1;
-    text-align: left;
+    position: relative;
+    /* Для позиционирования логотипа */
+    z-index: 2;
+    /* Логотип выше луча */
 }
+
 header .logo img {
     max-height: 150px;
     width: auto;
+}
+
+/* Анимация пульсации логотипа */
+.logo img {
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+}
+
+/* Медиазапрос для мобильных устройств */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column !important;
+        /* Элементы в столбик */
+        align-items: center !important;
+        /* Центрируем всё по горизонтали */
+        height: auto !important;
+        /* Высота автоматическая */
+        padding: 10px !important;
+        /* Уменьшаем отступы */
+    }
+
+    .menu-icon {
+        align-self: flex-start !important;
+        /* Кнопка меню слева */
+        margin-bottom: 10px !important;
+        /* Отступ снизу */
+    }
+
+    .logo {
+        order: 2 !important;
+        /* Логотип будет вторым */
+        width: 100% !important;
+        /* Логотип на всю ширину */
+        text-align: center !important;
+        /* Центрируем логотип */
+        margin-bottom: 10px !important;
+        /* Отступ снизу */
+    }
+
+    .header-contacts {
+        order: 3 !important;
+        /* Телефон будет третьим */
+        width: 100% !important;
+        /* Телефон на всю ширину */
+        text-align: center !important;
+        /* Центрируем телефон */
+        align-items: center !important;
+        /* Центрируем содержимое */
+    }
+
+    .header-phone {
+        justify-content: center !important;
+        /* Центрируем номер телефона */
+    }
+
+    nav,
+    .header-city {
+        display: none !important;
+        /* Скрываем навигацию и адрес */
+    }
+}
+
+/* Для широких экранов */
+@media (min-width: 1200px) {
+    header {
+        background-size: 100% 100%;
+        /* Растягиваем изображение на всю ширину и высоту */
+    }
 }
 
 /* Стили для контактов в шапке */
@@ -65,9 +282,11 @@ header .logo img {
     flex-direction: column;
     align-items: flex-end;
 }
+
 .header-phone {
     align-items: center;
 }
+
 .header-contacts,
 .header-phone {
     display: flex;
@@ -101,16 +320,29 @@ header .logo img {
     transition: color 0.3s ease;
 }
 
+/* Главный контейнер */
+.main-content {
+    flex: 1;
+    padding: 10px;
+    background-color: #ffffffaf;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
 /* Стили для главного экрана (hero section) */
 .hero {
     text-align: center;
     padding: 50px;
-    background-color: #f0f0f0;
+    background-color: rgba(255, 255, 255, 0.593)
 }
+
 .hero h1 {
     font-size: 36px;
     color: #2d2c2c
 }
+
 .hero button {
     padding: 10px 20px;
     background-color: #ff6600;
@@ -119,105 +351,422 @@ header .logo img {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .hero button:hover {
     background-color: #e65c00;
 }
 
 /* Общие стили для секций (услуги, преимущества, отзывы, контакты) */
-#services, #advantages, #reviews, #contact {
-    padding: 25px;
+#services,
+#advantages,
+#reviews,
+#contact {
+    padding: 40px;
     text-align: center;
 }
 
-/* Стили для карточек услуг */
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Разрешаем перенос карточек на новую строку */
+    gap: 20px;
+    /* Добавляем равномерный промежуток между карточками */
+    justify-content: center;
+    /* Центрируем карточки по горизонтали */
+}
+
+/* 3д блоки карточек */
+.card-3d {
+    perspective: 1000px;
+    /* Создаём перспективу для 3D-эффекта */
+    width: 1000px;
+    height: 200px;
+    margin: 15px;
+}
+
+.card-content {
+    width: 80%;
+    height: 50%;
+    background: #f5c366d2;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-3d:hover .card-content {
+    transform: rotateY(5deg) rotateX(3deg) translateZ(10px);
+    /* Наклон и подъём */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-3d img:hover {
+    transform: rotateY(1deg) rotateX(1deg) translateZ(1px);
+    /* Параллакс-эффект */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для нового контейнера */
+.content-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Полупрозрачный белый */
+    padding: 20px;
+    /* Внутренние отступы */
+    margin: 20px auto;
+    /* Внешние отступы и центрирование */
+    max-width: 1200px;
+    /* Максимальная ширина на широких экранах */
+    width: calc(100% - 40px);
+    /* Ширина с учетом отступов */
+    box-sizing: border-box;
+    /* Учитываем padding в ширине */
+    border-radius: 8px;
+    /* Закругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Тень */
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 15px;
+        /* Уменьшаем отступы */
+        margin: 10px auto;
+        /* Уменьшаем внешние отступы */
+        width: calc(100% - 20px);
+        /* Ширина с учетом отступов */
+        border-radius: 0;
+        /* Убираем закругления */
+    }
+}
+
+/* Адаптация для широких экранов */
+@media (min-width: 1200px) {
+    .content-container {
+        max-width: 1400px;
+        /* Увеличиваем максимальную ширину */
+    }
+}
+
+/* Контейнер для всех карточек услуг */
+.services-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Стили для карточки услуги */
 .service-card {
-    margin: 25px;
-    padding: 5px;
-    border-radius: 7px;
-    background: 
-        repeating-linear-gradient(
-            to bottom,
-            #41414186 0px,
-            #ffffff 10px,
-            #6b6a6a86 20px
-        ),
-        linear-gradient(to bottom, #f7f6e4, #fbf7e0);
-    background-size: 100% calc(100% / 7), 100% 100%;
-    background-blend-mode: multiply;
-    border: 2px solid rgba(186, 180, 180, 0.792);
-    box-shadow: 
-        inset 0 0 10px rgba(0, 0, 0, 0.5),
-        0 0 15px rgba(255, 255, 255, 0.94);
-    color: #333;
-    font-family: 'Roboto Mono', monospace;
-    text-align: center;
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+/* Контейнер для изображения */
+.service-image {
+    width: 10cm;
+    height: 9cm;
+    margin-right: 20px;
+    overflow: hidden;
+    /* Обрезаем изображение, чтобы оно не выходило за границы */
     position: relative;
-    height: 250px;
 }
 
-/* Добавляем слой освещения через ::before */
-.service-card::before {
-    content: '';
+.service-image img.main-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    /* Сохраняем соотношение сторон и обрезаем лишнее */
+    cursor: pointer;
+}
+
+/* Скрываем дополнительные изображения */
+.service-image .additional-images {
+    display: none;
+}
+
+/* Контейнер для текста (заголовок и описание) */
+.service-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заголовок услуги */
+.service-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Текст услуги */
+.service-text {
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Список в тексте */
+.service-text ul {
+    padding-left: 10px;
+}
+
+.service-text li {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Стили для подсказок */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    color: rgb(45, 43, 43);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tooltip::after {
+    content: "ⓘ";
+    font-size: 0.7em;
+    margin-left: 1px;
+    color: #98de0c;
+    position: relative;
+    top: -0.7em;
+    vertical-align: baseline;
+}
+
+.tooltip:hover {
+    color: #007bff;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #f5f5dc;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1; /* Размещаем позади содержимого */
-    background: radial-gradient(
-        ellipse at var(--light-position-x, 0%) 50%, /* Свет исходит слева */
-        rgba(255, 255, 255, 0.8) 0%, /* Яркий свет */
-        rgba(255, 255, 255, 0) 50% /* Постепенное затухание */
-    );
-    border-radius: 10px; /* Соответствует BorderRadius карточки */
-    pointer-events: none; /* Отключаем взаимодействие с псевдоэлементом */
-    transition: background-position 0.2s ease; /* Более быстрый переход */
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+    width: auto;
+    max-width: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 0.5px solid #ccc;
 }
 
-/* Медиа-запрос для планшетов */
+/* Позиционирование подсказок */
+.tooltip .tooltiptext {
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip .tooltiptext.top-out {
+    bottom: auto;
+    top: 125%;
+}
+
+.tooltip .tooltiptext.bottom-out {
+    top: auto;
+    bottom: 125%;
+}
+
+.tooltip .tooltiptext.left-out {
+    left: 0;
+    transform: translateX(0);
+}
+
+.tooltip .tooltiptext.right-out {
+    left: auto;
+    right: 0;
+    transform: translateX(0);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Увеличение ширины подсказок для длинных текстов */
+.tooltip[data-words="3"] .tooltiptext {
+    white-space: normal;
+    max-width: 250px;
+}
+
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
     .service-card {
-        height: 40vh; /* 40% от высоты viewport */
-        background-size: 100% calc(100% / 5); /* 4 полосы для мобильных */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-image {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .service-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .fullscreen-image {
+        max-height: 70vh;
+        /* Уменьшаем высоту для мобильных устройств */
     }
 }
 
-/* Медиа-запрос для телефонов */
-@media (max-width: 480px) {
-    .service-card {
-        height: 50vh; /* 50% от высоты viewport */
-        background-size: 100% calc(100% / 4); /* 4 полосы для очень маленьких экранов */
+/* Стили для полноэкранного просмотра изображений */
+#fullscreen-overlay {
+    display: none;
+    /* Скрываем по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Темно-серый полупрозрачный фон */
+    z-index: 1000;
+    /* Убедимся, что окно поверх всего */
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background-color: #f5f5dc;
+    /* Бежевый фон */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: #000;
+    /* Черный цвет крестика */
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ff0000;
+    /* Красный цвет при наведении */
+}
+
+.image-title {
+    background-color: #f5f5dc;
+    /* Бежевый фон */
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.image-container {
+    max-width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen-image {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    object-fit: contain;
+    /* Сохраняем соотношение сторон */
+}
+
+/* Адаптивность для планшетов и мобильных устройств */
+@media (max-width: 1024px) {
+    .fullscreen-content {
+        max-width: 95%;
+        max-height: 95%;
+        padding: 15px;
+    }
+
+    .fullscreen-image {
+        max-height: 75vh;
+        /* Уменьшаем высоту для планшетов */
     }
 }
 
-/* Для средних экранов (например, ноутбуки) */
-@media (min-width: 992px) and (max-width: 1199px) {
-    .service-card {
-        background-size: 100% calc(100% / 6); /* 6 полос */
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .fullscreen-image {
+        max-width: 100%;
+        max-height: 100%;
+        padding: 10px;
+        border-radius: 0;
+        /* Убираем скругление углов для мобильных */
+    }
+
+    .fullscreen-image {
+        max-height: 70vh;
+        /* Уменьшаем высоту для мобильных устройств */
+    }
+
+    .close-btn {
+        top: 5px;
+        right: 5px;
+        font-size: 24px;
+    }
+
+    .image-title {
+        font-size: 20px;
+        padding: 8px;
     }
 }
 
-/* Медиа-запрос для широких экранов */
-@media (min-width: 1200px) {
+/* Для узких экранов (ширина меньше 1200px) */
+@media (max-width: 1199px) {
     .service-card {
-        height: 25vh; /* 25% от высоты viewport */
-        background-size: 100% calc(100% / 7); /* 7 полос для большого экрана */
+        width: 100%;
+        /* На узких экранах занимают всю ширину */
     }
 }
 
 /* Для очень широких экранов */
 @media (min-width: 1600px) {
     .service-card {
-        background-size: 100% calc(100% / 10); /* 11 полос */
-        height: 28vh; /* 20% от высоты viewport */
+        max-width: 1200px;
+        width: 100%;
+        /* Увеличиваем максимальную ширину карточки */
     }
 }
 
-/* Медиа-запрос для мобильных устройств */
-@media (max-width: 768px) {
+@media (min-width: 800px) {
     .service-card {
-    height: 70vh; /* 20% от высоты viewport */
-    background-size: 100% calc(100% / 7); /* 6 полос */
+        max-width: 1200px;
+        width: 100%;
+        /* Увеличиваем максимальную ширину карточки */
     }
 }
 
@@ -227,11 +776,13 @@ header .logo img {
         display: none !important;
     }
 }
+
 .service-card h3 {
     margin: 0 0 10px;
     font-size: 1.5em;
     color: rgb(55, 55, 55);
 }
+
 .service-card p {
     margin: 0;
     font-size: 1em;
@@ -243,14 +794,12 @@ footer {
     text-align: center;
     padding: 22.4px;
     min-height: 160px;
-    background: 
-        url('imeges/podval.svg'), 
-        linear-gradient(
-            to bottom,
+    background:
+        url('imeges/podval.svg'),
+        linear-gradient(to bottom,
             #cac7b9 15%,
             #fbf7e0 40%,
-            #cac7b9 85%
-        );
+            #cac7b9 85%);
     background-repeat: repeat;
     background-size: 200px 200px, 100% 100%;
     color: #000000;
@@ -272,55 +821,66 @@ footer::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px; /* Ширина выреза */
-    height: 150px; /* Высота выреза */
-    background: 
-        linear-gradient(
-            to bottom,
+    width: 400px;
+    /* Ширина выреза */
+    height: 150px;
+    /* Высота выреза */
+    background:
+        linear-gradient(to bottom,
             #cac7b9 15%,
             #fbf7e0 40%,
-            #cac7b9 85%
-        );
-    z-index: 1; /* Вырез находится ниже текста */
+            #cac7b9 85%);
+    z-index: 1;
+    /* Вырез находится ниже текста */
     border-radius: 10px;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-    opacity: 1; /* Убеждаемся, что вырез виден */
+    opacity: 1;
+    /* Убеждаемся, что вырез виден */
 }
 
 /* Стили для кнопки "Позвонить" */
 .call-button {
     position: fixed;
-    right: -100px; /* Начальное положение за пределами экрана */
+    right: -100px;
+    /* Начальное положение за пределами экрана */
     top: 30%;
-    background-color: transparent; /* Прозрачный фон */
-    color: #007bff; /* Цвет иконки */
-    font-size: 24px; /* Размер иконки */
+    background-color: transparent;
+    /* Прозрачный фон */
+    color: #007bff;
+    /* Цвет иконки */
+    font-size: 24px;
+    /* Размер иконки */
     transition: right 0.7s ease-in-out;
     z-index: 1000;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 10px; /* Расстояние между иконкой и кнопкой закрытия */
+    gap: 10px;
+    /* Расстояние между иконкой и кнопкой закрытия */
 }
 
 .call-button.visible {
-    right: 17px; /* Положение, когда кнопка видна */
+    right: 17px;
+    /* Положение, когда кнопка видна */
 }
 
 .call-button .fa-phone {
-    color: #007bff; /* Цвет иконки */
+    color: #007bff;
+    /* Цвет иконки */
     transition: color 0.3s ease;
 }
 
 .call-button:hover .fa-phone {
-    color: #34d0ef; /* Цвет при наведении */
+    color: #34d0ef;
+    /* Цвет при наведении */
 }
 
 /* Стили для кнопки закрытия */
 .close-button {
     background-color: transparent;
     border: none;
-    color: #3434349d; /* Цвет кнопки закрытия */
+    color: #3434349d;
+    /* Цвет кнопки закрытия */
     font-size: 20px;
     cursor: pointer;
     padding: 0;
@@ -331,7 +891,8 @@ footer::before {
 }
 
 .close-button:hover {
-    color: #e40707c1; /* Цвет при наведении */
+    color: #e40707c1;
+    /* Цвет при наведении */
 }
 
 /* Стили для основных надписей */
@@ -342,7 +903,8 @@ footer p.contact-info {
     margin: 9px 0;
     color: #484848;
     position: relative;
-    z-index: 2; /* Текст выше выреза */
+    z-index: 2;
+    /* Текст выше выреза */
 }
 
 /* Стиль для строки с правами */
@@ -353,13 +915,16 @@ footer .copyright {
     margin: 7px 0;
     color: #636161;
     position: relative;
-    z-index: 2; /* Текст выше выреза */
+    z-index: 2;
+    /* Текст выше выреза */
 }
 
 /* Стили для ссылок в подвале (убираем подчёркивание) */
 footer p.contact-info a {
-    text-decoration: none; /* Убираем нижнее подчёркивание */
-    color: inherit; /* Цвет ссылок такой же, как у обычного текста */
+    text-decoration: none;
+    /* Убираем нижнее подчёркивание */
+    color: inherit;
+    /* Цвет ссылок такой же, как у обычного текста */
     transition: color 0.3s ease;
 }
 
@@ -369,6 +934,7 @@ footer p.contact-info .fa-map-marker-alt {
     color: #484848;
     transition: color 0.3s ease;
 }
+
 footer p.contact-info:hover .fa-phone,
 footer p.contact-info:hover .fa-map-marker-alt,
 footer p.contact-info a:hover {
@@ -378,24 +944,34 @@ footer p.contact-info a:hover {
 /* Адаптивность */
 @media (max-width: 768px) {
     footer::before {
-        width: 350px; /* Уменьшаем ширину выреза */
-        height: 100px; /* Уменьшаем высоту выреза */
+        width: 350px;
+        /* Уменьшаем ширину выреза */
+        height: 100px;
+        /* Уменьшаем высоту выреза */
     }
+
     footer p.contact-info {
-        font-size: 16px; /* Уменьшаем размер шрифта для основных надписей */
+        font-size: 16px;
+        /* Уменьшаем размер шрифта для основных надписей */
     }
+
     footer .copyright {
-        font-size: 9px; /* Уменьшаем размер шрифта для строки с правами */
+        font-size: 9px;
+        /* Уменьшаем размер шрифта для строки с правами */
     }
 }
 
 @media (min-width: 1200px) {
     footer::before {
-        width: 500px; /* Увеличиваем ширину выреза */
-        height: 120px; /* Увеличиваем высоту выреза */
+        width: 500px;
+        /* Увеличиваем ширину выреза */
+        height: 120px;
+        /* Увеличиваем высоту выреза */
     }
+
     footer .copyright {
-        font-size: 12px; /* Увеличиваем размер шрифта для строки с правами */
+        font-size: 12px;
+        /* Увеличиваем размер шрифта для строки с правами */
     }
 }
 
@@ -414,15 +990,18 @@ footer p.contact-info a:hover {
     text-align: center;
     border: none;
 }
+
 .scroll-to-top img {
     width: 50px;
     height: 31px;
     transition: opacity 0.3s ease;
     margin-top: 7px;
 }
+
 .scroll-to-top .scroll-default {
     opacity: 1;
 }
+
 .scroll-to-top .scroll-hover {
     opacity: 0;
     position: absolute;
@@ -432,9 +1011,11 @@ footer p.contact-info a:hover {
     width: 40px;
     height: 50px;
 }
+
 .scroll-to-top:hover .scroll-default {
     opacity: 0;
 }
+
 .scroll-to-top:hover .scroll-hover {
     opacity: 1;
 }
@@ -461,6 +1042,7 @@ footer p.contact-info a:hover {
     transition: background-color 0.3s ease;
     background-color: #7790899c;
 }
+
 .menu-icon img.menu-default {
     transform: translateX(22%);
     width: 30px;
@@ -472,6 +1054,7 @@ footer p.contact-info a:hover {
     top: 12px;
     left: 5%;
 }
+
 .menu-icon img.menu-hover {
     left: 50%;
     transform: translateX(-50%);
@@ -485,9 +1068,11 @@ footer p.contact-info a:hover {
     top: 12px;
     left: 1;
 }
+
 .menu-icon:hover img.menu-default {
     opacity: 0;
 }
+
 .menu-icon:hover img.menu-hover {
     opacity: 1;
 }
@@ -497,6 +1082,7 @@ footer p.contact-info a:hover {
     .menu-icon {
         display: block;
     }
+
     header {
         width: 100%;
         margin-left: 0;
@@ -505,14 +1091,17 @@ footer p.contact-info a:hover {
         flex-direction: column;
         align-items: center;
     }
+
     header .logo {
         order: 1;
         text-align: center;
         margin-bottom: 10px;
     }
+
     .header-city .desktop-only {
         display: none;
     }
+
     nav a.nav-link {
         display: none;
     }
