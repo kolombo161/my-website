@@ -295,3 +295,35 @@ function handleSwipe() {
     nextImage(); // Свайп влево
   }
 }
+
+// Раскрывающиеся блоки
+document.addEventListener('DOMContentLoaded', function () {
+  // Обработка кликов на заголовки дополнительных блоков
+  document.querySelectorAll('.additional-header').forEach((header) => {
+    header.addEventListener('click', function () {
+      const block = this.closest('.additional-block');
+      block.classList.toggle('active');
+
+      // Плавная прокрутка к открытому блоку
+      if (block.classList.contains('active')) {
+        block.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
+
+  // Закрытие блоков при клике вне области
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.additional-block')) {
+      document.querySelectorAll('.additional-block').forEach((block) => {
+        block.classList.remove('active');
+      });
+    }
+  });
+});
+
+// Добавьте этот код в ваш существующий обработчик событий
+document.querySelectorAll('.service-image img.main-image').forEach((img) => {
+  img.addEventListener('click', function () {
+    // Ваш существующий код для полноэкранного просмотра
+  });
+});
