@@ -4,6 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="imeges/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="imeges/favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" sizes="16x16" href="imeges/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imeges/favicon-32x32.png">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="imeges/apple-touch-icon.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="imeges/site.webmanifest">
+
+    <!-- Цвета интерфейса -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#f0f0f0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <title>Ремонт рольворот и рольставней</title>
     <link rel="stylesheet" href="style.css">
     <!-- Подключение Font Awesome -->
@@ -64,7 +82,6 @@
         <p>Качественный ремонт по доступным ценам. Работаем быстро и надёжно!</p>
     </section>
 
-    <!-- Новый контейнер -->
     <div class="content-container">
         <!-- Секция услуг -->
         <div class="services-container">
@@ -72,7 +89,6 @@
             <div class="service-card">
                 <div class="service-image">
                     <img src="imeges/Remrol.jpg" alt="Ремонт рольворот" class="main-image">
-                    <!-- Дополнительные изображения скрыты -->
                     <div class="additional-images" style="display: none;">
                         <img src="imeges/Remro1l.jpg" alt="Ремонт рольворот">
                     </div>
@@ -82,7 +98,7 @@
                         <h3>Ремонт рольворот</h3>
                     </div>
                     <div class="service-text">
-                        <p>Профессиональный ремонт <strong class="tooltip">рольворот<span class="tooltiptext">рулонных
+                        <p>Профессиональный ремонт <strong class="tooltip">рольворот<span class="tooltiptext">рулонные
                                     ворот</span></strong> в Ростове-на-Дону! Мы предлагаем качественное обслуживание и
                             ремонт рольворот любых производителей, включая <strong class="tooltip">Doorhan<span
                                     class="tooltiptext">Официальный сайт Doorhan</span></strong>, <strong
@@ -98,12 +114,70 @@
                                         class="tooltiptext">ригельные пружины выполняют<br>функцию крепежа полотна<br>к
                                         валу</span></strong>.</li>
                             <li>Обновление роликов для обеспечения плавной работы.</li>
-                            <li>Восстановление полотна ворот и ремонт автоматики.</li>
-                            <li>Регулировку и настройку рулонных ворот для оптимальной функциональности.</li>
+                            <li>Восстановление полотна ворот и ремонт <strong class="tooltip">автоматики<span
+                                        class="tooltiptext">Двигатель, плата управления, пульт</span></strong>.</li>
+                            <li><strong class="tooltip">Регулировку<span class="tooltiptext">Установка верхней и нижней
+                                        позиции остановки двигателя</span></strong>
+                                и
+                                настройку рулонных ворот для оптимальной функциональности.</li>
                         </ul>
-                        <p>Доверяйте ремонт <strong class="tooltip">рольворот<span class="tooltiptext">рулонных
+                        <p>Доверяйте ремонт <strong class="tooltip">рольворот<span class="tooltiptext">рулонные
                                     ворот</span></strong> только опытным мастерам, чтобы ваши ворота работали
                             безотказно!</p>
+                    </div>
+                </div>
+
+                <!-- Дополнительный блок с заголовком и текстом -->
+                <div class="additional-block">
+                    <div class="additional-header">
+                        <h4><strong>Ценные советы</strong> <span class="toggle-icon">+</span></h4>
+                    </div>
+                    <div class="additional-content">
+                        <div class="content-wrapper">
+                            <p>1. Не реагируют на команды с пульта<br>
+                                Первым делом найдите блок управления, так как именно он синхронизируется с пультом.<br>
+                                Проверьте:<br>
+                                - Подачу электропитания<br>
+                                - Состояние предохранителя (если имеется)<br>
+                                - Внешнее состояние платы на предмет повреждений<br>
+                                При необходимости потребуется диагностика электронных компонентов специальным
+                                оборудованием.
+                            </p>
+                            <p>2. Неполное открытие/закрытие<br>
+                                Алгоритм действий:<br>
+                                - Осмотрите полотно на предмет деформаций<br>
+                                - Проверьте натяжение пружин<br>
+                                - Выполните калибровку предельных положений<br>
+                                Если проблема сохраняется - возможна неисправность привода, требующая профессионального
+                                ремонта.
+                            </p>
+                            <p>3. Заклинивание в коробе<br>
+                                Основные причины:<br>
+                                - Образование наледи зимой<br>
+                                - Механические повреждения<br>
+                                - Неправильная намотка полотна<br>
+                                Решение:<br>
+                                - Вручную выведите полотно по направляющим<br>
+                                - Проверьте крепление вала<br>
+                                - Отрегулируйте систему привода
+                            </p>
+                            <p>4. Двигатель работает, но полотно не движется<br>
+                                Вероятные причины:<br>
+                                - Разъединение ламелей<br>
+                                - Сход полотна с вала<br>
+                                Что делать:<br>
+                                - Снимите нагрузку с пружин<br>
+                                - Выполните сброс системы<br>
+                                - Переустановите полотно и выполните настройку
+                            </p>
+                            <p>5. Перекос при движении<br>
+                                Диагностика:<br>
+                                - Проверьте подшипниковые узлы<br>
+                                - Убедитесь в равномерном натяжении пружин<br>
+                                - Осмотрите направляющие<br>
+                                После замены изношенных компонентов обязательна тестовая проверка.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -112,7 +186,6 @@
             <div class="service-card">
                 <div class="service-image">
                     <img src="imeges/Remrolstavni.jpg" alt="Ремонт рольставней" class="main-image">
-                    <!-- Дополнительные изображения скрыты -->
                     <div class="additional-images" style="display: none;">
                         <!-- Здесь могут быть другие изображения -->
                     </div>
@@ -143,6 +216,32 @@
                         </ul>
                         <p>Доверяйте ремонт рольставней только опытным мастерам, чтобы ваши ворота работали безотказно!
                         </p>
+                    </div>
+                </div>
+
+                <!-- Дополнительный блок с заголовком и текстом -->
+                <div class="additional-block">
+                    <div class="additional-header">
+                        <h4>Ценные советы<span class="toggle-icon">+</span></h4>
+                    </div>
+                    <div class="additional-content">
+                        <div class="content-wrapper">
+                            <p>1. Рольставни не реагируют на пульт<br>
+                                Причина: Проблемы с платой управления или питанием.<br>
+                                Решение:<br>
+                                Проверьте, правильно ли запрограммирован пульт на плату управления.<br>
+                                Убедитесь, что на блок управления подаётся питание.<br>
+                                Проверьте предохранитель на плате.<br>
+                                Если проблема не решена, проведите диагностику с помощью мультиметра.</p>
+                            <p>2. Рольставни закрываются или открываются не полностью<br>
+                                Причина: Деформация ламелей, проблемы с тяговыми пружинами или приводом.<br>
+                                Решение:<br>
+                                Осмотрите полотно на наличие деформированных ламелей.<br>
+                                Проверьте состояние тяговых пружин.<br>
+                                Отрегулируйте привод. Если регулировка не помогает, возможно, потребуется замена
+                                двигателя.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
