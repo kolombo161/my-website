@@ -462,15 +462,14 @@ header .logo img {
 
 /* Стили для карточки услуги */
 .service-card {
-    display: flex;
     width: 100%;
     max-width: 800px;
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: none;
     border: 1px solid rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    /* Уменьшаем отступ между карточкой и допблоком */
 }
 
 /* Контейнер для изображения */
@@ -602,6 +601,12 @@ header .logo img {
     opacity: 1;
 }
 
+/* ДОБАВЛЯЕМ ВНУТРЕННИЙ ОТСТУП СВЕРХУ ДЛЯ КОНТЕНТА */
+.content-wrapper {
+    padding-top: 45px !important;
+    /* Жесткий отступ от верха блока до текста */
+}
+
 /* Увеличение ширины подсказок для длинных текстов */
 .tooltip[data-words="3"] .tooltiptext {
     white-space: normal;
@@ -629,23 +634,95 @@ header .logo img {
 
     .fullscreen-image {
         max-height: 70vh;
-        /* Уменьшаем высоту для мобильных устройств */
+    }
+
+    /* NEW: Адаптация подсказок для мобильных */
+    .additional-block .tooltip .tooltiptext {
+        max-width: 200px;
+        left: 10px !important;
+        transform: none !important;
+    }
+}
+
+/* Стили для дополнительных блоков */
+.additional-block {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.additional-header {
+    cursor: pointer;
+    padding: 12px 15px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.additional-header:hover {
+    background-color: #e9e9e9;
+}
+
+.additional-header h4 {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: #333;
+}
+
+.toggle-icon {
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.additional-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    background-color: #f9f9f9;
+}
+
+.content-wrapper {
+    padding: 15px;
+}
+
+/* Открытое состояние */
+.additional-block.active .additional-content {
+    max-height: 2000px;
+}
+
+.additional-block.active .toggle-icon {
+    transform: rotate(45deg);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .additional-header h4 {
+        font-size: 16px;
+    }
+
+    .content-wrapper {
+        padding: 10px;
     }
 }
 
 /* Стили для полноэкранного просмотра изображений */
 #fullscreen-overlay {
     display: none;
-    /* Скрываем по умолчанию */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    /* Темно-серый полупрозрачный фон */
     z-index: 1000;
-    /* Убедимся, что окно поверх всего */
     justify-content: center;
     align-items: center;
 }
@@ -655,7 +732,6 @@ header .logo img {
     max-width: 90%;
     max-height: 90%;
     background-color: #f5f5dc;
-    /* Бежевый фон */
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -667,18 +743,15 @@ header .logo img {
     right: 10px;
     font-size: 30px;
     color: #000;
-    /* Черный цвет крестика */
     cursor: pointer;
 }
 
 .close-btn:hover {
     color: #ff0000;
-    /* Красный цвет при наведении */
 }
 
 .image-title {
     background-color: #f5f5dc;
-    /* Бежевый фон */
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -700,56 +773,12 @@ header .logo img {
     border-radius: 8px;
     transition: transform 0.3s ease;
     object-fit: contain;
-    /* Сохраняем соотношение сторон */
-}
-
-/* Адаптивность для планшетов и мобильных устройств */
-@media (max-width: 1024px) {
-    .fullscreen-content {
-        max-width: 95%;
-        max-height: 95%;
-        padding: 15px;
-    }
-
-    .fullscreen-image {
-        max-height: 75vh;
-        /* Уменьшаем высоту для планшетов */
-    }
-}
-
-
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    .fullscreen-image {
-        max-width: 100%;
-        max-height: 100%;
-        padding: 10px;
-        border-radius: 0;
-        /* Убираем скругление углов для мобильных */
-    }
-
-    .fullscreen-image {
-        max-height: 70vh;
-        /* Уменьшаем высоту для мобильных устройств */
-    }
-
-    .close-btn {
-        top: 5px;
-        right: 5px;
-        font-size: 24px;
-    }
-
-    .image-title {
-        font-size: 20px;
-        padding: 8px;
-    }
 }
 
 /* Для узких экранов (ширина меньше 1200px) */
 @media (max-width: 1199px) {
     .service-card {
         width: 100%;
-        /* На узких экранах занимают всю ширину */
     }
 }
 
@@ -758,7 +787,6 @@ header .logo img {
     .service-card {
         max-width: 1200px;
         width: 100%;
-        /* Увеличиваем максимальную ширину карточки */
     }
 }
 
@@ -766,7 +794,6 @@ header .logo img {
     .service-card {
         max-width: 1200px;
         width: 100%;
-        /* Увеличиваем максимальную ширину карточки */
     }
 }
 
