@@ -328,36 +328,42 @@ header .logo img {
 .main-content {
     flex: 1;
     padding: 10px;
-    background-color: #ffffffe8;
+    background-color: #ffffffcb;
     margin: 0 auto;
     width: 100%;
     max-width: 1200px;
     box-sizing: border-box;
 }
 
-/* Стили для главного экрана (hero section) */
+/* Основные стили секции hero */
 .hero {
     text-align: center;
-    padding: 50px;
-    background-color: rgba(255, 255, 255, 0.916)
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.916);
+    font-family: Arial, sans-serif;
 }
 
+/* Стили заголовка */
 .hero h1 {
-    font-size: 36px;
-    color: #2d2c2c
+    font-size: 20px;
+    color: #2d2c2c;
+    margin-bottom: 20px;
 }
 
-.hero button {
-    padding: 10px 20px;
-    background-color: #ff6600;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Стили основного текста */
+.hero p {
+    color: #555;
+    line-height: 1.1;
+    max-width: 800px;
+    margin: 0 auto 15px;
+    font-size: 17px;
 }
 
-.hero button:hover {
-    background-color: #e65c00;
+/* Стили для выделенного текста */
+.highlight {
+    font-weight: bold;
+    color: #2d2c2c;
+    /* Можно изменить на нужный цвет */
 }
 
 /* Общие стили для секций (услуги, преимущества, отзывы, контакты) */
