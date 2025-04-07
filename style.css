@@ -328,7 +328,7 @@ header .logo img {
 .main-content {
     flex: 1;
     padding: 10px;
-    background-color: #ffffffaf;
+    background-color: #ffffffe8;
     margin: 0 auto;
     width: 100%;
     max-width: 1200px;
@@ -339,7 +339,7 @@ header .logo img {
 .hero {
     text-align: center;
     padding: 50px;
-    background-color: rgba(255, 255, 255, 0.593)
+    background-color: rgba(255, 255, 255, 0.916)
 }
 
 .hero h1 {
@@ -394,7 +394,7 @@ header .logo img {
     background: #f5c366d2;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.305);
     transform-style: preserve-3d;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -402,7 +402,7 @@ header .logo img {
 .card-3d:hover .card-content {
     transform: rotateY(5deg) rotateX(3deg) translateZ(10px);
     /* Наклон и подъём */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.502);
 }
 
 .gallery-3d img:hover {
@@ -413,7 +413,7 @@ header .logo img {
 
 /* Стили для нового контейнера */
 .content-container {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.656);
     /* Полупрозрачный белый */
     padding: 20px;
     /* Внутренние отступы */
