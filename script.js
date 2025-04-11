@@ -362,7 +362,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// Проверка и загрузка отзывов
 ymaps.ready(init);
 
 function init() {
