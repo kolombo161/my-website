@@ -886,7 +886,7 @@ body {
     background: #f9f9f9 !important;
     box-sizing: border-box !important;
     min-height: 50vh;
-    /* Минимальная высота секции */
+    /* Оставляем как было */
 }
 
 .reviews-container {
@@ -898,32 +898,44 @@ body {
     overflow: hidden !important;
     box-sizing: border-box !important;
     height: 100%;
-    /* Занимает всю высоту родителя */
 }
 
 .reviews-iframe {
     width: 100% !important;
     height: 750px !important;
-    /* Фиксированная высота (или 50vh) */
+    /* Фиксированная высота (десктоп) */
     min-height: 50vh;
-    /* Альтернатива: 50% высоты экрана */
+    /* Оставляем как было */
     border: none !important;
     display: block !important;
 }
 
 /* Адаптация под мобильные */
 @media (max-width: 768px) {
+    .reviews-section {
+        min-height: 80vh;
+        /* Увеличили с 50vh */
+    }
+
     .reviews-iframe {
-        height: 60vh !important;
-        /* Чуть больше на маленьких экранах */
-        min-height: 400px !important;
+        height: 100vh !important;
+        /* Увеличили с 60vh */
+        min-height: 80vh !important;
+        /* Увеличили с 400px */
     }
 }
 
 @media (max-width: 480px) {
+    .reviews-section {
+        min-height: 100vh;
+        /* Увеличили с 70vh */
+    }
+
     .reviews-iframe {
-        height: 70vh !important;
-        min-height: 300px !important;
+        height: 120vh !important;
+        /* Увеличили с 70vh */
+        min-height: 100vh !important;
+        /* Увеличили с 300px */
     }
 }
 
