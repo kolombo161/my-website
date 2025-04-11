@@ -327,3 +327,95 @@ document.querySelectorAll('.service-image img.main-image').forEach((img) => {
     // Ваш существующий код для полноэкранного просмотра
   });
 });
+
+// Добавляем интерактивность для мобильных устройств
+document.addEventListener('DOMContentLoaded', function () {
+  const stickers = document.querySelectorAll('.sticker');
+
+  // Для мобильных - открытие по клику
+  if (window.innerWidth <= 768) {
+    stickers.forEach((sticker) => {
+      sticker.addEventListener('click', function () {
+        this.classList.toggle('active');
+      });
+    });
+  }
+
+  // Параллакс-эффект для десктопа
+  if (window.innerWidth > 768) {
+    document.querySelectorAll('.sticker').forEach((sticker) => {
+      sticker.addEventListener('mousemove', (e) => {
+        const x = e.offsetX / sticker.offsetWidth - 0.5;
+        const y = e.offsetY / sticker.offsetHeight - 0.5;
+
+        sticker.style.transform = `
+                  rotate3d(${y}, ${-x}, 0, 5deg) 
+                  translateY(-5px) 
+                  scale(1.03)
+              `;
+      });
+
+      sticker.addEventListener('mouseleave', () => {
+        sticker.style.transform = '';
+      });
+    });
+  }
+});
+
+<script>
+    ymaps.ready(init);
+
+    function init() {
+        // Название и адрес организации (замените на свои)
+        const companyName = "Название вашей компании";
+        const companyAddress = "Адрес вашей компании";
+
+        // Ищем организацию
+        ymaps.geocode(companyAddress, {
+            results: 1
+        }).then(function (res) {
+            const firstGeoObject = res.geoObjects.get(0);
+
+            if (!firstGeoObject) {
+                console.error("Организация не найдена!");
+                return;
+            }
+
+            // Получаем ID организации (если есть)
+            const companyId = firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.AddressDetails.CompanyId');
+
+            if (!companyId) {
+                console.error("Не удалось получить ID организации");
+                return;
+            }
+
+            // Загружаем отзывы (используем API бизнеса)
+            loadYandexReviews(companyId);
+        });
+    }
+
+    function loadYandexReviews(companyId) {
+        // Здесь можно использовать API бизнеса (но нужен доступ)
+        // Либо парсить страницу карточки (неофициальный способ)
+        console.log("ID организации:", companyId);
+
+        // Временный пример (лучше использовать API бизнеса)
+        const mockReviews = [
+            { text: "Отличный сервис!", author: "Иван Иванов", rating: 5 },
+            { text: "Всё понравилось.", author: "Петр Петров", rating: 4 }
+        ];
+
+        const reviewsContainer = document.getElementById('yandex-reviews-container');
+
+        mockReviews.forEach(review => {
+            const reviewItem = document.createElement('div');
+            reviewItem.className = 'review-item';
+            reviewItem.innerHTML = `
+                <blockquote>${review.text}</blockquote>
+                <cite>- ${review.author}</cite>
+                <p>Оценка: ${review.rating}/5</p>
+            `;
+            reviewsContainer.appendChild(reviewItem);
+        });
+    }
+</script>
