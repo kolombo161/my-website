@@ -371,52 +371,89 @@ function init() {
 }
 
 function loadYandexReviews(companyId) {
-  // Используем iframe для загрузки отзывов
-  const iframe = document.createElement('iframe');
-  iframe.src = `https://yandex.ru/maps-reviews-widget/${companyId}?comments`;
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
+  const container = document.getElementById('yandex-reviews-container');
+  
+  try {
+    // Создаем iframe для загрузки отзывов
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://yandex.ru/maps-reviews-widget/${companyId}?comments`;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
 
-  // Парсим отзывы после загрузки iframe
-  iframe.onload = function() {
-    try {
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-      const reviews = iframeDoc.querySelectorAll('.business-reviews-card-view__review');
-      
-      const container = document.getElementById('yandex-reviews-container');
-      container.innerHTML = '';
-      
-      // Берем только первые 5 отзывов
-      const reviewsToShow = Array.from(reviews).slice(0, 5);
-      
-      if (reviewsToShow.length === 0) {
-        container.innerHTML = '<p class="no-reviews">Пока нет отзывов</p>';
-        return;
-      }
-
-      reviewsToShow.forEach(review => {
-        const author = review.querySelector('.business-review-view__author')?.textContent || 'Аноним';
-        const text = review.querySelector('.business-review-view__body-text')?.textContent || 'Без текста';
-        const rating = review.querySelector('.business-rating-badge-view__stars')?.getAttribute('aria-label') || 'Рейтинг не указан';
-        
-        const reviewItem = document.createElement('div');
-        reviewItem.className = 'review-item';
-        reviewItem.innerHTML = `
-          <div class="review-rating">${rating}</div>
-          <blockquote class="review-text">${text}</blockquote>
-          <cite class="review-author">- ${author}</cite>
-        `;
-        container.appendChild(reviewItem);
-      });
-      
-    } catch (error) {
-      console.error('Ошибка при загрузке отзывов:', error);
-      document.getElementById('yandex-reviews-container').innerHTML = `
-        <p class="error-message">Не удалось загрузить отзывы. 
-        <a href="https://yandex.ru/maps/org/${companyId}/reviews/" target="_blank">Посмотреть на Яндекс.Картах</a></p>
-      `;
-    } finally {
+    // Таймаут для обработки случая, если iframe не загрузится
+    const loadTimeout = setTimeout(() => {
+      showErrorMessage(container, companyId);
       document.body.removeChild(iframe);
-    }
-  };
+    }, 10000); // 10 секунд таймаут
+
+    iframe.onload = function() {
+      clearTimeout(loadTimeout);
+      
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        const reviews = iframeDoc.querySelectorAll('.business-reviews-card-view__review');
+        
+        container.innerHTML = '';
+        
+        if (!reviews || reviews.length === 0) {
+          showNoReviewsMessage(container);
+          return;
+        }
+
+        // Берем только первые 5 отзывов
+        const reviewsToShow = Array.from(reviews).slice(0, 5);
+        
+        reviewsToShow.forEach(review => {
+          const author = review.querySelector('.business-review-view__author')?.textContent || 'Аноним';
+          const text = review.querySelector('.business-review-view__body-text')?.textContent || 'Без текста';
+          const ratingElem = review.querySelector('.business-rating-badge-view__stars');
+          const rating = ratingElem ? '★'.repeat(parseInt(ratingElem.getAttribute('aria-label'))) : 'Рейтинг не указан';
+          
+          const reviewItem = document.createElement('div');
+          reviewItem.className = 'review-item';
+          reviewItem.innerHTML = `
+            <div class="review-rating">${rating}</div>
+            <blockquote class="review-text">${text}</blockquote>
+            <cite class="review-author">- ${author}</cite>
+          `;
+          container.appendChild(reviewItem);
+        });
+        
+      } catch (error) {
+        console.error('Ошибка при обработке отзывов:', error);
+        showErrorMessage(container, companyId);
+      } finally {
+        document.body.removeChild(iframe);
+      }
+    };
+
+    iframe.onerror = function() {
+      clearTimeout(loadTimeout);
+      showErrorMessage(container, companyId);
+      document.body.removeChild(iframe);
+    };
+    
+  } catch (error) {
+    console.error('Ошибка при загрузке отзывов:', error);
+    showErrorMessage(container, companyId);
+  }
+}
+
+function showNoReviewsMessage(container) {
+  container.innerHTML = `
+    <div class="info-message">
+      <p>Пока нет отзывов</p>
+      <p>Будьте первым, кто оставит отзыв!</p>
+    </div>
+  `;
+}
+
+function showErrorMessage(container, companyId) {
+  container.innerHTML = `
+    <div class="error-message">
+      <p>Не удалось загрузить отзывы</p>
+      <p>Попробуйте <a href="https://yandex.ru/maps/org/${companyId}/reviews/" target="_blank">посмотреть отзывы на Яндекс Картах</a></p>
+      <button onclick="location.reload()" class="reload-button">Попробовать снова</button>
+    </div>
+  `;
 }
