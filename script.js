@@ -362,7 +362,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-<script>
 ymaps.ready(init);
 
 function init() {
@@ -420,4 +419,3 @@ function loadYandexReviews(companyId) {
     }
   };
 }
-</script>
