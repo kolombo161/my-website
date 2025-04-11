@@ -363,83 +363,106 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Проверка и загрузка отзывов
-document.addEventListener('DOMContentLoaded', function() {
-  const companyId = '178245616325';
-  const container = document.getElementById('reviews-container');
-  
-  // Показать сообщение о загрузке
-  container.innerHTML = '<div class="loading">Загрузка отзывов...</div>';
-  
-  // Вариант 1: Использовать JSONP (если Яндекс поддерживает)
-  loadReviewsJsonp(companyId, container);
-  
-  // Или Вариант 2: Использовать серверный прокси
-  // loadReviewsViaProxy(companyId, container);
-});
+ymaps.ready(init);
 
-function loadReviewsJsonp(companyId, container) {
-  const callbackName = 'yandexReviewsCallback';
-  const script = document.createElement('script');
-  
-  window[callbackName] = function(data) {
-    if (data && data.reviews) {
-      renderReviews(data.reviews.slice(0, 5), container);
-    } else {
-      showError(container, companyId);
-    }
-    delete window[callbackName];
-    document.body.removeChild(script);
-  };
-  
-  script.src = `https://yandex.ru/maps-reviews-widget/${companyId}/reviews?callback=${callbackName}`;
-  document.body.appendChild(script);
-  
-  // Таймаут на случай ошибки
-  setTimeout(() => {
-    if (window[callbackName]) {
-      showError(container, companyId);
-      delete window[callbackName];
-      if (script.parentNode) {
-        document.body.removeChild(script);
+function init() {
+  const companyId = '178245616325'; // Ваш ID организации
+  loadYandexReviews(companyId);
+}
+
+function loadYandexReviews(companyId) {
+  const container = document.getElementById('yandex-reviews-container');
+
+  try {
+    // Создаем iframe для загрузки отзывов
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://yandex.ru/maps-reviews-widget/${companyId}?comments`;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    // Таймаут для обработки случая, если iframe не загрузится
+    const loadTimeout = setTimeout(() => {
+      showErrorMessage(container, companyId);
+      document.body.removeChild(iframe);
+    }, 10000); // 10 секунд таймаут
+
+    iframe.onload = function () {
+      clearTimeout(loadTimeout);
+
+      try {
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow.document;
+        const reviews = iframeDoc.querySelectorAll(
+          '.business-reviews-card-view__review'
+        );
+
+        container.innerHTML = '';
+
+        if (!reviews || reviews.length === 0) {
+          showNoReviewsMessage(container);
+          return;
+        }
+
+        // Берем только первые 5 отзывов
+        const reviewsToShow = Array.from(reviews).slice(0, 5);
+
+        reviewsToShow.forEach((review) => {
+          const author =
+            review.querySelector('.business-review-view__author')
+              ?.textContent || 'Аноним';
+          const text =
+            review.querySelector('.business-review-view__body-text')
+              ?.textContent || 'Без текста';
+          const ratingElem = review.querySelector(
+            '.business-rating-badge-view__stars'
+          );
+          const rating = ratingElem
+            ? '★'.repeat(parseInt(ratingElem.getAttribute('aria-label')))
+            : 'Рейтинг не указан';
+
+          const reviewItem = document.createElement('div');
+          reviewItem.className = 'review-item';
+          reviewItem.innerHTML = `
+            <div class="review-rating">${rating}</div>
+            <blockquote class="review-text">${text}</blockquote>
+            <cite class="review-author">- ${author}</cite>
+          `;
+          container.appendChild(reviewItem);
+        });
+      } catch (error) {
+        console.error('Ошибка при обработке отзывов:', error);
+        showErrorMessage(container, companyId);
+      } finally {
+        document.body.removeChild(iframe);
       }
-    }
-  }, 10000);
-}
+    };
 
-function renderReviews(reviews, container) {
-  if (!reviews || reviews.length === 0) {
-    container.innerHTML = '<div class="no-reviews">Пока нет отзывов</div>';
-    return;
+    iframe.onerror = function () {
+      clearTimeout(loadTimeout);
+      showErrorMessage(container, companyId);
+      document.body.removeChild(iframe);
+    };
+  } catch (error) {
+    console.error('Ошибка при загрузке отзывов:', error);
+    showErrorMessage(container, companyId);
   }
-  
-  let html = '';
-  reviews.forEach(review => {
-    html += `
-      <div class="review" style="background: white; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
-        <div class="rating" style="color: #ffdb4d;">${'★'.repeat(review.rating)}</div>
-        <p class="text" style="font-style: italic;">${review.text}</p>
-        <p class="author" style="text-align: right; font-weight: bold;">— ${review.author}</p>
-      </div>
-    `;
-  });
-  
-  container.innerHTML = html;
 }
 
-function showError(container, companyId) {
+function showNoReviewsMessage(container) {
   container.innerHTML = `
-    <div class="error" style="text-align: center; padding: 20px; color: #d32f2f;">
+    <div class="info-message">
+      <p>Пока нет отзывов</p>
+      <p>Будьте первым, кто оставит отзыв!</p>
+    </div>
+  `;
+}
+
+function showErrorMessage(container, companyId) {
+  container.innerHTML = `
+    <div class="error-message">
       <p>Не удалось загрузить отзывы</p>
-      <a href="https://yandex.ru/maps/org/${companyId}/reviews/" 
-         target="_blank" 
-         style="color: #0066cc; text-decoration: none;">
-        Посмотреть отзывы на Яндекс Картах
-      </a>
-      <button onclick="location.reload()" 
-              style="display: block; margin: 10px auto; padding: 8px 16px; 
-                     background: #0066cc; color: white; border: none; border-radius: 4px;">
-        Попробовать снова
-      </button>
+      <p>Попробуйте <a href="https://yandex.ru/maps/org/${companyId}/reviews/" target="_blank">посмотреть отзывы на Яндекс Картах</a></p>
+      <button onclick="location.reload()" class="reload-button">Попробовать снова</button>
     </div>
   `;
 }
