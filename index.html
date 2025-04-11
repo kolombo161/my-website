@@ -276,23 +276,51 @@
         </section>
         <!-- Секция преимуществ -->
         <section id="advantages" class="advantages">
-            <h2>Почему выбирают нас?</h2>
+            <!-- Главный заголовок-стикер -->
+            <div class="main-sticker">
+                <h2>Почему выбирают нас?</h2>
+                <div class="arrows">
+                    <span class="arrow-down">↓</span>
+                </div>
+            </div>
 
-            Быстро<br>
-            Качественно<br>
-            Гарантированно<br>
+            <!-- Контейнер стикеров -->
+            <div class="stickers-container">
+                <div class="sticker fast-sticker">
+                    <div class="sticker-content">
+                        <div class="main-text">Быстро</div>
+                        <div class="hover-text">Выезд в течение часа</div>
+                    </div>
+                </div>
 
+                <div class="sticker quality-sticker">
+                    <div class="sticker-content">
+                        <div class="main-text">Качественно</div>
+                        <div class="hover-text">Оригинальные запчасти</div>
+                    </div>
+                </div>
+
+                <div class="sticker guarantee-sticker">
+                    <div class="sticker-content">
+                        <div class="main-text">Гарантированно</div>
+                        <div class="hover-text">Предоставление чека</div>
+                    </div>
+                </div>
+            </div>
         </section>
         <!-- Секция отзывов -->
         <section id="reviews" class="reviews">
             <h2>Отзывы клиентов</h2>
-            <div class="review-item">
-                <blockquote>
-                    "Отличный сервис, всё сделали быстро и качественно!"
-                </blockquote>
-                <cite>- Иван Иванов</cite>
-            </div>
+            <iframe 
+                src="https://yandex.ru/sprav/178245616325/reviews/" 
+                width="100%" 
+                height="500px"
+                frameborder="0"
+                style="border: none;"
+            ></iframe>
         </section>
+        <!-- Подключаем API Яндекс.Карт -->
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_КЛЮЧ&lang=ru_RU"></script>
         <!-- Секция контактов -->
         <section id="contact" class="contact">
             <h2>Заказать звонок</h2>
@@ -307,8 +335,9 @@
 
 
             <p>Фрунзе Николай Викторович</p>
-            <p>ИНН 611103159735</p>
             <p><a href="mailto:professorteh@yandex.ru">Professorteh@yandex.ru</a></p>
+            <p>ИНН 611103159735</p>
+
 
         </section>
     </div> <!-- Закрытие нового контейнера -->
