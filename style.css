@@ -851,7 +851,7 @@ header .logo img {
 /* Стили для дополнительных блоков */
 .additional-block {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 800px;
 }
 
 /* Стили для блока отзывов */
@@ -951,6 +951,7 @@ header .logo img {
                 font-size: 1.4rem;
             }
         }
+
 .additional-header {
     cursor: pointer;
     padding: 12px 15px;
