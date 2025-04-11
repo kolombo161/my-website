@@ -363,59 +363,61 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 <script>
-    ymaps.ready(init);
+ymaps.ready(init);
 
-    function init() {
-        // Название и адрес организации (замените на свои)
-        const companyName = "Название вашей компании";
-        const companyAddress = "Адрес вашей компании";
+function init() {
+  const companyId = '178245616325'; // Ваш ID организации
+  loadYandexReviews(companyId);
+}
 
-        // Ищем организацию
-        ymaps.geocode(companyAddress, {
-            results: 1
-        }).then(function (res) {
-            const firstGeoObject = res.geoObjects.get(0);
+function loadYandexReviews(companyId) {
+  // Используем iframe для загрузки отзывов
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://yandex.ru/maps-reviews-widget/${companyId}?comments`;
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
 
-            if (!firstGeoObject) {
-                console.error("Организация не найдена!");
-                return;
-            }
+  // Парсим отзывы после загрузки iframe
+  iframe.onload = function() {
+    try {
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+      const reviews = iframeDoc.querySelectorAll('.business-reviews-card-view__review');
+      
+      const container = document.getElementById('yandex-reviews-container');
+      container.innerHTML = '';
+      
+      // Берем только первые 5 отзывов
+      const reviewsToShow = Array.from(reviews).slice(0, 5);
+      
+      if (reviewsToShow.length === 0) {
+        container.innerHTML = '<p class="no-reviews">Пока нет отзывов</p>';
+        return;
+      }
 
-            // Получаем ID организации (если есть)
-            const companyId = firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.AddressDetails.CompanyId');
-
-            if (!companyId) {
-                console.error("Не удалось получить ID организации");
-                return;
-            }
-
-            // Загружаем отзывы (используем API бизнеса)
-            loadYandexReviews(companyId);
-        });
+      reviewsToShow.forEach(review => {
+        const author = review.querySelector('.business-review-view__author')?.textContent || 'Аноним';
+        const text = review.querySelector('.business-review-view__body-text')?.textContent || 'Без текста';
+        const rating = review.querySelector('.business-rating-badge-view__stars')?.getAttribute('aria-label') || 'Рейтинг не указан';
+        
+        const reviewItem = document.createElement('div');
+        reviewItem.className = 'review-item';
+        reviewItem.innerHTML = `
+          <div class="review-rating">${rating}</div>
+          <blockquote class="review-text">${text}</blockquote>
+          <cite class="review-author">- ${author}</cite>
+        `;
+        container.appendChild(reviewItem);
+      });
+      
+    } catch (error) {
+      console.error('Ошибка при загрузке отзывов:', error);
+      document.getElementById('yandex-reviews-container').innerHTML = `
+        <p class="error-message">Не удалось загрузить отзывы. 
+        <a href="https://yandex.ru/maps/org/${companyId}/reviews/" target="_blank">Посмотреть на Яндекс.Картах</a></p>
+      `;
+    } finally {
+      document.body.removeChild(iframe);
     }
-
-    function loadYandexReviews(companyId) {
-        // Здесь можно использовать API бизнеса (но нужен доступ)
-        // Либо парсить страницу карточки (неофициальный способ)
-        console.log("ID организации:", companyId);
-
-        // Временный пример (лучше использовать API бизнеса)
-        const mockReviews = [
-            { text: "Отличный сервис!", author: "Иван Иванов", rating: 5 },
-            { text: "Всё понравилось.", author: "Петр Петров", rating: 4 }
-        ];
-
-        const reviewsContainer = document.getElementById('yandex-reviews-container');
-
-        mockReviews.forEach(review => {
-            const reviewItem = document.createElement('div');
-            reviewItem.className = 'review-item';
-            reviewItem.innerHTML = `
-                <blockquote>${review.text}</blockquote>
-                <cite>- ${review.author}</cite>
-                <p>Оценка: ${review.rating}/5</p>
-            `;
-            reviewsContainer.appendChild(reviewItem);
-        });
-    }
+  };
+}
 </script>
