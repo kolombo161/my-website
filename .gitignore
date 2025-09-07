@@ -12,6 +12,7 @@ System Volume Information/
 # Локальные файлы
 *.log
 
+
 # Но разрешить отслеживание SEO-файлов
 !/CNAME
 !/robots.txt
