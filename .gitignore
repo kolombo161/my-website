@@ -1,7 +1,15 @@
-# npm/yarn
-node_modules/
+# Системные файлы Windows
+desktop.ini
+Thumbs.db
+*.lnk
+$RECYCLE.BIN/
+System Volume Information/
+
+# Системные файлы macOS
 .DS_Store
-dist/
+.AppleDouble
+
+# Локальные файлы
 *.log
 
 # Но разрешить отслеживание SEO-файлов
