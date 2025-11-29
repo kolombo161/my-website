@@ -134,7 +134,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            min-width: 600px;
+            min-width: min(600px, 100%);
             /* Минимальная ширина для скролла на мобильных */
         }
 
@@ -383,9 +383,6 @@
             header {
                 padding: 1.5rem 1rem;
                 margin-bottom: 1.5rem;
-                margin-left: -10px;
-                margin-right: -10px;
-                width: calc(100% + 20px);
             }
 
             .card {
