@@ -430,12 +430,16 @@
             .table-container {
                 margin: 0.5rem -8px;
                 padding: 0 8px;
+                overflow-x: visible;
             }
 
             .custom-table,
             .interface-table {
-                min-width: 500px;
-                font-size: 0.8rem;
+                min-width: 100%;
+                /* Всегда 100% ширины */
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
             }
 
             /* Уменьшаем отступы для очень маленьких экранов */
