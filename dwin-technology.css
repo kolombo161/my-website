@@ -29,6 +29,111 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
+        /* Стили для изображения в шапке */
+        .header-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Адаптивность для изображения */
+        @media (max-width: 768px) {
+            .header-image {
+                margin-top: 1rem;
+                border-radius: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-image {
+                margin-top: 0.8rem;
+                border-radius: 6px;
+            }
+        }
+
+        /* Кнопка "Наверх" */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7));
+            /* 70% прозрачности */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+
+            /* Добавляем стрелку через псевдоэлемент */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Создаем красивую стрелку */
+        .scroll-top-btn::before {
+            content: "▲";
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .scroll-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            /* Меньше прозрачности при наведении */
+        }
+
+        .scroll-top-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Адаптивность для кнопки */
+        @media (max-width: 768px) {
+            .scroll-top-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .scroll-top-btn::before {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scroll-top-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .scroll-top-btn::before {
+                font-size: 1rem;
+            }
+        }
+
         h1 {
             font-size: clamp(1.8rem, 4vw, 3rem);
             background: linear-gradient(135deg, #667eea, #764ba2);
@@ -243,14 +348,14 @@
         }
 
         .col-2 {
-            width: 25%;
+            width: 37.5%;
             text-align: center;
             background-color: #f8f9fa;
         }
 
         .col-3 {
-            width: 50%;
-            text-align: left;
+            width: 37.5%;
+            text-align: center;
             background-color: white;
         }
 
@@ -306,6 +411,57 @@
             background: #e9ecef;
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
+        }
+
+        /* Стиль для ASIC-модуль T5L */
+        .tech-content {
+            line-height: 1.7;
+        }
+
+        .feature-group {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-group h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-group ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .feature-group li {
+            margin-bottom: 0.8rem;
+            color: #5a6c7d;
+        }
+
+        .feature-group strong {
+            color: #2c3e50;
+            background: #e9ecef;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+
+        /* Адаптивность для технического контента */
+        @media (max-width: 768px) {
+            .feature-group {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .feature-group h4 {
+                font-size: 1rem;
+            }
         }
 
         /* Адаптивность для секции питания */
