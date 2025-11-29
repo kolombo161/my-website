@@ -433,15 +433,6 @@
                 overflow-x: visible;
             }
 
-            .custom-table,
-            .interface-table {
-                min-width: 100%;
-                /* Всегда 100% ширины */
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-
             /* Уменьшаем отступы для очень маленьких экранов */
             .custom-table th,
             .custom-table td,
