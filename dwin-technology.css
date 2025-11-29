@@ -452,6 +452,22 @@
             }
         }
 
+        @media (max-width: 360px) {
+
+            .custom-table,
+            .interface-table {
+                min-width: 300px;
+                font-size: 0.7rem;
+            }
+
+            .custom-table th,
+            .custom-table td,
+            .interface-table th,
+            .interface-table td {
+                padding: 0.25rem 0.15rem;
+            }
+        }
+
         /* Поддержка landscape ориентации */
         @media (max-width: 768px) and (orientation: landscape) {
             .container {
