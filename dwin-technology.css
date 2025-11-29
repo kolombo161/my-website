@@ -383,6 +383,9 @@
             header {
                 padding: 1.5rem 1rem;
                 margin-bottom: 1.5rem;
+                margin-left: -10px;
+                margin-right: -10px;
+                width: calc(100% + 20px);
             }
 
             .card {
