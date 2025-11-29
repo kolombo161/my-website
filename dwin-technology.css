@@ -460,46 +460,38 @@
                 font-size: 0.7rem;
             }
 
-            .custom-table th,
-            .custom-table td,
-            .interface-table th,
-            .interface-table td {
-                padding: 0.25rem 0.15rem;
-            }
-        }
+            /* Поддержка landscape ориентации */
+            @media (max-width: 768px) and (orientation: landscape) {
+                .container {
+                    padding: 5px;
+                }
 
-        /* Поддержка landscape ориентации */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .container {
-                padding: 5px;
-            }
+                .card {
+                    padding: 0.8rem;
+                }
 
-            .card {
-                padding: 0.8rem;
+                .table-container {
+                    max-height: 60vh;
+                }
             }
 
-            .table-container {
-                max-height: 60vh;
-            }
-        }
+            /* Улучшенная поддержка touch устройств */
+            @media (hover: none) {
+                .card:hover {
+                    transform: none;
+                }
 
-        /* Улучшенная поддержка touch устройств */
-        @media (hover: none) {
-            .card:hover {
-                transform: none;
-            }
+                .content-link:hover {
+                    transform: none;
+                    color: #2c3e50;
+                }
 
-            .content-link:hover {
-                transform: none;
-                color: #2c3e50;
-            }
+                .content-link:hover::after {
+                    transform: none;
+                }
 
-            .content-link:hover::after {
-                transform: none;
+                .custom-table tr:hover,
+                .interface-table tr:hover td:not(.blue-cell) {
+                    background-color: inherit;
+                }
             }
-
-            .custom-table tr:hover,
-            .interface-table tr:hover td:not(.blue-cell) {
-                background-color: inherit;
-            }
-        }
