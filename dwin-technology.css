@@ -444,6 +444,7 @@
             .interface-table th,
             .interface-table td {
                 padding: 0.4rem 0.3rem;
+                font-size: 0.7rem;
             }
         }
 
