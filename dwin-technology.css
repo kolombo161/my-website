@@ -33,7 +33,13 @@
             font-size: clamp(1.8rem, 4vw, 3rem);
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
+            /* Для Webkit браузеров */
+            background-clip: text;
+            /* Стандартное свойство */
             -webkit-text-fill-color: transparent;
+            /* Для Webkit */
+            color: transparent;
+            /* Стандартное свойство */
             margin-bottom: 1rem;
         }
 
