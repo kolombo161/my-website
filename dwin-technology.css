@@ -39,6 +39,12 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+
+            /* Добавляем ограничение по максимальной ширине */
+            max-width: 800px;
+            /* Максимальная ширина на больших экранах */
+            width: 100%;
+            /* Всегда 100% от доступной ширины */
         }
 
         /* Адаптивность для изображения */
@@ -46,6 +52,8 @@
             .header-image {
                 margin-top: 1rem;
                 border-radius: 8px;
+                max-width: 90%;
+                /* На планшетах немного отступов */
             }
         }
 
@@ -53,10 +61,21 @@
             .header-image {
                 margin-top: 0.8rem;
                 border-radius: 6px;
+                max-width: 95%;
+                /* На телефонах почти на всю ширину */
             }
         }
 
-        /* Кнопка "Наверх" */
+        /* Для очень узких экранов */
+        @media (max-width: 360px) {
+            .header-image {
+                max-width: 100%;
+                /* На очень узких - полностью на ширину */
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* Кнопка "Наверх" - улучшенная для мобильных */
         .scroll-top-btn {
             position: fixed;
             bottom: 30px;
@@ -64,7 +83,6 @@
             width: 50px;
             height: 50px;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.7), rgba(118, 75, 162, 0.7));
-            /* 70% прозрачности */
             color: white;
             border: none;
             border-radius: 50%;
@@ -76,10 +94,13 @@
             visibility: hidden;
             z-index: 1000;
 
-            /* Добавляем стрелку через псевдоэлемент */
             display: flex;
             align-items: center;
             justify-content: center;
+
+            /* Улучшаем для touch устройств */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         /* Создаем красивую стрелку */
@@ -98,25 +119,16 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
-            /* Меньше прозрачности при наведении */
         }
 
-        .scroll-top-btn:active {
-            transform: translateY(-1px);
-        }
-
-        /* Адаптивность для кнопки */
+        /* Адаптивность для кнопки - улучшенная */
         @media (max-width: 768px) {
             .scroll-top-btn {
                 bottom: 20px;
                 right: 20px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
-
-            .scroll-top-btn::before {
-                font-size: 1.1rem;
+                width: 50px;
+                /* Делаем немного больше для touch */
+                height: 50px;
             }
         }
 
@@ -124,14 +136,24 @@
             .scroll-top-btn {
                 bottom: 15px;
                 right: 15px;
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+                width: 48px;
+                /* Оптимальный размер для пальцев */
+                height: 48px;
             }
+        }
 
-            .scroll-top-btn::before {
-                font-size: 1rem;
+        /* Для очень маленьких экранов */
+        @media (max-width: 360px) {
+            .scroll-top-btn {
+                bottom: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
             }
+        }
+
+        .scroll-top-btn::before {
+            font-size: 1rem;
         }
 
         h1 {
