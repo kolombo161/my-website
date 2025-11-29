@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Технология DWIN</title>
+    <style>
+        /* Базовые стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Шапка */
+        header {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        /* Основной контент */
+        main {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: clamp(1rem, 3vw, 2rem);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+        }
+
+        h3 {
+            color: #34495e;
+            margin: 1.5rem 0 1rem 0;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #5a6c7d;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        /* Списки */
+        ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: #5a6c7d;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .content-link {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding-right: 20px;
+            position: relative;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .content-link:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .content-link::after {
+            content: "→";
+            position: absolute;
+            right: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .content-link:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Таблицы - общие стили */
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .custom-table,
+        .interface-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            min-width: 600px;
+            /* Минимальная ширина для скролла на мобильных */
+        }
+
+        /* Общие стили для заголовков таблиц */
+        .custom-table th,
+        .gradient-header-50,
+        .gradient-header-16 {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: clamp(0.6rem, 2vw, 1rem);
+            text-align: center;
+            font-weight: 600;
+            border: none;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+        }
+
+        .gradient-header-16 {
+            background: linear-gradient(135deg, #5a6fd8, #6a42a0);
+            font-weight: 500;
+        }
+
+        /* Общие стили для ячеек */
+        .custom-table td,
+        .interface-table td {
+            padding: clamp(0.5rem, 1.5vw, 0.8rem);
+            border-bottom: 1px solid #ecf0f1;
+            vertical-align: middle;
+            font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+        }
+
+        /* Чередование строк и ховер эффекты */
+        .custom-table tr:nth-child(even),
+        .interface-table tr:nth-child(even) td:not(.blue-cell) {
+            background-color: #f8f9fa;
+        }
+
+        .custom-table tr:hover,
+        .interface-table tr:hover td:not(.blue-cell) {
+            background-color: #e8f4f8;
+        }
+
+        /* Стиль заметок */
+        .notes {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .notes h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        }
+
+        .notes-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .note-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .note-number {
+            background: #667eea;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .note-item p {
+            margin: 0;
+            line-height: 1.5;
+            color: #5a6c7d;
+        }
+
+        .note-item strong {
+            color: #2c3e50;
+        }
+
+        /* Стили для колонок первой таблицы */
+        .col-1 {
+            width: 25%;
+            text-align: center;
+            background-color: #667eea;
+            color: white;
+            font-weight: 500;
+        }
+
+        .col-2 {
+            width: 25%;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+
+        .col-3 {
+            width: 50%;
+            text-align: left;
+            background-color: white;
+        }
+
+        /* Стили для второй таблицы */
+        .gradient-header-50 {
+            width: 50%;
+        }
+
+        .gradient-header-16 {
+            width: 16.66%;
+        }
+
+        .blue-cell {
+            background-color: #667eea;
+            color: white;
+            text-align: center;
+            font-weight: 500;
+            width: 16.66%;
+        }
+
+        .interface-table td:not(.blue-cell) {
+            text-align: center;
+            background-color: white;
+            width: 16.66%;
+        }
+
+        /* Особенности */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Подвал */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            color: white;
+            opacity: 0.9;
+        }
+
+        /* Адаптивность для заметок */
+        @media (max-width: 768px) {
+            .notes {
+                padding: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .note-item {
+                gap: 0.8rem;
+            }
+
+            .note-number {
+                width: 1.8rem;
+                height: 1.8rem;
+                font-size: 0.8rem;
+            }
+
+            .note-item p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .notes {
+                padding: 0.8rem;
+            }
+
+            .note-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .note-number {
+                align-self: flex-start;
+            }
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 1.5rem 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            main {
+                gap: 1rem;
+            }
+
+            h2 {
+                margin-bottom: 1rem;
+                padding-left: 0.5rem;
+            }
+
+            ul {
+                padding-left: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .feature-item {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 8px;
+            }
+
+            header {
+                padding: 1rem 0.8rem;
+                border-radius: 10px;
+            }
+
+            .card {
+                border-radius: 10px;
+                padding: 0.8rem;
+            }
+
+            .table-container {
+                margin: 0.5rem -8px;
+                padding: 0 8px;
+            }
+
+            .custom-table,
+            .interface-table {
+                min-width: 500px;
+                font-size: 0.8rem;
+            }
+
+            /* Уменьшаем отступы для очень маленьких экранов */
+            .custom-table th,
+            .custom-table td,
+            .interface-table th,
+            .interface-table td {
+                padding: 0.4rem 0.3rem;
+            }
+        }
+
+        /* Поддержка landscape ориентации */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .container {
+                padding: 5px;
+            }
+
+            .card {
+                padding: 0.8rem;
+            }
+
+            .table-container {
+                max-height: 60vh;
+            }
+        }
+
+        /* Улучшенная поддержка touch устройств */
+        @media (hover: none) {
+            .card:hover {
+                transform: none;
+            }
+
+            .content-link:hover {
+                transform: none;
+                color: #2c3e50;
+            }
+
+            .content-link:hover::after {
+                transform: none;
+            }
+
+            .custom-table tr:hover,
+            .interface-table tr:hover td:not(.blue-cell) {
+                background-color: inherit;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Технология DWIN</h1>
+            <p class="subtitle">Инновационные решения для современных дисплеев</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>Содержание</h2>
+
+                <h3>Краткое начало</h3>
+                <ul>
+                    <li><strong><a href="#naming-rules" class="content-link">1.1 Правило присвоения имен →</a></strong>
+                    </li>
+                    <li><strong><a href="#interface-definition" class="content-link">1.2 Определение интерфейса и
+                                подключение →</a></strong></li>
+                    <li><strong>1.3 Источник питания</strong></li>
+                    <li><strong>1.4 Установка драйвера</strong></li>
+                    <li><strong>1.5 Установка программного обеспечения</strong></li>
+                </ul>
+
+                <h3>Система разработки</h3>
+                <ul>
+                    <li><strong>2.1 ASIC-модуль T5L</strong></li>
+                    <li><strong>2.2 Система разработки T5L_DGUS II</strong></li>
+                    <li><strong>2.3 Особенности</strong></li>
+                    <li><strong>2.4 Программный процесс</strong></li>
+                    <li><strong>2.5 Распределение ФЛЭШ-памяти</strong></li>
+                    <li><strong>2.6 Адресное пространство переменной оперативной памяти</strong></li>
+                    <li><strong>2.7 Пространство указателя описания оперативной памяти</strong></li>
+                </ul>
+
+                <h3>Интерфейс SD-карты</h3>
+                <ul>
+                    <li><strong>3.1 Формат карты памяти microSD (TF)</strong></li>
+                    <li><strong>3.2 Способ загрузки с интерфейса SD-карты</strong></li>
+                    <li><strong>3.3 Загрузить файл</strong></li>
+                </ul>
+
+                <h3>Протокол связи</h3>
+                <ul>
+                    <li><strong>4.1 Интерфейс UART(UART2)</strong></li>
+                    <li><strong>4.2 Инструкции по отладочному интерфейсу UART2</strong></li>
+                </ul>
+
+                <h3>Интерфейс системных переменных</h3>
+                <ul>
+                    <li><strong>5.1 Интерфейс системных переменных</strong></li>
+                    <li><strong>5.2 Интерфейс шины FSK</strong></li>
+                    <li><strong>5.3 Сетевой интерфейс</strong></li>
+                </ul>
+
+                <h3>Настройка сенсорных переменных (13.BIN)</h3>
+                <ul>
+                    <li><strong>6.1 Список сенсорных переменных</strong></li>
+                    <li><strong>6.2 Ввод переменных данных</strong></li>
+                    <li><strong>6.3 Всплывающее меню</strong></li>
+                    <li><strong>6.4 Постепенная корректировка</strong></li>
+                    <li><strong>6.5 Регулировка сопротивления</strong></li>
+                    <li><strong>6.6 Код ключа возврата</strong></li>
+                    <li><strong>6.7 Ввод текста</strong></li>
+                    <li><strong>6.8 Возврат синхронных данных</strong></li>
+                    <li><strong>6.9 Регулировка поворота</strong></li>
+                    <li><strong>6.11 Перемещение страниц</strong></li>
+                    <li><strong>6.12 Выбор значка слайда</strong></li>
+                    <li><strong>6.13-Разрядная кнопка</strong></li>
+                </ul>
+
+                <h3>Изменение конфигурации дисплея</h3>
+                <ul>
+                    <li><strong>7.1 Список отображаемых переменных</strong></li>
+                    <li><strong>7.2 Значок переменных</strong></li>
+                    <li><strong>7.3 Значок анимации</strong></li>
+                    <li><strong>7.4 Ползунковый дисплей</strong></li>
+                    <li><strong>7.5 Художественные переменные</strong></li>
+                    <li><strong>7.6 Анимация изображений</strong></li>
+                    <li><strong>7.7 Вращение значка</strong></li>
+                    <li><strong>7.8-битный значок</strong></li>
+                    <li><strong>7.9 Изменение страницы значков</strong></li>
+                    <li><strong>7.10 Наложение значков</strong></li>
+                    <li><strong>7.11 Значок пакетной переменной</strong></li>
+                    <li><strong>7.12 Переменные данных</strong></li>
+                    <li><strong>7.13 Отображение текста</strong></li>
+                    <li><strong>7.14 Дисплей RTC</strong></li>
+                    <li><strong>7.15 Hex данные</strong></li>
+                    <li><strong>7.16 Прокрутка текста</strong></li>
+                    <li><strong>7.17 Окно данных</strong></li>
+                    <li><strong>7.18 Текст DGUSII (Отображение текста без сглаживания)</strong></li>
+                    <li><strong>7.19 Характер броска</strong></li>
+                    <li><strong>7.20 Шрифт значка GTF</strong></li>
+                    <li><strong>7.21 Кривые в реальном времени</strong></li>
+                    <li><strong>7.22 Основная графика</strong></li>
+                    <li><strong>7.23 Полоса процесса</strong></li>
+                    <li><strong>7.24 Прокрутка по зонам</strong></li>
+                    <li><strong>7.25 QR-код</strong></li>
+                    <li><strong>7.26 Яркость</strong></li>
+                    <li><strong>7.27 Передача данных</strong></li>
+                    <li><strong>7.28 Видео</strong></li>
+                </ul>
+
+                <h3>Основные функции DGUS</h3>
+                <ul>
+                    <li><strong>8.1 Импорт</strong></li>
+                    <li><strong>8.2 Инструмент редактирования</strong></li>
+                    <li><strong>8.3 Впереди и сзади</strong></li>
+                    <li><strong>8.4 Просмотр использования VP</strong></li>
+                    <li><strong>8.5 Предварительный просмотр</strong></li>
+                    <li><strong>8.6 Новое разрешение</strong></li>
+                    <li><strong>8.7 Конвертация разрешения</strong></li>
+                    <li><strong>8.8 Замена проекта T5 на проект T5L</strong></li>
+                </ul>
+            </section>
+
+            <section class="card" id="naming-rules">
+                <h2>Правила присвоения имен</h2>
+
+                <div class="table-container">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th class="col-1">Код продуктовой линейки</th>
+                                <th class="col-2">DM</th>
+                                <th class="col-3">Линейка продуктов DWIN Smart LCM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-1">Цветовой код</td>
+                                <td class="col-2">1 Символ</td>
+                                <td class="col-3">
+                                    <li>T=65K цвет(16-bit)</li>
+                                    <li>G=16.7M/262K цвет(18-bit/24-bit)</li>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Разрешение</td>
+                                <td class="col-2">5 Цифр</td>
+                                <td class="col-3">
+                                    <li>24240=240*240</li>
+                                    <li>32240=320*240</li>
+                                    <li>48270=480*272</li>
+                                    <li>48320=480*320</li>
+                                    <li>64360=640*360</li>
+                                    <li>64480=640*480</li>
+                                    <li>80480=800*480</li>
+                                    <li>85480=854*480</li>
+                                    <li>80600=800*600</li>
+                                    <li>10600=1024*600</li>
+                                    <li>10768=1024*768</li>
+                                    <li>12480=1280*480</li>
+                                    <li>12720=1280*720</li>
+                                    <li>12800=1280*800</li>
+                                    <li>13768=1364*768/1366*768</li>
+                                    <li>19108=1920*1080</li>
+                                    <li>19480=1920*480</li>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Классификация</td>
+                                <td class="col-2">1 Символ</td>
+                                <td class="col-3">
+                                    <li>F=Структура COF</li>
+                                    <li>Y= Класс красоты</li>
+                                    <li>L = Класс простоты применения</li>
+                                    <li>C= Коммерческий класс</li>
+                                    <li>T = Промышленный класс</li>
+                                    <li>K = Медицинский класс</li>
+                                    <li>S= Класс защиты от воздействия окружающей среды</li>
+                                    <li>Q = Автомобильный класс</li>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Размер</td>
+                                <td class="col-2">3 Цифры</td>
+                                <td class="col-3">
+                                    <li>020=2.2 дюйма</li>
+                                    <li>024=2.4 дюйма</li>
+                                    <li>028=2.8 дюйма</li>
+                                    <li>030=3.0 дюйма</li>
+                                    <li>035=3.5 дюймов</li>
+                                    <li>040=4.0 дюйма</li>
+                                    <li>041=4.1 дюйма</li>
+                                    <li>043=4.3 дюйма</li>
+                                    <li>050=5.0 дюймов</li>
+                                    <li>056 =5.6 дюйма</li>
+                                    <li>070=7.0 дюймов</li>
+                                    <li>080=8.0 дюймов</li>
+                                    <li>088=8.8 дюйма</li>
+                                    <li>097=9.7 дюйма</li>
+                                    <li>101=10.1 дюйма</li>
+                                    <li>104=10.4 дюйма</li>
+                                    <li>116=11.6 дюйма</li>
+                                    <li>121=12.1 дюйма</li>
+                                    <li>140=14.0 дюймов</li>
+                                    <li>150=15.0 дюймов</li>
+                                    <li>156=15.6 дюймов</li>
+                                    <li>173 =17.3 дюйма</li>
+                                    <li>185=18.5 дюймов</li>
+                                    <li>215=21.5 дюймов</li>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">-</td>
+                                <td class="col-2">-</td>
+                                <td class="col-3">Разделитель</td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Код атрибута</td>
+                                <td class="col-2">1 цифра или символ</td>
+                                <td class="col-3">
+                                    <li>0= Базовый тип</li>
+                                    <li>1= Базовый тип с оболочкой</li>
+                                    <li>2= Платформа для аналоговой обработки видео</li>
+                                    <li>3= Платформа Android</li>
+                                    <li>4= Продукты для платформы цифровой обработки видео</li>
+                                    <li>A= Продукт на ядре DGUSII</li>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Серийный номер оборудования</td>
+                                <td class="col-2">1 Цифра</td>
+                                <td class="col-3">0 - 9 для различения версий оборудования</td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Уровень температуры ЖК-дисплея</td>
+                                <td class="col-2">1 Символ</td>
+                                <td class="col-3">
+                                    <li>N= Нормальная температура</li>
+                                    <li>W= Широкая температура</li>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Тип сенсорной панели</td>
+                                <td class="col-2">1 или 2 Характер</td>
+                                <td class="col-3">
+                                    <li>N= Без сенсорной панели</li>
+                                    <li>TR= Резистивная сенсорная панель</li>
+                                    <li>TC= Емкостная сенсорная панель</li>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Пользовательский тег</td>
+                                <td class="col-2">Z+ Номер</td>
+                                <td class="col-3">Z01- Z99, стандартный - пустой</td>
+                            </tr>
+                            <tr>
+                                <td class="col-1">Расширенная метка памяти</td>
+                                <td class="col-2">F+1
+                                    Номер</td>
+                                <td class="col-3">F0= 512 МБ, F1=1 ГБ, F2= 2 ГБ, F3= 3 ГБ, стандартное значение пустое
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="card" id="interface-definition">
+                <h2>Определение интерфейса и подключение</h2>
+
+                <div class="table-container">
+                    <table class="custom-table interface-table">
+                        <!-- Первая строка - 2 колонки по 50% с градиентом (объединяют по 3 колонки) -->
+                        <tr>
+                            <th colspan="3" class="gradient-header-50">Класс контактов</th>
+                            <th colspan="3" class="gradient-header-50">Тип розъема</th>
+                        </tr>
+                        <!-- Вторая строка - 6 равных колонок с градиентом -->
+                        <tr>
+                            <th class="gradient-header-16">Имя</th>
+                            <th class="gradient-header-16">Тип</th>
+                            <th class="gradient-header-16">Описание</th>
+                            <th class="gradient-header-16">CN1</th>
+                            <th class="gradient-header-16">CN2</th>
+                            <th class="gradient-header-16">CN3</th>
+                        </tr>
+                        <!-- Остальные 6 строк по 6 равных колонок -->
+                        <tr>
+                            <td class="blue-cell">VCC</td>
+                            <td>P </td>
+                            <td>Вход питания</td>
+                            <td>1,2</td>
+                            <td>1,2,3</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-cell">TX4</td>
+                            <td>O</td>
+                            <td>Выход UART4</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-cell">TX2</td>
+                            <td>O</td>
+                            <td>Выход UART2</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-cell">RX2</td>
+                            <td>I</td>
+                            <td>Вход UART2</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-cell">RX4</td>
+                            <td>I</td>
+                            <td>Вход UART4</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-cell">GND</td>
+                            <td>P</td>
+                            <td>Земля питания</td>
+                            <td>7,8</td>
+                            <td>8,9,10</td>
+                            <td>6</td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- Текст с пояснениями -->
+                <div class="notes">
+                    <h3>Пояснения к таблице:</h3>
+                    <div class="notes-grid">
+                        <div class="note-item">
+                            <span class="note-number">①</span>
+                            <p><strong>I: ВХОД, O: ВЫХОД, P: ПИТАНИЕ</strong> - обозначения типов контактов</p>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-number">②</span>
+                            <p>Контакты на печатной плате с одинаковыми определениями соединены параллельно</p>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-number">③</span>
+                            <p><strong>CN1:</strong> Используется 8-контактный патч-разъем с шагом 2.0 мм;<br>
+                                <strong>CN2:</strong> Используется 10-контактный <strong>FPC</strong> монтаж с шагом 1.0
+                                мм;<br>
+                                <strong>CN3:</strong> Дополнительно предусмотрена 6-контактная площадка для сквозного
+                                монтажа с шагом 2.54 мм
+                            </p>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-number">④</span>
+                            <p><strong>UART2</strong> - это коммуникационный протокол, разработанный
+                                <strong>DGUSII</strong><br>
+                                Продукты <strong>T5L DGUS</strong> оснащены расширенным <strong>UART4</strong>, его
+                                конфигурация и связь
+                                должны быть завершены через программу <strong>DWIN OS</strong>;<br>
+                                Режим <strong>TA</strong> в настоящее время доступен только для коммуникаций
+                                <strong>UART2</strong>
+                            </p>
+                        </div>
+                        <div class="note-item">
+                            <span class="note-number">⑤</span>
+                            <p><strong>DWIN</strong> использует совместимый интерфейс <strong>TTL/RS232</strong>.
+                                Пользователи могут
+                                использовать резистор 0 Ом или пайку для прямого соединения;<br>
+                                <strong>R232=0</strong> (короткое замыкание) выбирает вход уровня <strong>TTL</strong>;
+                                <strong>R232=1</strong> (разрыв) выбирает уровень <strong>RS232</strong>;<br>
+                                Как показано ниже, место отмечено белым шелкографическим слоем;<br>
+                                По умолчанию на заводе устанавливается разрыв уровня <strong>232</strong> и выбирается
+                                уровень <strong>TTL</strong>. То
+                                есть <strong>OFF=232, ON=TTL</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Основные преимущества</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h3>Высокая производительность</h3>
+                        <p>Оптимизированные алгоритмы обработки графики</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Простота разработки</h3>
+                        <p>Интуитивные инструменты для создания интерфейсов</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Надёжность</h3>
+                        <p>Стабильная работа в промышленных условиях</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Гибкость</h3>
+                        <p>Поддержка различных типов дисплеев и разрешений</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Технические характеристики</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Значение</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Поддерживаемые дисплеи</td>
+                            <td>TFT-LCD, OLED</td>
+                            <td>Разрешения до 1920x1080</td>
+                        </tr>
+                        <tr>
+                            <td>Интерфейсы</td>
+                            <td>UART, USB, Ethernet</td>
+                            <td>Различные варианты подключения</td>
+                        </tr>
+                        <tr>
+                            <td>Память</td>
+                            <td>до 32MB Flash</td>
+                            <td>Для хранения графики и данных</td>
+                        </tr>
+                        <tr>
+                            <td>Рабочая температура</td>
+                            <td>-20°C до +70°C</td>
+                            <td>Промышленный диапазон</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="card">
+                <h2>Области применения</h2>
+                <ul>
+                    <li><strong>Промышленная автоматизация:</strong> Панели оператора, SCADA системы</li>
+                    <li><strong>Медицинское оборудование:</strong> Диагностические приборы, мониторы</li>
+                    <li><strong>Бытовая техника:</strong> Умные дисплеи для домашних устройств</li>
+                    <li><strong>Автомобильная электроника:</strong> Системы информации и развлечений</li>
+                    <li><strong>Торговое оборудование:</strong> POS-системы, информационные киоски</li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <h2>Инструменты разработки</h2>
+                <p>DWIN предоставляет комплекс программных инструментов для быстрой разработки пользовательских
+                    интерфейсов:</p>
+
+                <h3>DGUS Tool</h3>
+                <p>Основная среда разработки для создания интерфейсов с поддержкой визуального дизайна.</p>
+
+                <h3>Font Tool</h3>
+                <p>Инструмент для создания и управления шрифтами, поддерживающий различные кодировки.</p>
+
+                <h3>Image Converter</h3>
+                <p>Утилита для преобразования и оптимизации графических ресурсов.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 Технология DWIN. Все права защищены.</p>
+            <p>Инновационные решения для визуализации данных</p>
+        </footer>
+    </div>
+</body>
+
+</html>
