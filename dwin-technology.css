@@ -271,6 +271,48 @@
             width: 16.66%;
         }
 
+        /* Стили для секции источника питания */
+        .power-content {
+            line-height: 1.6;
+        }
+
+        .power-content p {
+            margin-bottom: 1.5rem;
+            color: #5a6c7d;
+        }
+
+        .warning-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .warning-note p {
+            color: #856404;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .power-content strong {
+            color: #2c3e50;
+            background: #e9ecef;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        /* Адаптивность для секции питания */
+        @media (max-width: 768px) {
+            .power-content {
+                font-size: 0.9rem;
+            }
+
+            .warning-note {
+                padding: 1rem;
+            }
+        }
+
         /* Особенности */
         .features-grid {
             display: grid;
