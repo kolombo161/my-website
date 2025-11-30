@@ -191,6 +191,7 @@
             transition: transform 0.3s ease;
         }
 
+
         .card:hover {
             transform: translateY(-3px);
         }
@@ -214,6 +215,7 @@
             color: #5a6c7d;
             font-size: clamp(0.9rem, 2vw, 1rem);
         }
+
 
         /* Списки */
         ul {
