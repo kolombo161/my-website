@@ -198,6 +198,8 @@
         }
 
         .schema-row.row-1 .schema-box.wide-50 {
+            width: 70%;
+            /* Изменено с 50% на 70% */
             margin-left: 0;
             margin-right: 0;
         }
@@ -207,14 +209,14 @@
             margin-right: 0;
         }
 
-        /* ВТОРАЯ СТРОКА - первый (50%) слева, второй (20%) справа */
+        /* ВТОРАЯ СТРОКА - первый (70%) слева, второй (20%) справа */
         .schema-row.row-2 {
             justify-content: space-between;
         }
 
         .schema-row.row-2 .schema-box.wide-60 {
-            width: 50%;
-            /* Такой же как в первой строке */
+            width: 70%;
+            /* Изменено с 50% на 70% */
             margin-left: 0;
             margin-right: 0;
         }
@@ -225,18 +227,23 @@
             margin-right: 0;
         }
 
-        /* ТРЕТЬЯ СТРОКА - первые три блока (16.666% каждый) слева, четвертый (20%) справа */
+        /* ТРЕТЬЯ СТРОКА - первые три блока слева, четвертый (20%) справа */
         .schema-row.row-3 {
             justify-content: space-between;
         }
 
-        /* Первые три блока третьей строки (общая ширина 50%) */
+        /* Первые три блока третьей строки с отступами */
         .schema-row.row-3>.schema-box:nth-child(1),
         .schema-row.row-3>.schema-box:nth-child(2),
         .schema-row.row-3>.schema-box:nth-child(3) {
-            width: 16.666%;
-            /* 50% / 3 = 16.666% */
-            margin: 0;
+            width: calc(23.333% - 0.67rem);
+            /* 70%/3 - отступы */
+            margin: 0 0.5rem;
+        }
+
+        /* Убираем правый отступ у третьего блока */
+        .schema-row.row-3>.schema-box:nth-child(3) {
+            margin-right: 0;
         }
 
         /* Четвертый блок третьей строки */
