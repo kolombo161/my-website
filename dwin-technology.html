@@ -15,7 +15,7 @@
         <header>
             <h1>Технология DWIN</h1>
             <!-- Добавляем изображение -->
-            <img src="1.jpg" alt="Технология DWIN" class="header-image">
+            <img src="/images-technology/1.jpg" alt="Технология DWIN" class="header-image">
             <p class="subtitle">Инновационные решения для современных дисплеев</p>
         </header>
 
@@ -524,6 +524,10 @@
 
             <section class="card" id="development-system">
                 <h2>2.2 Система разработки T5L_DGUS II</h2>
+                                <!-- Добавленное изображение -->
+                <div class="section-image-container">
+                    <img src="/images-technology/T5L_ DGUSII.jpg" alt="Схема разработки T5L_DGUS II" class="section-image">
+                </div>
                     <div class="notes">
                         <div class="notes-grid">
                             <div class="note-item">
@@ -549,161 +553,7 @@
                             <p><strong>Массовое производство в соответствии с шаблоном:</strong> После доработки шаблона поместите загружаемые файлы, изображения, иконки, шрифты и т.д. в папку <strong>DWIN_ SET</strong>, и тогда массовая загрузка может быть осуществлена через <strong>SD-карту.</strong></p>
                         </div>
                     </div>
-                        <div class="development-schema">
-        <!-- Строка 1 -->
-        <div class="schema-row row-1">
-            <div class="schema-box blue-gradient wide-50">
-                <div class="box-content">
-                    <h4>Материалы для разработки</h4>
-                    <p>Файл изображения, файл значка, файл шрифта, аудиофайл</p>
-                </div>
-            </div>
-            <div class="schema-circle blue-gradient">
-                <div class="circle-content">Программное обеспечение</div>
-            </div>
-        </div>
-        
-        <!-- Стрелка 1-2 -->
-        <div class="arrow-down center-arrow"></div>
-        
-        <!-- Строка 2 -->
-        <div class="schema-row row-2">
-            <div class="schema-box blue-light-gradient wide-60">
-                <div class="box-content">
-                    <h4>Программное обеспечение DGUSII T5L</h4>
-                    <p>Настройка конфигурации функций интерфейса</p>
-                </div>
-            </div>
-            <div class="schema-box blue-light-gradient wide-20 right-align">
-                <div class="box-content">
-                    <h4>DWIN OS</h4>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Стрелки от строки 2 -->
-        <div class="arrow-group row-2-arrows">
-            <div class="arrow-down left-arrow">
-                <span class="arrow-label">Генерация</span>
-            </div>
-            <div class="arrow-down center-arrow">
-                <span class="arrow-label">Генерация</span>
-            </div>
-            <div class="arrow-down right-arrow">
-                <span class="arrow-label">Генерация</span>
-            </div>
-            <div class="arrow-down os-arrow">
-                <span class="arrow-label">Генерация</span>
-            </div>
-        </div>
-        
-        <!-- Строка 3 -->
-        <div class="schema-row row-3">
-            <div class="schema-box blue-gradient wide-30">
-                <div class="box-content">
-                    <h4>13.BIN</h4>
-                    <p>Коснитесь файла конфигурации</p>
-                </div>
-            </div>
-            <div class="schema-box blue-gradient wide-30">
-                <div class="box-content">
-                    <h4>14.BIN</h4>
-                    <p>Отобразить доступный для просмотра файл</p>
-                </div>
-            </div>
-            <div class="schema-box blue-gradient wide-30">
-                <div class="box-content">
-                    <h4>22.BIN</h4>
-                    <p>Файл инициализации</p>
-                </div>
-            </div>
-            <div class="schema-box blue-light-gradient wide-20 right-align">
-                <div class="box-content">
-                    <h4>DWINOS.bin</h4>
-                    <p>Вторая программа развития</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Стрелка к SD-карте -->
-        <div class="arrow-down center-arrow"></div>
-        
-        <!-- Строка 4 - SD карта -->
-        <div class="schema-row row-4">
-            <div class="schema-box green-gradient wide-20 center-align">
-                <div class="box-content">
-                    <h4>Загрузка на SD-карту</h4>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Стрелка от SD-карты -->
-        <div class="arrow-down center-arrow"></div>
-        
-        <!-- Строка 5 -->
-        <div class="schema-row row-5">
-            <div class="schema-box gray-gradient wide-20">
-                <div class="box-content">
-                    <h4>TFT-драйвер и дисплей</h4>
-                </div>
-            </div>
-            <div class="schema-box gray-gradient wide-40 center-align">
-                <div class="box-content">
-                    <h4>DGUSII экран</h4>
-                    <p>Переменный интерфейс хранения данных</p>
-                </div>
-            </div>
-            <div class="schema-box gray-gradient wide-20">
-                <div class="box-content">
-                    <h4>Сенсорный экран</h4>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Строка 6 -->
-        <div class="schema-row row-6">
-            <div class="schema-box yellow-gradient wide-40 center-align">
-                <div class="box-content">
-                    <h4>0x0000-0x0FFF</h4>
-                    <p>Аппаратный интерфейс и управление технологическим процессом</p>
-                </div>
-            </div>
-            <div class="schema-box yellow-gradient wide-40 center-align">
-                <div class="box-content">
-                    <h4>0x1000-0x0FFF</h4>
-                    <p>Пространство переменных данных 128 КБ</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Строка 7 -->
-        <div class="schema-row row-7">
-            <div class="schema-box purple-gradient wide-20">
-                <div class="box-content">
-                    <h4>ГРАФИЧЕСКИЙ интерфейс:</h4>
-                    <p>Отображение текста<br>Отображение значков<br>Отображение изображений</p>
-                </div>
-            </div>
-            <div class="schema-box purple-gradient wide-40 center-align">
-                <div class="box-content">
-                    <h4>Интерфейс UART</h4>
-                    <p>N81, подсветка, звук, дополнительная проверка CRC16</p>
-                    <div class="double-arrow">
-                        <span class="arrow-up-label">0x82 запись (↑)</span>
-                        <span class="arrow-down-label">0x82 запись (↓)</span>
                     </div>
-                </div>
-            </div>
-            <div class="schema-circle blue-gradient">
-                <div class="circle-content">Оборудование</div>
-            </div>
-        </div>
-        
-        <!-- Подпись под схемой -->
-        <div class="schema-title">
-            <h3>Система разработки T5L_ DGUSII</h3>
-        </div>
-    </div>
             </section>
     </main>
 

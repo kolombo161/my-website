@@ -75,6 +75,58 @@
             }
         }
 
+        /* Стили для изображения в секции */
+        .section-image-container {
+            margin: 2rem 0;
+            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .section-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Адаптивность для телефонов */
+        @media (max-width: 768px) {
+            .section-image-container {
+                margin: 1.5rem 0;
+                border-radius: 6px;
+            }
+
+            .section-image {
+                max-width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-image-container {
+                margin: 1rem 0;
+            }
+
+            .section-image {
+                max-width: 100%;
+            }
+        }
+
+        /* Для очень узких экранов */
+        @media (max-width: 360px) {
+            .section-image-container {
+                max-width: 100%;
+                /* На очень узких - полностью на ширину */
+                margin-top: 0.5rem;
+            }
+        }
+
         /* Кнопка "Наверх" - улучшенная для мобильных */
         .scroll-top-btn {
             position: fixed;
@@ -174,360 +226,6 @@
             font-size: clamp(1rem, 2vw, 1.3rem);
             color: #7f8c8d;
             margin-bottom: 2rem;
-        }
-
-        /* Стили для схемы разработки */
-        .development-schema {
-            position: relative;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
-
-        .schema-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        /* Изменения только для первой строки - Прямоугольник влево, круг вправо */
-        .schema-row.row-1 {
-            justify-content: space-between;
-        }
-
-        .schema-row.row-1 .schema-box.wide-50 {
-            width: 70%;
-            /* Изменено с 50% на 70% */
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .schema-row.row-1 .schema-circle {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        /* ВТОРАЯ СТРОКА - первый (70%) слева, второй (20%) справа */
-        .schema-row.row-2 {
-            justify-content: space-between;
-        }
-
-        .schema-row.row-2 .schema-box.wide-60 {
-            width: 70%;
-            /* Изменено с 50% на 70% */
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .schema-row.row-2 .schema-box.wide-20 {
-            width: 20%;
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        /* ТРЕТЬЯ СТРОКА - первые три блока слева, четвертый (20%) справа */
-        .schema-row.row-3 {
-            justify-content: space-between;
-        }
-
-        /* Первые три блока третьей строки с отступами */
-        .schema-row.row-3>.schema-box:nth-child(1),
-        .schema-row.row-3>.schema-box:nth-child(2),
-        .schema-row.row-3>.schema-box:nth-child(3) {
-            width: calc(23.333% - 0.67rem);
-            /* 70%/3 - отступы */
-            margin: 0 0.5rem;
-        }
-
-        /* Убираем правый отступ у третьего блока */
-        .schema-row.row-3>.schema-box:nth-child(3) {
-            margin-right: 0;
-        }
-
-        /* Четвертый блок третьей строки */
-        .schema-row.row-3>.schema-box.wide-20 {
-            width: 20%;
-            margin: 0;
-        }
-
-        /* ЧЕТВЕРТАЯ СТРОКА - SD карта по центру */
-        .schema-row.row-4 {
-            justify-content: center;
-        }
-
-        .schema-row.row-4 .schema-box {
-            margin: 0 auto;
-        }
-
-        /* ПЯТАЯ СТРОКА - первый слева (20%), второй по центру (40%), третий справа (20%) */
-        .schema-row.row-5 {
-            justify-content: space-between;
-        }
-
-        .schema-row.row-5 .schema-box:nth-child(1) {
-            width: 20%;
-            margin: 0;
-        }
-
-        .schema-row.row-5 .schema-box:nth-child(2) {
-            width: 40%;
-            /* Сумма первого и третьего: 20% + 20% = 40% */
-            margin: 0;
-        }
-
-        .schema-row.row-5 .schema-box:nth-child(3) {
-            width: 20%;
-            margin: 0;
-        }
-
-        /* ШЕСТАЯ СТРОКА - два блока ВНУТРИ границ второго блока пятой строки (40%) */
-        .schema-row.row-6 {
-            justify-content: center;
-            width: 40%;
-            /* Такая же ширина как у второго блока пятой строки */
-            margin-left: 30%;
-            /* Центрирование: (100% - 40%) / 2 = 30% */
-            margin-right: auto;
-        }
-
-        .schema-row.row-6 .schema-box {
-            width: calc(50% - 0.25rem);
-            /* Половина минус половина отступа */
-            margin: 0 0.125rem;
-        }
-
-        /* СЕДЬМАЯ СТРОКА */
-        .schema-row.row-7 {
-            justify-content: space-between;
-        }
-
-        .schema-row.row-7 .schema-box:nth-child(1) {
-            width: 20%;
-            /* Такая же как у первого блока пятой строки */
-            margin: 0;
-        }
-
-        .schema-row.row-7 .schema-box:nth-child(2) {
-            width: 40%;
-            /* Такая же как у второго блока пятой строки */
-            margin: 0;
-        }
-
-        .schema-row.row-7 .schema-circle {
-            margin: 0;
-        }
-
-        /* Размеры блоков - ОБЩИЕ */
-        .wide-20 {
-            width: 20%;
-        }
-
-        .wide-30 {
-            width: 30%;
-        }
-
-        .wide-40 {
-            width: 40%;
-        }
-
-        .wide-50 {
-            width: 50%;
-        }
-
-        .wide-60 {
-            width: 60%;
-        }
-
-        /* Стили блоков */
-        .schema-box {
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-        }
-
-        .schema-circle {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            flex-shrink: 0;
-        }
-
-        .box-content {
-            text-align: center;
-            color: #2c3e50;
-        }
-
-        .box-content h4 {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .box-content p {
-            font-size: 0.8rem;
-            margin: 0;
-            line-height: 1.3;
-        }
-
-        .circle-content {
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: white;
-            padding: 0.5rem;
-        }
-
-        /* Градиенты */
-        .blue-gradient {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .blue-light-gradient {
-            background: linear-gradient(135deg, #7c8de4, #8a67b8);
-            color: #2c3e50;
-        }
-
-        .green-gradient {
-            background: linear-gradient(135deg, #48bb78, #38a169);
-            color: #2c3e50;
-        }
-
-        .gray-gradient {
-            background: linear-gradient(135deg, #a0aec0, #718096);
-            color: white;
-        }
-
-        .yellow-gradient {
-            background: linear-gradient(135deg, #f6e05e, #d69e2e);
-            color: #2c3e50;
-        }
-
-        .purple-gradient {
-            background: linear-gradient(135deg, #9f7aea, #805ad5);
-            color: white;
-        }
-
-        /* Стрелки */
-        .arrow-down {
-            width: 2px;
-            height: 40px;
-            background: #4a5568;
-            margin: 0 auto 1rem;
-            position: relative;
-        }
-
-        .arrow-down::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: -4px;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid #4a5568;
-        }
-
-        .arrow-group {
-            display: flex;
-            justify-content: space-between;
-            margin: 0 10%;
-            position: relative;
-            height: 40px;
-        }
-
-        .left-arrow {
-            margin-left: 10%;
-        }
-
-        .center-arrow {
-            margin: 0 auto;
-        }
-
-        .right-arrow {
-            margin-right: 10%;
-        }
-
-        .os-arrow {
-            margin-right: 5%;
-        }
-
-        .arrow-label {
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.7rem;
-            color: #4a5568;
-            white-space: nowrap;
-        }
-
-        .double-arrow {
-            margin-top: 0.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .arrow-up-label,
-        .arrow-down-label {
-            font-size: 0.7rem;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-        }
-
-        .schema-title {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 2px dashed #cbd5e0;
-        }
-
-        .schema-title h3 {
-            color: #2c3e50;
-            font-size: 1.2rem;
-        }
-
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .development-schema {
-                padding: 1rem;
-            }
-
-            .schema-box {
-                padding: 0.5rem;
-                min-height: 60px;
-            }
-
-            .box-content h4 {
-                font-size: 0.8rem;
-            }
-
-            .box-content p {
-                font-size: 0.7rem;
-            }
-
-            .schema-circle {
-                width: 70px;
-                height: 70px;
-            }
-
-            .circle-content {
-                font-size: 0.7rem;
-            }
         }
 
         /* Основной контент */
