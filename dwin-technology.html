@@ -55,7 +55,8 @@
                 <ul>
                     <li><strong><a href="#card-format" class="content-link">3.1 Формат карты памяти microSD
                                 (TF)</a></strong></li>
-                    <li><strong>3.2 Способ загрузки с интерфейса SD-карты</strong></li>
+                    <li><strong><a href="#download-method" class="content-link">3.2 Метод загрузки через интерфейс
+                                SD-карты</a></strong></li>
                     <li><strong>3.3 Загрузить файл</strong></li>
                 </ul>
 
@@ -916,6 +917,43 @@
                     <p><strong>Здесь g</strong> - это номер диска <strong>SD-карты</strong>, отображаемый на <strong>ПК</strong>, и соответствующий номер диска у разных пользователей может отличаться (например, это может быть <strong>"h"</strong> или <strong>"i"</strong>).</p>
                     <p>Примечание: <strong>SD-карту</strong> нельзя полностью отформатировать в <strong>FAT32</strong> с помощью форматирования по правой кнопке мыши. Как правило, это относится только к <strong>SD-картам</strong> размером <strong>1-16 ГБ</strong>.</p>
                     </div>
+            </section>
+
+            <div style="height: 1.5rem;"></div>
+
+            <section class="card" id="download-method">
+                <h3>3.2 Метод загрузки через интерфейс SD-карты</h3>
+                <div class="power-content">
+                    <p><strong>SD-карта</strong> не поддерживает <strong>"горячую"</strong> замену и обновление <strong>(hot swap)</strong>. Чтобы предотвратить повреждение <strong>FLASH-памяти</strong>, необходимо выключить питание экрана перед установкой <strong>SD-карты</strong>, а затем включить питание для начала загрузки. Во время процесса загрузки обязательно обеспечьте стабильное питание. Отключение питания в середине процесса может привести к аномалиям, таким как черный экран.</p>
+                    <br><p><strong>T5L_DGUSII</strong> отличается от <strong>T5_DGUS</strong>. На практике для экранов <strong>T5L</strong> фоновые изображения необходимо загружать в формате <strong>.ICL</strong> файлов, которые могут быть сгенерированы программным обеспечением <strong>DGUS. JPEG-изображения</strong> не распознаются напрямую.</p>
+                    <h4>Процесс создания и загрузки файлов следующий:</h4>
+                    <div class="notes">
+                        <div class="notes-grid">
+                            <div class="note-item">
+                                <span class="note-number">1</span>
+                                <p>Создайте папку с именем <strong>DWIN_SET</strong> в корневом каталоге <strong>SD-карты</strong>.</p>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">2</span>
+                                <p>Поместите <strong>ICL-файлы</strong>, библиотеки шрифтов, конфигурационные файлы и т.д. в папку <strong>DWIN_SET</strong>.</p>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">3</span>
+                                <div class="power-content">
+                                <p>При включении питания экран обнаружит <strong>SD-карту</strong> и проверит, существует ли в корневом каталоге карты папка с именем <strong>DWIN_SET</strong>.</p>
+                                <li><p>Если папка успешно обнаружена, экран загрузит соответствующие файлы во <strong>FLASH-память</strong>. Папки, расположенные внутри <strong>DWIN_SET</strong>, не могут быть прочитаны.</p></li>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">4</span>
+                                <p>Когда синий индикаторный экран покажет, что загрузка завершена, выключите питание экрана, извлеките <strong>SD-карту</strong> и снова включите питание. После этого проект будет успешно загружен в экран.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="power-content">
+                    <p>Стандартный экран <strong>DWIN (если он не был специально кастомизирован или не имеет функции шифрования загрузки)</strong> будет распознавать только папку с именем <strong>DWIN_SET</strong>. Другие папки распознаваться не будут.</p>    
+                    </div>
+                </div>
             </section>
 
     </main>
