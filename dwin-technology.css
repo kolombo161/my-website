@@ -19,6 +19,38 @@
             padding: 20px;
         }
 
+        .highlight-yellow {
+            background-color: #ffeb3b;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-weight: 700;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.842);
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-yellow:hover {
+            background-color: #ffd600;
+            box-shadow: 0 4px 8px rgba(255, 9, 9, 0.607);
+            transform: translateY(-2px);
+        }
+
+        .warning-red {
+            background-color: #ffea09ca;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 700;
+            box-shadow: 0 2px 4px rgba(255, 9, 9, 0.842);
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .warning-red:hover {
+            background-color: #fec713f8;
+            box-shadow: 0 4px 10px rgba(255, 9, 9, 0.902);
+            transform: translateY(-2px);
+        }
+
         /* Шапка */
         header {
             background: white;

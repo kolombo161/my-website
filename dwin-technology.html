@@ -57,7 +57,7 @@
                                 (TF)</a></strong></li>
                     <li><strong><a href="#download-method" class="content-link">3.2 Метод загрузки через интерфейс
                                 SD-карты</a></strong></li>
-                    <li><strong>3.3 Загрузить файл</strong></li>
+                    <li><strong><a href="#download-file" class="content-link">3.3 Загружаемый файл</a></strong></li>
                 </ul>
 
                 <h3>Протокол связи</h3>
@@ -952,6 +952,117 @@
                     </div>
                     <div class="power-content">
                     <p>Стандартный экран <strong>DWIN (если он не был специально кастомизирован или не имеет функции шифрования загрузки)</strong> будет распознавать только папку с именем <strong>DWIN_SET</strong>. Другие папки распознаваться не будут.</p>    
+                    </div>
+                </div>
+            </section>
+
+            <div style="height: 1.5rem;"></div>
+
+            <section class="card" id="download-file">
+                <h3>3.3 Загружаемый файл</h3>
+                <h3>3.3.1 Тип загружаемого файла</h3>
+                <div class="power-content">
+                    <p>Интерфейс <strong>SD/SDHC</strong> экрана <strong>T5L</strong> поддерживает загрузку и обновление следующих файлов.</p>
+                    <p><strong>SD-карта</strong> не поддерживает <strong>"горячую"</strong> замену и обновление <strong>(hot swap)</strong>.</p>
+                    <p class="warning-red">Вы должны выключить питание экрана перед установкой SD-карты, а затем включить питание для загрузки!!!</p>
+                <div class="section-image-container">
+                    <img src="/images-technology/file-type.jpg" alt="Тип загружаемого файла" class="section-image">
+                    <div class="image-caption">Таблица загружаемого файла</div>
+                </div>
+                    <p>Память <strong>Flash</strong> объемом <strong>16 МБ</strong> (максимально расширяемая до <strong>64 МБ Nor Flash</strong> или <strong>48 МБ Nor + 512 МБ NAND Flash)</strong> разделена на две части:</p>
+                    <div class="notes">
+                        <div class="notes-grid">
+                            <div class="note-item">
+                                <span class="note-number">1</span>
+                                <p><strong>4-12 МБ</strong> пространство библиотеки шрифтов. Единичное пространство <strong>256 КБ</strong> для библиотеки шрифтов, библиотек иконок, файлов конфигурации.</p>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">2</span>
+                                <p><strong>4-12 МБ</strong> пространство для хранения фоновых изображений <strong>(.ICL файлы)</strong>.</p>
+                            </div>   
+                        </div>
+                    </div>
+                    <p>Для экранов <strong>T5L1</strong> размер отдельного файла <strong>JPG</strong> не должен превышать <strong>248 КБ</strong>, а для процессоров <strong>T5L2</strong> размер отдельного файла <strong>JPG</strong> не должен превышать <strong>760 КБ.</strong></p>
+                    <p class="highlight-yellow">При использовании расширения NAND Flash, оно должно быть припаяно в позиции расширенной Flash 3. Соответствующий ID библиотеки шрифтов = 0xC0-0xFF, каждый по 8 МБ.</p>
+                    <p>Загружаемый файл должен быть помещен в папку <strong>DWIN_SET</strong> корневого каталога <strong>SD-карты</strong>. И <strong>SD-карта</strong> должна быть <strong>SD</strong> или <strong>SDHC</strong> картой с размером сектора <strong>4 КБ</strong>, формата <strong>FAT32.</strong></p>
+                </div>
+            </section>
+
+            <div style="height: 1.5rem;"></div>
+
+            <section class="card">
+                <h3>3.3.2 Генерация загружаемых файлов</h3>
+                <div class="power-content">
+                    <p>Как мы узнали из <strong>Главы 2</strong>, при настройке графического интерфейса пользователя <strong>(GUI)</strong> для экранов <strong>DGUSII</strong> необходимо подготовить такие материалы, как фоновые изображения, иконки, библиотеки шрифтов и т.д.</p>
+                    <p><strong>DGUSII_T5L</strong> вызывает файлы конфигурации по номеру в имени файла. Поэтому файлы должны быть названы арабскими цифрами по порядку.</p>
+                    <p>Например: <strong>`32_Background_Image.ICL`</strong> и <strong>`48_Icon_Library.ICL`</strong>.</p>
+                    <h3>3.3.2.1 ICL-файл библиотеки фоновых изображений</h3>
+                    <div class="notes">
+                        <div class="notes-grid">
+                            <div class="note-item">
+                                <span class="note-number">1</span>
+                                <p>Фоновые изображения должны быть в форматах <strong>JPEG, BMP</strong> или <strong>PNG.</strong></p>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">2</span>
+                                <p>Разрешение изображения должно соответствовать разрешению экрана с цветностью <strong>24 бита.</p>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">3</span>
+                                <p>По умолчанию при загрузке будет отображаться изображение <strong>0</strong> в файле <strong>ICL</strong>. Изображения именуются арабскими цифрами, например, <strong>00_boot, 01_function, 02_menu.</strong></p>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">4</span>
+                                <p>Вам необходимо конвертировать изображения в файл <strong>.ICL</strong>, чтобы загрузить его на экран. То есть изображения упаковываются и загружаются в виде файла библиотеки.</p>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">5</span>
+                                <div class="power-content">
+                                <p>Файлы <strong>ICL</strong> фоновых изображений используются для отображения фоновых картинок. Если вы назовете фоновый <strong>ICL-файл 32.ICL</strong>, вам нужно записать <strong>0x20</strong> по адресу <strong>0x08</strong> в <strong>CFG-файле</strong>, чтобы основные программы могли корректно считать и идентифицировать <strong>ICL-файл.</strong></p>
+                                <li><p>Если <strong>CFG-файл</strong> пуст, экран будет черным <strong>(со слабой подсветкой)</strong>. В этом случае вам следует проверить адрес <strong>0x08</strong> в <strong>CFG-файле.</strong></p></li>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">6</span>
+                                <div class="power-content">
+                                <p>Для экрана <strong>T5L1</strong> размер отдельного изображения в <strong>ICL-файле</strong> не должен превышать <strong>256 КБ</strong>; для экрана <strong>T5L2</strong> он должен быть меньше <strong>768 КБ</strong>. Ограничений на размер исходных материалов изображений нет.</p>
+                                <li><p>При использовании <strong>DGUS</strong> для генерации <strong>ICL-файлов</strong>, если изображение в сгенерированном <strong>ICL-файле</strong> превышает лимит, вам следует уменьшить процент качества изображений в соответствии с подсказкой.</p></li>
+                                <li><p>Вы также можете просмотреть информацию о размере <strong>ICL-файла</strong> в генераторе <strong>DGUS ICL</strong>. Если на фоновых изображениях отображаются разрозненные точки, вы можете выбрать тип изображения <strong>4:4:4.</strong></p></li>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <h3>3.3.2.2 Файл библиотеки иконок ICL</h3>
+                    <div class="notes">
+                        <div class="notes-grid">
+                            <div class="note-item">
+                                <span class="note-number">1</span>
+                                <p>Максимальное разрешение изображений в библиотеке иконок не должно превышать <strong>1024*1024</strong>, иначе <strong>DGUS</strong> автоматически сожмет их до <strong>1024*1024;</strong></p>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">2</span>
+                                <p>Изображения должны быть в форматах <strong>JPEG, BMP</strong> или <strong>PNG</strong> с цветностью <strong>24 бита;</strong></p>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-number">3</span>
+                                <p>Изображения должны быть названы арабскими цифрами по порядку.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>В хранилище <strong>FLASH</strong> размер одного шрифтового пространства составляет <strong>256 КБ.</strong></p>
+                    <p class="warning-red">Когда отдельный файл библиотеки иконок превышает 256 КБ, необходимо строго рассчитать интервал, занимаемый библиотекой иконок, иначе это может привести к конфликту в позиции интервала иконок и вызвать аномалии отображения.</p>
+                    <h3>3.3.2.3 Шрифтовой файл</h3>
+                    <p>DGUS поддерживает несколько международных шрифтовых кодировок: <strong>8-битную, ASCII, GBK, GB2312</strong> и <strong>UNICODE.</p>
+                    <p>Экран <strong>DGUS</strong> предустановлен с завода со шрифтовой библиотекой <strong>ASCII</strong> кода <strong>0#</strong>, которая содержит все символы <strong>ASCII</strong> с размером матрицы от <strong>4*8</strong> до <strong>64*128</strong>. Пользователи могут напрямую вызывать шрифтовую библиотеку <strong>0#</strong> для отображения цифр, букв и символов.</p>
+                    <p>Когда вам нужно использовать шрифтовые библиотеки других кодировок, вам нужно сгенерировать их через генератор шрифтов. <strong>DGUS</strong> поддерживает файлы шрифтов форматов <strong>BIN, DZK, HZK.</strong></p>
+                    <h3>3.3.2.4 Файл инициализации переменных <strong>22.Bin</strong></h3>
+                    <p>Исходное значение переменного адреса по умолчанию равно <strong>0</strong> при включении питания. Если вам нужно установить начальное значение, отличное от <strong>0</strong>, необходимо включить функцию загрузки файла <strong>22</strong> при включении, сконфигурировав адрес <strong>0x05.5</strong> в <strong>CFG файле.</strong></p>
+                    <p>Обычно <strong>22.bin</strong> может быть напрямую сгенерирован <strong>DGUS</strong>, и начальное значение автоматически записывается при генерации конфигурационных файлов. Пользователи также могут редактировать значения в файле <strong>22</strong> с помощью <strong>UltraEdit.</strong></p>
+                    <p>Обратите внимание, что переменный адрес в <strong>DGUS</strong> измеряется в словах <strong>(word)</strong>, в то время как в <strong>UltraEdit</strong> файл <strong>22.bin</strong> редактируется побайтно <strong>(byte)</strong>. Следовательно, при изменении начального значения слова <strong>VP 0x2000</strong>, вам следует изменять адрес <strong>0x4000</strong> в <strong>UltraEdit.</strong></p>
+                    <p>При редактировании <strong>22.bin</strong> необходимо скопировать его на рабочий стол. Перед загрузкой положите его обратно в папку <strong>DWIN_SET</strong>. В противном случае изменения будут перезаписаны при сохранении и генерации проекта.</p>
+                    <div class="section-image-container">
+                        <img src="/images-technology/value-modification.jpg" alt="Исправление начального значения файла 22" class="section-image">
+                    <div class="image-caption">Исправление начального значения файла 22</div>
                     </div>
                 </div>
             </section>
