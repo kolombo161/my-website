@@ -1072,25 +1072,35 @@
             <section class="card">
                 <h3>3.3.2.5 Конфигурация системы</h3>
                 <div class="power-content">
-                    <p>Аппаратный конфигурационный файл T5LCFG*.CFG имеет двоичный формат данных и может редактироваться с помощью UltraEdit. Описание приведено ниже.</p>
-                
-                <div class="section-image-container">
+                    <p>Аппаратный конфигурационный файл <strong>T5LCFG*.CFG</strong> имеет двоичный формат данных и может редактироваться с помощью UltraEdit. Описание приведено ниже.</p>
+                    <div class="section-image-container">
                         <img src="/images-technology/system-configuration.jpg" alt="Конфигурация системы" class="section-image">
                     <div class="image-caption">Конфигурация системы</div>
-                </div>
-                <div class="section-image-container">
+                    </div>
+                    <div class="section-image-container">
                         <img src="/images-technology/16mb-nor-flash.jpg" alt="Конфигурация системы" class="section-image">
-                </div>
-                <div class="section-image-container">
+                    </div>
+                    <div class="section-image-container">
                         <img src="/images-technology/speaker-interface.jpg" alt="Конфигурация системы" class="section-image">
-                </div>
-                <div class="section-image-container">
+                    </div>
+                    <div class="section-image-container">
                         <img src="/images-technology/output-config.jpg" alt="Конфигурация системы" class="section-image">
+                    </div>
+                    <div class="section-image-container">
+                        <img src="/images-technology/replaced-picture.jpg" alt="Конфигурация системы" class="section-image">
+                    </div>
+                    <div class="section-image-container">
+                        <img src="/images-technology/folder-name.jpg" alt="Конфигурация системы" class="section-image">
+                    </div>
+                    <p><strong>Undefined</strong> означает, что бит, байт или адрес на данный момент не имеет определенной функции. Его не стоит трогать или использовать. Перевод как <strong>«Не определено»</strong> возможен, но оставление на английском сразу выделяет его как технический статус.</p>
+
+                    <p><strong>Reserved</strong> означает, что область зарезервирована для будущего использования производителем. Её нельзя использовать. Перевод <strong>«Зарезервировано»</strong> также возможен, но оригинальный термин является общепринятым.</p>
+
+                    <p><strong>Write 0x00</strong>: Это прямая команда для инженера или программиста. Её перевод <strong>(«Записать 0x00»)</strong> может быть избыточным, так как действие и значение однозначно понятны в контексте. Оставление в оригинале делает инструкцию краткой и точной для того, кто будет работать с регистрами.</p>
+
+                    <p><strong>Имена команд/файлов</strong>: Слова вроде <strong>DWIN_SET (скорее всего, имя папки по умолчанию)</strong> часто являются внутренними константами прошивки. Их перевод может сбить с толку при поиске в файлах или при настройке, так как в самой системе они останутся на английском.</p>
                 </div>
-                <div class="section-image-container">
-                        <img src="/images-technology/settings.jpg" alt="Конфигурация системы" class="section-image">
-                </div>
-            </div>
+                
 
             </section>    
 
