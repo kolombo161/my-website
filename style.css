@@ -240,18 +240,30 @@ header .logo img {
     font-weight: bold;
     font-size: 20px;
     margin-left: 10px;
+    padding: 8px 12px;
+    /* Добавлен внутренний отступ для фона */
+    border-radius: 6px;
+    /* Закругление углов фона */
+    background-color: transparent;
+    /* Фон по умолчанию прозрачный */
+    transition: background-color 0.3s ease;
+    /* Плавный переход цвета фона */
 }
 
 .header-phone .fa-phone,
 .header-phone a {
     color: #484848;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    /* Добавлен переход для фона */
 }
 
+/* Изменения для телефона: цвет текста больше не меняется, меняется только фон */
 .header-phone a:hover,
-.header-phone:hover .fa-phone,
-.header-city a:hover {
-    color: #007bff;
+.header-phone:hover .fa-phone {
+    color: #242424;
+    /* Цвет текста остаётся прежним при наведении */
+    background-color: #c3d494ef;
+    /* Фон становится светло-зелёным при наведении */
 }
 
 .header-city a {
@@ -260,7 +272,24 @@ header .logo img {
     font-size: 16px;
     font-weight: bold;
     font-style: italic;
-    transition: color 0.3s ease;
+    padding: 6px 10px;
+    /* Внутренний отступ для фона */
+    border-radius: 6px;
+    /* Закругление углов фона */
+    background-color: #c3d494ef;
+    /* Постоянный светло-зелёный фон для города */
+    display: inline-block;
+    /* Чтобы фон работал правильно */
+    transition: background-color 0.3s ease;
+    /* Плавный переход для фона */
+}
+
+.header-city a:hover {
+    color: #242424;
+    /* Цвет текста города не меняется */
+    background-color: #a7b97a;
+    /* Более тёмный оттенок зелёного при наведении */
+    /* Пример более тёмного цвета. Можете подобрать точнее с помощью color picker */
 }
 
 /* Горизонтальное меню для десктопа */
@@ -273,7 +302,7 @@ header .logo img {
 
 .desktop-menu {
     width: 100%;
-    background-color: #83d3bcb5;
+    background-color: #7fa117bb;
     padding: 10px 0;
     font-family: 'Roboto', sans-serif;
     position: sticky;
@@ -304,7 +333,7 @@ header .logo img {
 }
 
 .desktop-menu>ul>li>a:hover {
-    background-color: #e3f7f1f1;
+    background-color: #d2e4a0f7;
     font-weight: 700;
 }
 
@@ -314,7 +343,7 @@ header .logo img {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #74dfbdf1;
+    background-color: #789b0dec;
     border-radius: 6px;
     padding: 4px 0;
     min-width: auto;
@@ -338,7 +367,7 @@ header .logo img {
 }
 
 .desktop-menu .submenu a:hover {
-    background-color: #e3f7f1f1;
+    background-color: #c3d494ef;
     font-weight: 700;
     border-radius: 4px;
 }
@@ -372,16 +401,23 @@ header .logo img {
     }
 }
 
+/* Вариант A: через класс */
+.additional-block {
+    background-color: #87a92070;
+    border-radius: 7px;
+    padding: 7px;
+}
+
 /* Выделение текста вопрос-ответ */
 .highlight {
     animation: yellow-fade 10s;
-    border-left: 4px solid #f7e894df;
+    border-left: 4px solid #c3d494ef;
     padding-left: 10px;
 }
 
 @keyframes yellow-fade {
     0% {
-        background-color: #FFF9C4;
+        background-color: #c3d494ef;
     }
 
     100% {
@@ -392,7 +428,7 @@ header .logo img {
 /* Выделение текста */
 .highlighted-answer {
     animation: highlight-fade 8s ease-out;
-    background-color: #d6f676da;
+    background-color: #c3d494ef;
     padding: 15px;
     margin: 10px 0;
     border-radius: 4px;
@@ -404,7 +440,7 @@ header .logo img {
 
 /* Для заголовков вопросов */
 .problem-title.highlighted-answer {
-    background-color: #d6f676;
+    background-color: #c3d494ef;
     padding: 10px;
     border-radius: 4px 4px 0 0;
     margin-bottom: 0;
@@ -1621,11 +1657,11 @@ footer p.contact-info a:hover {
     top: 100%;
     left: 0;
     min-width: 250px;
-    background-color: #83d3bcf2;
+    background-color: #8db41ae9;
     border-radius: 6px;
     padding: 10px 0;
     margin-top: 5px;
-    box-shadow: 0 4px 8px #b6ebd9;
+    box-shadow: 0 4px 8px #82a31df4;
     white-space: nowrap;
     z-index: 1001;
 }
@@ -1644,7 +1680,7 @@ footer p.contact-info a:hover {
 }
 
 .dropdown-menu a:hover {
-    background-color: #b6ebd9;
+    background-color: #c3d494ef;
     border-radius: 4px;
 }
 
@@ -1652,7 +1688,7 @@ footer p.contact-info a:hover {
 .mobile-submenu-items {
     overflow-y: auto;
     max-height: 0;
-    background-color: #b6ebd9;
+    background-color: #c2e366ed;
     padding-left: 20px;
     transition: max-height 0.3s ease;
     scrollbar-width: thin;
@@ -1660,7 +1696,7 @@ footer p.contact-info a:hover {
 
 .mobile-submenu-items::-webkit-scrollbar {
     width: 5px;
-    background: #9bbdb1;
+    background: #789b0dec;
 }
 
 .mobile-submenu-items a {
