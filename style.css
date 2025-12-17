@@ -302,7 +302,7 @@ header .logo img {
 
 .desktop-menu {
     width: 100%;
-    background-color: #9d55a79e;
+    background-color: #848384f4;
     padding: 10px 0;
     font-family: 'Roboto', sans-serif;
     position: sticky;
@@ -343,7 +343,7 @@ header .logo img {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #9d55a7e6;
+    background-color: #cac8caf9;
     border-radius: 6px;
     padding: 4px 0;
     min-width: auto;
@@ -1657,7 +1657,7 @@ footer p.contact-info a:hover {
     top: 100%;
     left: 0;
     min-width: 250px;
-    background-color: #9d55a7eb;
+    background-color: #848384f4;
     border-radius: 6px;
     padding: 10px 0;
     margin-top: 5px;
@@ -1673,7 +1673,7 @@ footer p.contact-info a:hover {
 .dropdown-menu a {
     display: block;
     padding: 10px 15px;
-    color: #000000f3;
+    color: #090909f3;
     text-decoration: none;
     white-space: nowrap;
     transition: all 0.3s ease;
@@ -1688,7 +1688,7 @@ footer p.contact-info a:hover {
 .mobile-submenu-items {
     overflow-y: auto;
     max-height: 0;
-    background-color: #c2e366ed;
+    background-color: #cac8caee;
     padding-left: 20px;
     transition: max-height 0.3s ease;
     scrollbar-width: thin;
@@ -1723,6 +1723,11 @@ footer p.contact-info a:hover {
     cursor: pointer;
     font: 600 inherit inherit;
     position: relative;
+}
+
+.mobile-submenu-toggle:hover {
+    background-color: #c7ef59ec;
+    border-radius: 4px;
 }
 
 .mobile-submenu-toggle .arrow {
