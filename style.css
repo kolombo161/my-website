@@ -302,7 +302,7 @@ header .logo img {
 
 .desktop-menu {
     width: 100%;
-    background-color: #7fa117bb;
+    background-color: #9d55a79e;
     padding: 10px 0;
     font-family: 'Roboto', sans-serif;
     position: sticky;
@@ -333,7 +333,7 @@ header .logo img {
 }
 
 .desktop-menu>ul>li>a:hover {
-    background-color: #d2e4a0f7;
+    background-color: #c4f43ff7;
     font-weight: 700;
 }
 
@@ -343,7 +343,7 @@ header .logo img {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #789b0dec;
+    background-color: #9d55a7e6;
     border-radius: 6px;
     padding: 4px 0;
     min-width: auto;
@@ -367,7 +367,7 @@ header .logo img {
 }
 
 .desktop-menu .submenu a:hover {
-    background-color: #c3d494ef;
+    background-color: #c7ef59ec;
     font-weight: 700;
     border-radius: 4px;
 }
@@ -1657,11 +1657,11 @@ footer p.contact-info a:hover {
     top: 100%;
     left: 0;
     min-width: 250px;
-    background-color: #8db41ae9;
+    background-color: #9d55a7eb;
     border-radius: 6px;
     padding: 10px 0;
     margin-top: 5px;
-    box-shadow: 0 4px 8px #82a31df4;
+    box-shadow: 0 4px 8px #c4f43ff7;
     white-space: nowrap;
     z-index: 1001;
 }
@@ -1680,7 +1680,7 @@ footer p.contact-info a:hover {
 }
 
 .dropdown-menu a:hover {
-    background-color: #c3d494ef;
+    background-color: #c7ef59ec;
     border-radius: 4px;
 }
 
