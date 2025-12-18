@@ -401,12 +401,7 @@ header .logo img {
     }
 }
 
-/* Вариант A: через класс */
-.additional-block {
-    background-color: #87a92070;
-    border-radius: 7px;
-    padding: 7px;
-}
+
 
 /* Выделение текста вопрос-ответ */
 .highlight {
