@@ -317,6 +317,21 @@ header .logo img {
     font: italic 600 16px/0.8 'Roboto', sans-serif;
 }
 
+/* снег на пунктах меню */
+.desktop-menu>ul>li>a::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    right: 2px;
+    height: 7px;
+    background: radial-gradient(circle at center, white 40%, transparent 90%);
+    border-radius: 50%;
+    opacity: 0.6;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
 .desktop-menu>ul>li>a:hover {
     background-color: #c4f43ff7;
     font-weight: 700;
@@ -1650,12 +1665,100 @@ footer p.contact-info a:hover {
 }
 
 .dropdown-menu a {
+    position: relative;
     display: block;
     padding: 10px 15px;
     color: #090909f3;
     text-decoration: none;
     white-space: nowrap;
     transition: all 0.3s ease;
+}
+
+
+/* Снег для Ремонт рольворот */
+.dropdown-menu>a[href="#Remont-rolvorot-v-Rostove"]::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    width: 190px;
+    /* подбери под длину текста */
+    height: 7px;
+    background: radial-gradient(circle at left, white 40%, transparent 90%);
+    border-radius: 45%;
+    opacity: 0.8;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+/* Снег для кнопки Поломки рольворот */
+.dropdown-menu>.mobile-submenu:nth-of-type(1)>.mobile-submenu-toggle::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    width: 190px;
+    height: 7px;
+    background: radial-gradient(circle at left, white 50%, transparent 90%);
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+/* Снег для Ремонт рольставней */
+.dropdown-menu>a[href="#Remont-rolstavnej-v-Rostove"]::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    width: 200px;
+    /* другой текст — другая ширина */
+    height: 7px;
+    background: radial-gradient(circle at left, white 50%, transparent 90%);
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+/* Снег для кнопки Поломки рольставней */
+.dropdown-menu>.mobile-submenu:nth-of-type(2)>.mobile-submenu-toggle::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    width: 200px;
+    height: 7px;
+    background: radial-gradient(circle at left, white 50%, transparent 90%);
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+/* Снег для Отзывы */
+.dropdown-menu>a[href="#reviews"]::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    width: 70px;
+    height: 6px;
+    background: radial-gradient(circle at left, white 50%, transparent 90%);
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+/* Снег для Контакты */
+.dropdown-menu>a[href="#footer-contact"]::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    width: 90px;
+    height: 7px;
+    background: radial-gradient(circle at left, white 50%, transparent 90%);
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    filter: blur(2px);
 }
 
 .dropdown-menu a:hover {
