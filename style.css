@@ -322,7 +322,7 @@ header .logo img {
     content: '';
     position: absolute;
     top: -2px;
-    left: 2px;
+    left: 19px;
     right: 2px;
     height: 7px;
     background: radial-gradient(circle at center, white 40%, transparent 90%);
@@ -330,6 +330,7 @@ header .logo img {
     opacity: 0.6;
     pointer-events: none;
     filter: blur(2px);
+    animation: snowGlow 2.5s ease-in-out infinite;
 }
 
 .desktop-menu>ul>li>a:hover {
@@ -1681,13 +1682,27 @@ footer p.contact-info a:hover {
     position: absolute;
     left: 15px;
     width: 190px;
-    /* подбери под длину текста */
     height: 7px;
     background: radial-gradient(circle at left, white 40%, transparent 90%);
     border-radius: 45%;
-    opacity: 0.8;
+    opacity: 0.75;
     pointer-events: none;
     filter: blur(2px);
+    animation: snowGlow 3s ease-in-out infinite;
+}
+
+@keyframes snowGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+        background: radial-gradient(circle at left, white 45%, transparent 90%);
+    }
+
+    50% {
+        opacity: 0.95;
+        background: radial-gradient(circle at left, white 50%, transparent 90%);
+    }
 }
 
 /* Снег для кнопки Поломки рольворот */
@@ -1699,9 +1714,23 @@ footer p.contact-info a:hover {
     height: 7px;
     background: radial-gradient(circle at left, white 50%, transparent 90%);
     border-radius: 50%;
-    opacity: 0.8;
     pointer-events: none;
     filter: blur(2px);
+    animation: snowGlow 2s ease-in-out infinite;
+}
+
+@keyframes snowGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+        background: radial-gradient(circle at left, white 45%, transparent 90%);
+    }
+
+    50% {
+        opacity: 0.95;
+        background: radial-gradient(circle at left, white 50%, transparent 90%);
+    }
 }
 
 /* Снег для Ремонт рольставней */
@@ -1710,13 +1739,26 @@ footer p.contact-info a:hover {
     position: absolute;
     left: 15px;
     width: 200px;
-    /* другой текст — другая ширина */
     height: 7px;
     background: radial-gradient(circle at left, white 50%, transparent 90%);
     border-radius: 50%;
-    opacity: 0.8;
     pointer-events: none;
     filter: blur(2px);
+    animation: snowGlow 2.2s ease-in-out infinite;
+}
+
+@keyframes snowGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+        background: radial-gradient(circle at left, white 45%, transparent 90%);
+    }
+
+    50% {
+        opacity: 0.95;
+        background: radial-gradient(circle at left, white 50%, transparent 90%);
+    }
 }
 
 /* Снег для кнопки Поломки рольставней */
@@ -1728,9 +1770,23 @@ footer p.contact-info a:hover {
     height: 7px;
     background: radial-gradient(circle at left, white 50%, transparent 90%);
     border-radius: 50%;
-    opacity: 0.8;
     pointer-events: none;
     filter: blur(2px);
+    animation: snowGlow 3s ease-in-out infinite;
+}
+
+@keyframes snowGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+        background: radial-gradient(circle at left, white 45%, transparent 90%);
+    }
+
+    50% {
+        opacity: 0.95;
+        background: radial-gradient(circle at left, white 50%, transparent 90%);
+    }
 }
 
 /* Снег для Отзывы */
@@ -1742,9 +1798,23 @@ footer p.contact-info a:hover {
     height: 6px;
     background: radial-gradient(circle at left, white 50%, transparent 90%);
     border-radius: 50%;
-    opacity: 0.8;
     pointer-events: none;
     filter: blur(2px);
+    animation: snowGlow 3.3s ease-in-out infinite;
+}
+
+@keyframes snowGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+        background: radial-gradient(circle at left, white 45%, transparent 90%);
+    }
+
+    50% {
+        opacity: 0.95;
+        background: radial-gradient(circle at left, white 50%, transparent 90%);
+    }
 }
 
 /* Снег для Контакты */
@@ -1756,9 +1826,23 @@ footer p.contact-info a:hover {
     height: 7px;
     background: radial-gradient(circle at left, white 50%, transparent 90%);
     border-radius: 50%;
-    opacity: 0.8;
     pointer-events: none;
     filter: blur(2px);
+    animation: snowGlow 3.5s ease-in-out infinite;
+}
+
+@keyframes snowGlow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+        background: radial-gradient(circle at left, white 45%, transparent 90%);
+    }
+
+    50% {
+        opacity: 0.95;
+        background: radial-gradient(circle at left, white 50%, transparent 90%);
+    }
 }
 
 .dropdown-menu a:hover {
