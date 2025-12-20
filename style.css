@@ -404,8 +404,8 @@ header .logo img {
 
 /* Выделение текста вопрос-ответ */
 .highlight {
-    animation: yellow-fade 10s;
-    border-left: 4px solid #c3d494ef;
+    animation: yellow-fade 5s;
+    border-left: 4px solid #e5ea52ef;
     padding-left: 10px;
 }
 
@@ -571,7 +571,7 @@ header .logo img {
 .service-phone .phone-link {
     text-decoration: none;
     font-weight: bold;
-    color: #d5e17a;
+    color: #3a3939;
     font-size: 22px;
     transition: color 0.3s;
 }
