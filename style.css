@@ -421,7 +421,7 @@ header .logo img {
 
 /* Выделение текста */
 .highlighted-answer {
-    animation: highlight-fade 8s ease-out;
+    animation: highlight-fade 5s ease-out;
     background-color: #c3d494ef;
     padding: 15px;
     margin: 10px 0;
