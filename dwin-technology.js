@@ -1,6 +1,5 @@
 // Кнопка "Наверх"- улучшенная версия
 const scrollToTopBtn = document.getElementById('scrollToTop');
-
 // Показываем/скрываем кнопку при скролле
 function toggleScrollButton() {
   // Используем window.scrollY вместо pageYOffset для лучшей совместимости
