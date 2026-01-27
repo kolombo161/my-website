@@ -46,16 +46,6 @@
       "days": 30,
       "notes": "Первый покупатель"
     },
-    "ZN-TEST-HWID-001": {
-      "email": "hwid@test.com",
-      "created": "2024-01-27",
-      "expires": "2025-02-27",
-      "hwid": "8B4E866E730E60BD",
-      "active": true,
-      "product": "zona_noads_pro",
-      "days": 365,
-      "notes": "Тест HWID привязки"
-    },
     "ZN-260127-7E7F-7283": {
       "email": "zoyberg161@yandex.ru",
       "created": "2026-01-27",
