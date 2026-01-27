@@ -56,15 +56,15 @@
       "days": 365,
       "notes": "Тест HWID привязки"
     },
-    "ZN-260127-105C-8288": {
+    "ZN-260127-7E7F-7283": {
       "email": "zoyberg161@yandex.ru",
       "created": "2026-01-27",
       "expires": "2026-04-27",
       "hwid": null,
       "active": true,
-      "product": "ZonaKillerPro",
+      "product": "zona_noads_pro",
       "days": 90,
-      "notes": "своя"
+      "notes": "Продажа 2026-01-27 08:33"
     }
   },
   "blacklist": [
