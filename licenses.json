@@ -29,7 +29,7 @@
     "ZN-TEST-DEACT-001": {
       "email": "deactivated@test.com",
       "created": "2024-01-27",
-      "expires": "2025-01-27",
+      "expires": "2024-01-27",
       "hwid": null,
       "active": false,
       "product": "zona_noads_pro",
@@ -49,7 +49,7 @@
     "ZN-TEST-HWID-001": {
       "email": "hwid@test.com",
       "created": "2024-01-27",
-      "expires": "2025-01-27",
+      "expires": "2026-02-27",
       "hwid": "TEST1234567890ABC",
       "active": true,
       "product": "zona_noads_pro",
