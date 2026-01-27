@@ -16,6 +16,26 @@
       "days": 365,
       "notes": "Демо-лицензия"
     },
+    "ZN-TEST-EXPIRE-001": {
+      "email": "expired@test.com",
+      "created": "2024-01-01",
+      "expires": "2024-01-01",
+      "hwid": null,
+      "active": true,
+      "product": "zona_noads_pro",
+      "days": 0,
+      "notes": "Тест истекшей лицензии"
+    },
+    "ZN-TEST-DEACT-001": {
+      "email": "deactivated@test.com",
+      "created": "2024-01-27",
+      "expires": "2025-01-27",
+      "hwid": null,
+      "active": false,
+      "product": "zona_noads_pro",
+      "days": 365,
+      "notes": "Тест деактивированной лицензии"
+    },
     "ZN-CUST-0000-0002": {
       "email": "customer@mail.ru",
       "created": "2024-01-27",
@@ -25,6 +45,16 @@
       "product": "zona_noads_pro",
       "days": 30,
       "notes": "Первый покупатель"
+    },
+    "ZN-TEST-HWID-001": {
+      "email": "hwid@test.com",
+      "created": "2024-01-27",
+      "expires": "2025-01-27",
+      "hwid": "TEST1234567890ABC",
+      "active": true,
+      "product": "zona_noads_pro",
+      "days": 365,
+      "notes": "Тест HWID привязки"
     }
   },
   "blacklist": [
