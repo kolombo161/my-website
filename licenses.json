@@ -55,6 +55,16 @@
       "product": "zona_noads_pro",
       "days": 365,
       "notes": "Тест HWID привязки"
+    },
+    "ZN-260127-9658-1838": {
+      "email": "zoyberg161@myandex.ru",
+      "created": "2026-01-27",
+      "expired": "2026-04-27",
+      "hwid": null,
+      "active": true,
+      "product": "zona_kill_pro",
+      "days": "90",
+      "notes": "своя"
     }
   },
   "blacklist": [
