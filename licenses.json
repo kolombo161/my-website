@@ -1,0 +1,33 @@
+{
+  "version": "2.0",
+  "last_updated": "2024-01-27",
+  "settings": {
+    "check_interval_hours": 24,
+    "offline_days_allowed": 7
+  },
+  "licenses": {
+    "ZN-DEMO-0000-0001": {
+      "email": "demo@test.com",
+      "created": "2024-01-27",
+      "expires": "2025-01-27",
+      "hwid": null,
+      "active": true,
+      "product": "zona_noads_pro",
+      "days": 365,
+      "notes": "Демо-лицензия"
+    },
+    "ZN-CUST-0000-0002": {
+      "email": "customer@mail.ru",
+      "created": "2024-01-27",
+      "expires": "2024-02-27",
+      "hwid": "A1B2C3D4E5F67890",
+      "active": true,
+      "product": "zona_noads_pro",
+      "days": 30,
+      "notes": "Первый покупатель"
+    }
+  },
+  "blacklist": [
+    "ZN-STOLEN-1234"
+  ]
+}
