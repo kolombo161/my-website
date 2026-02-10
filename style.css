@@ -250,13 +250,14 @@ header .logo img {
 .header-phone a {
     color: #484848;
     transition: color 0.3s ease, background-color 0.3s ease;
+    background-color: #e6f7e6;
 }
 
 /* Изменения для телефона: цвет текста больше не меняется, меняется только фон */
 .header-phone a:hover,
 .header-phone:hover .fa-phone {
     color: #242424;
-    background-color: #e6e33ce4;
+    background-color: #d8f782ef;
 }
 
 .header-city a {
@@ -267,14 +268,14 @@ header .logo img {
     font-style: italic;
     padding: 6px 10px;
     border-radius: 6px;
-    background-color: #dad86be4;
+    background-color: #e6f7e6;
     display: inline-block;
     transition: background-color 0.3s ease;
 }
 
 .header-city a:hover {
     color: #242424;
-    background-color: #e6e33ce4;
+    background-color: #d8f782ef;
 }
 
 /* Горизонтальное меню для десктопа */
