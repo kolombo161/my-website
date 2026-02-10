@@ -1211,6 +1211,7 @@ header .logo img {
     }
 }
 
+/* Цвет доп-блока */
 .additional-header {
     cursor: pointer;
     padding: 12px 15px;
