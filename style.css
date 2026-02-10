@@ -452,7 +452,7 @@ header .logo img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transform: scale(1.02);
     transition: all 0.3s ease;
-    border-left: 3px solid #e69d7b;
+    border-left: 3px solid #ebfc8bd8;
 }
 
 @keyframes highlight-fade {
@@ -946,9 +946,9 @@ header .logo img {
     top: 7px;
     width: 20px;
     height: 15px;
-    background-color: #ce80ed;
+    background-color: #fd7a00;
     border-radius: 3px;
-    border-left: 3px solid #d7a2f8;
+    border-left: 5px solid #fabc82;
 }
 
 /* Мигалка */
@@ -1009,7 +1009,7 @@ header .logo img {
 /* Стили всплывающей подсказки */
 .tooltip .tooltiptext {
     visibility: hidden;
-    background-color: #d6f676ea;
+    background-color: #f89437ee;
     color: #000;
     text-align: center;
     border-radius: 6px;
@@ -1116,12 +1116,12 @@ header .logo img {
 
 .bold-text {
     font-weight: 600;
-    color: #943ab7;
-    background-color: #e9dcef;
+    color: #fd7a00;
+    background-color: #ffffff;
     padding: 2px 4px;
     border-radius: 3px;
-    border-left: 2px solid #ce80ed;
-    border-right: 2px solid #ce80ed;
+    border-left: 2px solid #fd7a00;
+    border-right: 2px solid #fd7a00;
 }
 
 .section {
@@ -1848,7 +1848,7 @@ footer p.contact-info a:hover {
 }
 
 .dropdown-menu a:hover {
-    background-color: #c7ef59ec;
+    background-color: #c4f43ff7;
     border-radius: 4px;
 }
 
@@ -1864,7 +1864,7 @@ footer p.contact-info a:hover {
 
 .mobile-submenu-items::-webkit-scrollbar {
     width: 5px;
-    background: #789b0dec;
+    background: #fd7a00;
 }
 
 .mobile-submenu-items a {
