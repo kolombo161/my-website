@@ -452,7 +452,7 @@ header .logo img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transform: scale(1.02);
     transition: all 0.3s ease;
-    border-left: 3px solid #8bc34a;
+    border-left: 3px solid #e69d7b;
 }
 
 @keyframes highlight-fade {
@@ -995,7 +995,7 @@ header .logo img {
     content: "ℹ";
     font-size: 0.7em;
     margin-left: 1px;
-    color: #98de0c;
+    color: #fd7a00;
     position: relative;
     top: -0.5em;
     vertical-align: baseline;
@@ -1214,7 +1214,7 @@ header .logo img {
 .additional-header {
     cursor: pointer;
     padding: 12px 15px;
-    background-color: #ebe960d6;
+    background-color: #ebf7b0d7;
     border: 1px solid #ddd;
     border-radius: 7px;
     transition: all 0.3s;
@@ -1222,7 +1222,7 @@ header .logo img {
 }
 
 .additional-header:hover {
-    background-color: #e6e33ce4;
+    background-color: #ebfc8bd8;
 }
 
 .additional-header h4 {
