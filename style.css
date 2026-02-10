@@ -257,7 +257,7 @@ header .logo img {
 .header-phone a:hover,
 .header-phone:hover .fa-phone {
     color: #242424;
-    background-color: #d8f782ef;
+    background-color: #ebfc8bd8;
 }
 
 .header-city a {
@@ -275,7 +275,7 @@ header .logo img {
 
 .header-city a:hover {
     color: #242424;
-    background-color: #d8f782ef;
+    background-color: #ebfc8bd8;
 }
 
 /* Горизонтальное меню для десктопа */
