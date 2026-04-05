@@ -290,7 +290,7 @@ header .logo img {
     width: 100%;
     background-color: #848384f4;
     padding: 10px 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: sticky;
     top: 0;
 }
@@ -522,7 +522,7 @@ header .logo img {
     text-align: center;
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.916);
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Стили заголовка */
@@ -800,7 +800,7 @@ header .logo img {
 
 /* Стили ТОЛЬКО для блока с контактами */
 .advantages p {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 10px;
     color: #272727;
     margin: 5px 0;
@@ -917,7 +917,7 @@ header .logo img {
 /* Текст услуги */
 .service-text {
     text-align: left;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     line-height: 1.6;
 }
@@ -1219,7 +1219,8 @@ header .logo img {
     border: 1px solid #ddd;
     border-radius: 7px;
     transition: all 0.3s;
-    font-family: 'Roboto Mono', monospace;
+    font-family: monospace;
+    font-size: 1.3em;
 }
 
 .additional-header:hover {
