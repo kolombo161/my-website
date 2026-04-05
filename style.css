@@ -278,7 +278,7 @@ header .logo img {
     background-color: #ebfc8bd8;
 }
 
-/* Горизонтальное меню для десктопа */
+/* Горизонтальное меню десктопа */
 .desktop-menu-container {
     position: relative;
     z-index: 1000;
