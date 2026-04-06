@@ -878,14 +878,23 @@ header .logo img {
     margin-right: 20px;
     overflow: hidden;
     position: relative;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .service-image img.main-image {
     width: 100%;
     height: 100%;
-    border-radius: 8px;
     object-fit: cover;
     cursor: pointer;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+/* Эффект приближения при наведении на изображение */
+.service-image img.main-image:hover {
+    border-radius: 8px;
+    transform: scale(1.05);
 }
 
 /* Скрываем дополнительные изображения */
