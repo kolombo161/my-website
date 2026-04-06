@@ -62,6 +62,23 @@ document.addEventListener('DOMContentLoaded', function () {
     img.ondragstart = () => false;
   });
 
+  // Минималистичный вариант
+  document.addEventListener('DOMContentLoaded', () => {
+      // Только для экранов до 768px
+      if (window.innerWidth <= 768) {
+          const images = document.querySelectorAll('.service-image img.main-image');
+          const observer = new IntersectionObserver(
+              (entries) => {
+                  entries.forEach(entry => {
+                      entry.target.style.transform = entry.isIntersecting ? 'scale(1.08)' : 'scale(1)';
+                  });
+              },
+              { threshold: 0.3 }
+          );
+          images.forEach(img => observer.observe(img));
+      }
+  });
+
   // Функция подсветки элементов
   function highlightElement(targetElement) {
     const answerBlock =

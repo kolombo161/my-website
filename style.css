@@ -887,13 +887,13 @@ header .logo img {
     height: 100%;
     object-fit: cover;
     cursor: pointer;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     display: block;
+    will-change: transform;
 }
 
 /* Эффект приближения при наведении на изображение */
 .service-image img.main-image:hover {
-    border-radius: 8px;
     transform: scale(1.05);
 }
 
