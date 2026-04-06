@@ -419,7 +419,7 @@ header .logo img {
     background-color: #c3d494ef;
     padding: 15px;
     margin: 10px 0;
-    border-radius: 4px;
+    border-radius: 4px;    
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transform: scale(1.02);
     transition: all 0.3s ease;
@@ -1012,8 +1012,8 @@ header .logo img {
     transition: opacity 0.3s;
     width: auto;
     max-width: 250px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border: 0.5px solid #ccc;
+    box-shadow: 0 4px 8px rgba(255, 9, 9, 0.607);
+    border: 0.5px solid #ff8433;
     white-space: normal;
 }
 
@@ -1207,16 +1207,20 @@ header .logo img {
 .additional-header {
     cursor: pointer;
     padding: 12px 15px;
-    background-color: #ebf7b0d7;
-    border: 1px solid #ddd;
+    background-color: #fad935e5;
+    box-shadow: 0 2px 4px rgba(255, 9, 9, 0.842);
     border-radius: 7px;
     transition: all 0.3s;
     font-family: monospace;
-    font-size: 1.3em;
+    font-size: 1.1em;
+    color: #2e3d4de3;
 }
 
 .additional-header:hover {
-    background-color: #ebfc8bd8;
+    background-color: #fec713f8;
+    box-shadow: 0 4px 8px rgba(255, 9, 9, 0.607);
+    transform: translateY(-2px);
+    color: #2e3d4dee;
 }
 
 .additional-header h4 {
@@ -1225,7 +1229,6 @@ header .logo img {
     justify-content: space-between;
     align-items: center;
     font-size: 18px;
-    color: #333;
 }
 
 .toggle-icon {
