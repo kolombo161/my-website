@@ -21,7 +21,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-image: url('images/shapka1.jpg');
+    background-image: url('images/shapka_2.png');
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
@@ -241,34 +241,36 @@ header .logo img {
 
 .header-phone .fa-phone,
 .header-phone a {
-    color: #484848;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    background-color: #e6f7e6;
+    color: #1b1b1b;
+    transition: all 0.3s ease;
+    background: linear-gradient(0deg, #07fcf0 0%, #aefdf9 100%);
 }
 
-/* Изменения для телефона: цвет текста больше не меняется, меняется только фон */
+/* Градиент при наведении снизу вверх */
 .header-phone a:hover,
 .header-phone:hover .fa-phone {
-    color: #242424;
-    background-color: #ebfc8bd8;
+    color: #1b1b1b;
+    background: linear-gradient(0deg, #aefdf9 0%, #07fcf0 100%);
+    transform: translateY(-2px);
 }
 
 .header-city a {
-    color: #636161;
+    color: #1b1b1b;
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
     font-style: italic;
     padding: 6px 10px;
     border-radius: 6px;
-    background-color: #e6f7e6;
+    background: linear-gradient(0deg, #ffd104 0%, #fdeeaa 100%);
     display: inline-block;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .header-city a:hover {
-    color: #242424;
-    background-color: #ebfc8bd8;
+    color: #1b1b1b;
+    background: linear-gradient(0deg, #fdeeaa 0%, #ffd104 100%);
+    transform: translateY(-3px);
 }
 
 /* Горизонтальное меню десктопа */
