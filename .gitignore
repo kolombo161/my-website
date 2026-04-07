@@ -12,6 +12,17 @@ System Volume Information/
 # Локальные файлы
 *.log
 
+# Зависимости Node.js (папка с библиотеками)
+node_modules/
+
+# Файлы npm/yarn (не нужно хранить в репозитории)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Лицензии и информация о пакетах (генерируются автоматически)
+package.json
+licenses.json
 
 # Но разрешить отслеживание SEO-файлов
 !/CNAME
