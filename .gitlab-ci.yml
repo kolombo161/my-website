@@ -2,7 +2,7 @@ pages:
   stage: deploy
   script:
     - mkdir public
-    - xcopy . public /E /H /C /I /Y
+    - robocopy . public /E /NJH /NJS /NP
     - exit 0
   artifacts:
     paths:
