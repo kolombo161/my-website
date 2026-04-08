@@ -1,8 +1,16 @@
 pages:
   stage: deploy
   script:
-    - mkdir public
-    - cp -r . public
+    # Создаём папку public
+    - New-Item -ItemType Directory -Force -Path public | Out-Null
+
+    # Копируем все файлы из текущей директории (кроме самой папки public) в public
+    - Get-ChildItem -Path . -Exclude public | Copy-Item -Destination public -Recurse -Force
+
+    # Выводим содержимое public для проверки (очень полезно для отладки)
+    - Write-Host "Содержимое папки public:"
+    - Get-ChildItem -Path public
+
   artifacts:
     paths:
       - public
