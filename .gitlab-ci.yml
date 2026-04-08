@@ -1,8 +1,9 @@
 pages:
   stage: deploy
   script:
+    - dir
     - mkdir public
-    - xcopy * public /E /H /C /I /Y
+    - xcopy . public /E /H /C /I /Y
   artifacts:
     paths:
       - public
