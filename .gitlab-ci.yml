@@ -2,8 +2,7 @@ pages:
   stage: deploy
   script:
     - mkdir public
-    - xcopy * public /E /H /C /I /Y
-    - if exist public\.git rmdir /S /Q public\.git
+    - cp -r . public
   artifacts:
     paths:
       - public
