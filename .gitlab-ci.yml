@@ -1,11 +1,9 @@
 pages:
   stage: deploy
   script:
-    - mkdir public
-    - cp -r . public
-    - rm -rf public/.git
+    - echo "Сайт уже в корне репозитория"
   artifacts:
     paths:
-      - public
+      - .
   only:
     - main
