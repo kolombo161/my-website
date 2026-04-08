@@ -1,9 +1,10 @@
 pages:
   stage: deploy
   script:
-    - mkdir public
-    - git clone . public
-    - Remove-Item -Recurse -Force public\.git
+    - New-Item -ItemType Directory -Force -Path public
+    - Copy-Item -Path .\* -Destination .\public -Recurse -Force
+    - Remove-Item -Path .\public\.git -Recurse -Force -ErrorAction SilentlyContinue
+    - Remove-Item -Path .\public\.gitlab-ci.yml -Force -ErrorAction SilentlyContinue
   artifacts:
     paths:
       - public
