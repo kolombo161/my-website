@@ -1,10 +1,9 @@
 pages:
   stage: deploy
   script:
-    - if (Test-Path public) { Remove-Item -Recurse -Force public }
-    - New-Item -ItemType Directory -Path public | Out-Null
-    - Get-ChildItem -Path . -Exclude public | Copy-Item -Destination public -Recurse -Force
-    - if (-not (Test-Path public\index.html)) { Write-Host "ОШИБКА: index.html не найден!"; exit 1 }
+    - mkdir public
+    - cp -r . public
+    - rm -rf public/.git
   artifacts:
     paths:
       - public
