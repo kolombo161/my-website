@@ -1,13 +1,9 @@
 pages:
   stage: deploy
   script:
-    # Удаляем папку public, если она уже есть
     - if (Test-Path public) { Remove-Item -Recurse -Force public }
-    # Создаём новую чистую папку public
     - New-Item -ItemType Directory -Path public | Out-Null
-    # Копируем файлы, ИСКЛЮЧАЯ папку public
     - Get-ChildItem -Path . -Exclude public | Copy-Item -Destination public -Recurse -Force
-    # Проверяем, что index.html на месте
     - if (-not (Test-Path public\index.html)) { Write-Host "ОШИБКА: index.html не найден!"; exit 1 }
   artifacts:
     paths:
