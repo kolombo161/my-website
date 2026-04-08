@@ -3,7 +3,7 @@ pages:
   script:
     - mkdir public
     - git clone . public
-    - rm -rf public/.git
+    - Remove-Item -Recurse -Force public\.git
   artifacts:
     paths:
       - public
