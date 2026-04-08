@@ -1,10 +1,9 @@
-variables:
-  AUTO_DEVOPS_ENABLED: "false"
-
 pages:
   stage: deploy
   script:
-    - echo "Копирование файлов сайта..."
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
   artifacts:
     paths:
       - public
