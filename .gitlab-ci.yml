@@ -2,8 +2,8 @@ pages:
   stage: deploy
   script:
     - mkdir public
-    - robocopy . public /E /NJH /NJS /NP
-    - exit 0
+    - git clone . public
+    - rm -rf public/.git
   artifacts:
     paths:
       - public
