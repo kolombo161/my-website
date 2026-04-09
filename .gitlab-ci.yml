@@ -2,7 +2,7 @@ pages:
   stage: deploy
   script:
     - mkdir public
-    - cp -r * public
+    - Get-ChildItem -Path . -Exclude public | Copy-Item -Destination public -Recurse -Force
     - Remove-Item -Recurse -Force public\.git -ErrorAction SilentlyContinue
     - Remove-Item -Force public\.gitlab-ci.yml -ErrorAction SilentlyContinue
   artifacts:
