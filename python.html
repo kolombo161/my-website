@@ -44,67 +44,67 @@
                         <tr>
                             <td><code>class House:</code></td>
                             <td>Чертеж дома</td>
-                            <td>Создать новый тип данных</td>
+                            <td>Создать новый тип данных (описать, из чего состоит дом и что он умеет)</td>
                             <td><code>class Car:</code></td>
                         </tr>
                         <tr>
                             <td><code>def __init__(self):</code></td>
                             <td>Строительная бригада</td>
-                            <td>Задать начальные характеристики при постройке</td>
+                            <td>Задать начальные характеристики дома при его постройке. Вызывается автоматически.</td>
                             <td><code>self.color = color</code></td>
                         </tr>
                         <tr>
                             <td><code>self</code></td>
                             <td>Сам конкретный дом</td>
-                            <td>Ссылка на объект внутри методов</td>
+                            <td>Ссылка на объект внутри его методов. Чтобы метод знал, с каким именно домом работать.</td>
                             <td><code>self.address</code></td>
                         </tr>
                         <tr>
                             <td><code>self.attribute = value</code></td>
-                            <td>Характеристика дома</td>
-                            <td>Сохранить данные внутри объекта</td>
+                            <td>Характеристика дома (запись в паспорт)</td>
+                            <td>Сохранить данные внутри объекта (цвет, этажи, список жильцов).</td>
                             <td><code>self.residents = []</code></td>
                         </tr>
                         <tr>
                             <td><code>self.method()</code></td>
                             <td>Внутренний ремонт</td>
-                            <td>Вызвать другой метод этого же объекта</td>
+                            <td>Вызвать другой метод этого же объекта изнутри (например, покраска требует сначала помыть стены).</td>
                             <td><code>self.open_door()</code></td>
                         </tr>
                         <tr>
                             <td><code>def method(self, param):</code></td>
                             <td>Действие с инструментами</td>
-                            <td>Описать действие, принимающее данные</td>
+                            <td>Описать действие, которое может выполнять дом. param — это материал/инструмент для действия.</td>
                             <td><code>def paint(self, color):</code></td>
                         </tr>
                         <tr>
-                            <td><code>my_obj = Class()</code></td>
+                            <td><code>my_house = House()</code></td>
                             <td>Строительство дома</td>
-                            <td>Создать конкретный экземпляр</td>
+                            <td>Создать конкретный объект (экземпляр) по чертежу.</td>
                             <td><code>house1 = House()</code></td>
                         </tr>
                         <tr>
-                            <td><code>my_obj.method()</code></td>
+                            <td><code>my_house.method()</code></td>
                             <td>Вызов действия</td>
-                            <td>Приказать объекту выполнить действие</td>
+                            <td>Приказать дому выполнить действие.</td>
                             <td><code>house1.open_door()</code></td>
                         </tr>
                         <tr>
                             <td><code>"текст"</code></td>
-                            <td>Надпись / строка</td>
-                            <td>Текстовые данные</td>
+                            <td>Строка (надпись)</td>
+                            <td>Текстовые данные (цвета, адреса, имена).</td>
                             <td><code>color = "белый"</code></td>
                         </tr>
                         <tr>
                             <td><code>[]</code></td>
                             <td>Пустая коробка</td>
-                            <td>Список (можно добавлять, удалять)</td>
+                            <td>Список (можно добавлять, удалять, перебирать элементы).</td>
                             <td><code>self.residents = []</code></td>
                         </tr>
                         <tr>
                             <td><code>None</code></td>
-                            <td>Пустота / неизвестно</td>
-                            <td>Обозначает отсутствие значения</td>
+                            <td>Пустота (неизвестно)</td>
+                            <td>Обозначает "ничего", "нет значения", "не указано".</td>
                             <td><code>residents=None</code></td>
                         </tr>
                     </tbody>
@@ -134,37 +134,37 @@
                         <tr>
                             <td><code>if условие:</code></td>
                             <td>Вопрос к дому</td>
-                            <td>Выполнить код, если условие True</td>
+                            <td>Выполнить код только если условие верно (True).</td>
                             <td><code>if self.lights_on:</code></td>
                         </tr>
                         <tr>
                             <td><code>else:</code></td>
                             <td>Иначе</td>
-                            <td>Выполнить код, если условие False</td>
+                            <td>Выполнить код, если условие было ложным (False).</td>
                             <td><code>else: print("Свет выкл")</code></td>
                         </tr>
                         <tr>
                             <td><code>elif условие:</code></td>
                             <td>Иначе если...</td>
-                            <td>Проверить другое условие</td>
+                            <td>Проверить другое условие, если первое не сработало.</td>
                             <td><code>elif self.door_open:</code></td>
                         </tr>
                         <tr>
                             <td><code>==</code></td>
                             <td>Равно?</td>
-                            <td>Проверка на равенство</td>
+                            <td>Проверка на РАВЕНСТВО.</td>
                             <td><code>if color == "белый":</code></td>
                         </tr>
                         <tr>
                             <td><code>is None</code></td>
                             <td>Равно пустоте?</td>
-                            <td>Проверка на None</td>
+                            <td>Специальная проверка на None (отсутствие значения).</td>
                             <td><code>if data is None:</code></td>
                         </tr>
                         <tr>
                             <td><code>not</code></td>
                             <td>НЕ (отрицание)</td>
-                            <td>Меняет True ↔ False</td>
+                            <td>Меняет True ↔ False, и наоборот.</td>
                             <td><code>if not self.lights_on:</code></td>
                         </tr>
                     </tbody>
@@ -194,31 +194,31 @@
                         <tr>
                             <td><code>try:</code></td>
                             <td>Попытка выполнить</td>
-                            <td>Блок, где может быть ошибка</td>
+                            <td>"Попробуй включить свет". Блок, где МОЖЕТ произойти ошибка.</td>
                             <td><code>try: self.toggle_lights()</code></td>
                         </tr>
                         <tr>
                             <td><code>except Exception:</code></td>
-                            <td>Аварийный план</td>
-                            <td>Выполняется ТОЛЬКО при ошибке</td>
+                            <td>Аварийный план "Б"</td>
+                            <td>"Если лампочка сгорела — зажечь свечу". Блок, который выполняется только при ошибке.</td>
                             <td><code>except: print("Ошибка!")</code></td>
                         </tr>
                         <tr>
                             <td><code>except ValueError:</code></td>
                             <td>Конкретная авария</td>
-                            <td>Ловит только конкретную ошибку</td>
+                            <td>Ловить только конкретную ошибку (например, перегорание проводки).</td>
                             <td><code>except ValueError:</code></td>
                         </tr>
                         <tr>
                             <td><code>finally:</code></td>
                             <td>Обязательная уборка</td>
-                            <td>Выполняется ВСЕГДА</td>
+                            <td>Выполняется всегда: и при ошибке, и без неё (например, закрыть дверь).</td>
                             <td><code>finally: close_door()</code></td>
                         </tr>
                         <tr>
                             <td><code>raise Exception("текст")</code></td>
                             <td>Искусственная авария</td>
-                            <td>Сами вызываем ошибку</td>
+                            <td>Самостоятельно вызвать ошибку (если что-то пошло не так по вашей логике).</td>
                             <td><code>raise Exception("Переполнен")</code></td>
                         </tr>
                     </tbody>
@@ -254,13 +254,13 @@
                         <tr>
                             <td><code>a is b</code></td>
                             <td>Один и тот же дом?</td>
-                            <td>Проверка на ОДИН объект</td>
+                            <td>Проверяет, указывают ли две переменные на ОДИН И ТОТ ЖЕ объект.</td>
                             <td><code>if house1 is house2:</code></td>
                         </tr>
                         <tr>
                             <td><code>a == b</code></td>
                             <td>Одинаковые дома?</td>
-                            <td>Проверка на РАВЕНСТВО значений</td>
+                            <td>Проверяет, равны ли значения объектов (может быть два разных дома, но с одинаковым цветом).</td>
                             <td><code>if color1 == color2:</code></td>
                         </tr>
                     </tbody>
