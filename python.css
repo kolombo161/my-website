@@ -1,0 +1,349 @@
+/* ================================
+   ОБЩИЕ СТИЛИ ДЛЯ СТРАНИЦЫ
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
+    color: #1a1a2e;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ================================
+   ШАПКА (HEADER)
+   ================================ */
+header {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+header h1 span {
+    color: #4ecdc4;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    margin-top: 8px;
+}
+
+/* ================================
+   ОСНОВНОЙ КОНТЕЙНЕР
+   ================================ */
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ================================
+   ВСТУПЛЕНИЕ
+   ================================ */
+.intro {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    margin-bottom: 35px;
+    border-left: 5px solid #4ecdc4;
+}
+
+.intro h2 {
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+/* ================================
+   БЛОК С ТАБЛИЦЕЙ
+   ================================ */
+.table-section {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    margin-bottom: 40px;
+    transition: box-shadow 0.3s ease;
+}
+
+.table-section:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+}
+
+.table-section h2 {
+    color: #1a1a2e;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #4ecdc4;
+    display: inline-block;
+}
+
+/* ================================
+   ОБЕРТКА ДЛЯ ГОРИЗОНТАЛЬНОЙ ПРОКРУТКИ
+   ================================ */
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 15px 0 10px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+/* ================================
+   ТАБЛИЦА
+   ================================ */
+.python-table {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background: #fff;
+}
+
+/* Заголовки */
+.python-table thead {
+    background: linear-gradient(135deg, #1a1a2e, #2c3e50);
+    color: #fff;
+}
+
+.python-table thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Ячейки */
+.python-table tbody td {
+    padding: 13px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+}
+
+.python-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Чередование строк (зебра) */
+.python-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.python-table tbody tr:hover {
+    background-color: #e8f4f8;
+    transition: background 0.2s ease;
+}
+
+/* ================================
+   КОД ВНУТРИ ТАБЛИЦЫ
+   ================================ */
+.python-table code {
+    background: #f1f3f5;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #c7254e;
+    white-space: nowrap;
+}
+
+/* Для длинных примеров — разрешаем перенос */
+.python-table td code.long {
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* ================================
+   ПОДПИСЬ К ТАБЛИЦЕ
+   ================================ */
+.table-caption {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-align: right;
+    font-style: italic;
+    padding-right: 5px;
+}
+
+/* ================================
+   СПИСОК БУДУЩИХ ТЕМ
+   ================================ */
+.future-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    margin-top: 12px;
+}
+
+.future-list li {
+    background: #f1f3f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    border: 1px solid #dee2e6;
+}
+
+.future-list li code {
+    background: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #c7254e;
+}
+
+/* ================================
+   ФУТЕР
+   ================================ */
+footer {
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 30px;
+    color: #6c757d;
+    border-top: 1px solid #dee2e6;
+}
+
+footer p {
+    margin: 4px 0;
+}
+
+footer #update-date {
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+/* ================================
+   АДАПТИВНОСТЬ (МОБИЛЬНЫЕ)
+   ================================ */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    header {
+        padding: 20px 15px;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .table-section {
+        padding: 16px 12px;
+    }
+
+    .table-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .python-table {
+        font-size: 0.82rem;
+        min-width: 550px;
+    }
+
+    .python-table thead th,
+    .python-table tbody td {
+        padding: 10px 10px;
+    }
+
+    .python-table code {
+        font-size: 0.75rem;
+        padding: 1px 5px;
+    }
+
+    .future-list li {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    .table-caption {
+        font-size: 0.75rem;
+    }
+}
+
+/* ================================
+   ДОПОЛНИТЕЛЬНО: ТЕМНАЯ ТЕМА (опционально)
+   ================================ */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #12121a;
+        color: #e9ecef;
+    }
+
+    .table-section,
+    .intro {
+        background: #1e1e2e;
+        border-color: #2c3e50;
+    }
+
+    .table-section h2 {
+        color: #e9ecef;
+        border-bottom-color: #4ecdc4;
+    }
+
+    .python-table {
+        background: #1e1e2e;
+    }
+
+    .python-table thead {
+        background: linear-gradient(135deg, #0d0d1a, #1a1a2e);
+    }
+
+    .python-table tbody td {
+        border-bottom-color: #2c2c3e;
+    }
+
+    .python-table tbody tr:nth-child(even) {
+        background-color: #161622;
+    }
+
+    .python-table tbody tr:hover {
+        background-color: #252540;
+    }
+
+    .python-table code {
+        background: #2c2c3e;
+        color: #f8a5b0;
+    }
+
+    .future-list li {
+        background: #2c2c3e;
+        border-color: #3d3d5c;
+        color: #e9ecef;
+    }
+
+    .future-list li code {
+        background: #3d3d5c;
+        color: #f8a5b0;
+    }
+
+    .table-caption {
+        color: #a0a0b8;
+    }
+
+    footer {
+        border-top-color: #2c2c3e;
+        color: #a0a0b8;
+    }
+
+    footer #update-date {
+        color: #e9ecef;
+    }
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Шпаргалка | Обучение</title>
+    <link rel="stylesheet" href="python.css">
+</head>
+<body>
+    <header>
+        <h1>🐍 Python для начинающих</h1>
+        <p>Обучение в аналогиях: чертежи, дома и программирование</p>
+    </header>
+
+    <main>
+        <!-- ========================================== -->
+        <!-- БЛОК 1: ВСТУПЛЕНИЕ (можно убрать)          -->
+        <!-- ========================================== -->
+        <section class="intro">
+            <h2>Добро пожаловать!</h2>
+            <p>
+                Здесь собраны таблицы и схемы по основам Python в формате 
+                <strong>"класс = чертеж дома, объект = дом"</strong>.
+                По мере изучения материал будет расширяться.
+            </p>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- БЛОК 2: ТАБЛИЦА 1 — ОСНОВЫ КЛАССОВ         -->
+        <!-- ========================================== -->
+        <section class="table-section" id="section-1">
+            <h2>📊 Таблица №1: Основы классов и объектов</h2>
+            <div class="table-wrapper">
+                <table class="python-table">
+                    <thead>
+                        <tr>
+                            <th>Конструкция / Код</th>
+                            <th>Аналогия (дом)</th>
+                            <th>Назначение</th>
+                            <th>Пример</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- class -->
+                        <tr>
+                            <td><code>class House:</code></td>
+                            <td>Чертеж дома</td>
+                            <td>Создать новый тип данных</td>
+                            <td><code>class Car:</code></td>
+                        </tr>
+                        <!-- __init__ -->
+                        <tr>
+                            <td><code>def __init__(self):</code></td>
+                            <td>Строительная бригада</td>
+                            <td>Задать начальные характеристики при постройке</td>
+                            <td><code>self.color = color</code></td>
+                        </tr>
+                        <!-- self -->
+                        <tr>
+                            <td><code>self</code></td>
+                            <td>Сам конкретный дом</td>
+                            <td>Ссылка на объект внутри методов</td>
+                            <td><code>self.address</code></td>
+                        </tr>
+                        <!-- атрибут -->
+                        <tr>
+                            <td><code>self.attr = value</code></td>
+                            <td>Характеристика дома</td>
+                            <td>Сохранить данные внутри объекта</td>
+                            <td><code>self.residents = []</code></td>
+                        </tr>
+                        <!-- вызов метода -->
+                        <tr>
+                            <td><code>self.method()</code></td>
+                            <td>Внутренний ремонт</td>
+                            <td>Вызвать другой метод этого же объекта</td>
+                            <td><code>self.open_door()</code></td>
+                        </tr>
+                        <!-- метод с параметром -->
+                        <tr>
+                            <td><code>def method(self, param):</code></td>
+                            <td>Действие с инструментами</td>
+                            <td>Описать действие, принимающее данные</td>
+                            <td><code>def paint(self, color):</code></td>
+                        </tr>
+                        <!-- создание объекта -->
+                        <tr>
+                            <td><code>my_obj = Class()</code></td>
+                            <td>Строительство дома</td>
+                            <td>Создать конкретный экземпляр</td>
+                            <td><code>house1 = House()</code></td>
+                        </tr>
+                        <!-- вызов метода объекта -->
+                        <tr>
+                            <td><code>my_obj.method()</code></td>
+                            <td>Вызов действия</td>
+                            <td>Приказать объекту выполнить действие</td>
+                            <td><code>house1.open_door()</code></td>
+                        </tr>
+                        <!-- строки -->
+                        <tr>
+                            <td><code>"текст"</code></td>
+                            <td>Надпись / строка</td>
+                            <td>Текстовые данные</td>
+                            <td><code>color = "белый"</code></td>
+                        </tr>
+                        <!-- список -->
+                        <tr>
+                            <td><code>[]</code></td>
+                            <td>Пустая коробка</td>
+                            <td>Список (можно добавлять, удалять)</td>
+                            <td><code>self.residents = []</code></td>
+                        </tr>
+                        <!-- None -->
+                        <tr>
+                            <td><code>None</code></td>
+                            <td>Пустота / неизвестно</td>
+                            <td>Обозначает отсутствие значения</td>
+                            <td><code>residents=None</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Подпись к таблице -->
+            <p class="table-caption">
+                📌 <em>Таблица обновлена: 23.07.2026 (Базовый блок)</em>
+            </p>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- БЛОК 3: ТАБЛИЦА 2 — УСЛОВИЯ               -->
+        <!-- ========================================== -->
+        <section class="table-section" id="section-2">
+            <h2>📊 Таблица №2: Условные операторы</h2>
+            <div class="table-wrapper">
+                <table class="python-table">
+                    <thead>
+                        <tr>
+                            <th>Конструкция</th>
+                            <th>Аналогия (дом)</th>
+                            <th>Назначение</th>
+                            <th>Пример</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>if условие:</code></td>
+                            <td>Вопрос к дому</td>
+                            <td>Выполнить код, если условие True</td>
+                            <td><code>if self.lights_on:</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>else:</code></td>
+                            <td>Иначе</td>
+                            <td>Выполнить код, если условие False</td>
+                            <td><code>else: print("Свет выкл")</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>elif условие:</code></td>
+                            <td>Иначе если...</td>
+                            <td>Проверить другое условие</td>
+                            <td><code>elif self.door_open:</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>==</code></td>
+                            <td>Равно?</td>
+                            <td>Проверка на равенство</td>
+                            <td><code>if color == "белый":</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>is None</code></td>
+                            <td>Равно пустоте?</td>
+                            <td>Проверка на None</td>
+                            <td><code>if data is None:</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>not</code></td>
+                            <td>НЕ (отрицание)</td>
+                            <td>Меняет True ↔ False</td>
+                            <td><code>if not self.lights_on:</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-caption">
+                📌 <em>Таблица обновлена: 23.07.2026</em>
+            </p>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- БЛОК 4: ТАБЛИЦА 3 — ОБРАБОТКА ОШИБОК     -->
+        <!-- ========================================== -->
+        <section class="table-section" id="section-3">
+            <h2>📊 Таблица №3: Обработка ошибок (try / except)</h2>
+            <div class="table-wrapper">
+                <table class="python-table">
+                    <thead>
+                        <tr>
+                            <th>Конструкция</th>
+                            <th>Аналогия (дом)</th>
+                            <th>Назначение</th>
+                            <th>Пример</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>try:</code></td>
+                            <td>Попытка выполнить</td>
+                            <td>Блок, где может быть ошибка</td>
+                            <td><code>try: self.toggle_lights()</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>except Exception:</code></td>
+                            <td>Аварийный план</td>
+                            <td>Выполняется ТОЛЬКО при ошибке</td>
+                            <td><code>except: print("Ошибка!")</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>except ValueError:</code></td>
+                            <td>Конкретная авария</td>
+                            <td>Ловит только конкретную ошибку</td>
+                            <td><code>except ValueError:</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>finally:</code></td>
+                            <td>Обязательная уборка</td>
+                            <td>Выполняется ВСЕГДА</td>
+                            <td><code>finally: close_door()</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>raise Exception("текст")</code></td>
+                            <td>Искусственная авария</td>
+                            <td>Сами вызываем ошибку</td>
+                            <td><code>raise Exception("Переполнен")</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-caption">
+                📌 <em>Таблица обновлена: 23.07.2026</em>
+            </p>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- БЛОК 5: ТАБЛИЦА 4 — ПЕРЕМЕННЫЕ И ССЫЛКИ -->
+        <!-- ========================================== -->
+        <section class="table-section" id="section-4">
+            <h2>📊 Таблица №4: Переменные и ссылки</h2>
+            <div class="table-wrapper">
+                <table class="python-table">
+                    <thead>
+                        <tr>
+                            <th>Конструкция</th>
+                            <th>Аналогия (дом)</th>
+                            <th>Назначение</th>
+                            <th>Пример</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>a = b</code></td>
+                            <td>Дубликат таблички</td>
+                            <td>Обе переменные указывают на ОДИН объект</td>
+                            <td><code>house2 = house1</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>a is b</code></td>
+                            <td>Один и тот же дом?</td>
+                            <td>Проверка на ОДИН объект</td>
+                            <td><code>if house1 is house2:</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>a == b</code></td>
+                            <td>Одинаковые дома?</td>
+                            <td>Проверка на РАВЕНСТВО значений</td>
+                            <td><code>if color1 == color2:</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-caption">
+                📌 <em>Таблица обновлена: 23.07.2026</em>
+            </p>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- БЛОК 6: МЕСТО ДЛЯ БУДУЩИХ ТАБЛИЦ          -->
+        <!-- ========================================== -->
+        <section class="table-section" id="section-future">
+            <h2>📌 Следующие темы (готовятся)</h2>
+            <ul class="future-list">
+                <li>🔹 Наследование (класс-чертеж с гаражом)</li>
+                <li>🔹 Магические методы (<code>__str__</code>, <code>__len__</code>)</li>
+                <li>🔹 Декораторы (дополнительные услуги при покраске)</li>
+                <li>🔹 Работа с файлами</li>
+                <li>🔹 И многое другое...</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>🐍 Обучение Python в аналогиях | Сделано с ❤️ для собственного сайта</p>
+        <p>Обновлено: <span id="update-date">23.07.2026</span></p>
+    </footer>
+
+    <script src="python.js"></script>
+</body>
+</html>
