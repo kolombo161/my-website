@@ -272,12 +272,71 @@
         </section>
 
         <!-- ========================================== -->
+        <!-- ТАБЛИЦА 5 — НАСЛЕДОВАНИЕ           -->
+        <!-- ========================================== -->
+        <section class="table-section" id="section-4">
+            <h2>Итоговая таблица по наследованию</h2>
+            <div class="table-wrapper">
+                <table class="python-table">
+                    <thead>
+                        <tr>
+                            <th>Конструкция</th>
+                            <th>Что это?</th>
+                            <th>Аналогия с домом</th>
+                            <th>Пример</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>class Child(Parent):</code></td>
+                            <td>Наследование</td>
+                            <td>"Дом с гаражом" на основе чертежа "Дом"</td>
+                            <td><code>class HouseWithGarage(House):</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>super()</code></td>
+                            <td>Ссылка на родителя</td>
+                            <td>"Построй сначала обычный дом, потом добавь гараж"</td>
+                            <td><code>super().__init__(address, color)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>super().method()</code></td>
+                            <td>Вызов метода родителя</td>
+                            <td>"Сделай всё, что делает обычный дом, и еще добавь гараж"</td>
+                            <td><code>super().open_door()</code></td>
+                        </tr>
+                                                <tr>
+                            <td><code>Переопределение метода</code></td>
+                            <td>Изменение поведения</td>
+                            <td>"В доме с гаражом информация должна включать гараж"</td>
+                            <td><code>def info(self):</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>isinstance(obj, Class)</code></td>
+                            <td>Проверка типа</td>
+                            <td>"Этот объект — дом с гаражом?"</td>
+                            <td><code>isinstance(house, House)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>issubclass(Child, Parent)</code></td>
+                            <td>Проверка наследования</td>
+                            <td>"Дом с гаражом — это разновидность дома?"</td>
+                            <td><code>issubclass(HouseWithGarage, House)</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-caption">
+                📌 <em>Таблица обновлена: 23.07.2026</em>
+            </p>
+        </section>
+
+        <!-- ========================================== -->
         <!-- БУДУЩИЕ ТЕМЫ                               -->
         <!-- ========================================== -->
         <section class="table-section" id="section-future">
             <h2>📌 Следующие темы (готовятся)</h2>
             <ul class="future-list">
-                <li>🔹 Наследование (класс-чертеж с гаражом)</li>
                 <li>🔹 Магические методы (<code>__str__</code>, <code>__len__</code>)</li>
                 <li>🔹 Декораторы (дополнительные услуги при покраске)</li>
                 <li>🔹 Работа с файлами</li>
