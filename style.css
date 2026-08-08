@@ -1510,6 +1510,22 @@ footer p.contact-info a:hover {
     }
 }
 
+/* Скрываем мобильную ссылку на десктопе */
+.mobile-only {
+    display: none !important;
+}
+
+/* На мобильных устройствах скрываем десктопную ссылку и показываем мобильную */
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .mobile-only {
+        display: inline !important;
+    }
+}
+
 /* Кнопка Позвонить */
 .call-button {
     position: fixed;
