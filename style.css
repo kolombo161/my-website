@@ -112,11 +112,7 @@ header::before {
         justify-content: center !important;
     }
 
-    /* Скрываем навигацию и адрес на телефонах */
-    nav,
-    .header-city {
-        display: none !important;
-    }
+
 }
 
 /* Для широких экранов */
@@ -198,10 +194,6 @@ header .logo img {
         justify-content: center !important;
     }
 
-    nav,
-    .header-city {
-        display: none !important;
-    }
 }
 
 /* Для широких экранов */
@@ -254,6 +246,7 @@ header .logo img {
     transform: translateY(-2px);
 }
 
+/* Оставляем ваши существующие стили для ссылок */
 .header-city a {
     color: #1b1b1b;
     text-decoration: none;
@@ -271,6 +264,22 @@ header .logo img {
     color: #1b1b1b;
     background: linear-gradient(0deg, #fdeeaa 0%, #ffd104 100%);
     transform: translateY(-3px);
+}
+
+/* Скрываем мобильную ссылку на десктопе */
+.mobile-only {
+    display: none !important;
+}
+
+/* На мобильных устройствах скрываем десктопную ссылку и показываем мобильную */
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .mobile-only {
+        display: inline-block !important;
+    }
 }
 
 /* Горизонтальное меню десктопа */
@@ -1939,8 +1948,4 @@ footer p.contact-info a:hover {
         margin-bottom: 10px;
     }
 
-    .header-city .desktop-only,
-    nav a.nav-link {
-        display: none
-    }
 }
