@@ -104,54 +104,6 @@ header::before {
     }
 }
 
-/* Медиазапрос для мобильных устройств */
-@media (max-width: 768px) {
-
-    /* Шапка в мобильном режиме */
-    header {
-        flex-direction: column !important;
-        align-items: center !important;
-        height: auto !important;
-        padding: 10px !important;
-    }
-
-    /* Кнопка меню остается на своем месте */
-    .menu-icon {
-        align-self: flex-start !important;
-        margin-bottom: 10px !important;
-    }
-
-    /* Логотип в центре */
-    .logo {
-        order: 2 !important;
-        width: 100% !important;
-        text-align: center !important;
-        margin-bottom: 10px !important;
-    }
-
-    /* Номер телефона в центре */
-    .header-contacts {
-        order: 3 !important;
-        width: 100% !important;
-        text-align: center !important;
-        align-items: center !important;
-    }
-
-    /* Сбрасываем выравнивание для .header-phone */
-    .header-phone {
-        justify-content: center !important;
-    }
-
-
-}
-
-/* Для широких экранов */
-@media (min-width: 1200px) {
-    header {
-        background-size: 100% 100%;
-    }
-}
-
 #logo-container {
     position: absolute;
     top: 0;
