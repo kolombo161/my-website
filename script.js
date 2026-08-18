@@ -1,113 +1,77 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Функция для обработки якорных ссылок и обновления meta description
+  // 1. Обработка якорных ссылок и обновление meta description
   function handleHashChange() {
-    // 1. Обновление meta description
     const desc = {
-      '#about':
-        'Ремонт рольворот и рольставней в Ростове-на-Дону. Опыт работы более 10 лет. Гарантия качества!',
+      '#about': 'Ремонт рольворот и рольставней в Ростове-на-Дону. Опыт работы более 10 лет. Гарантия качества!',
     };
 
-    const newDesc =
-      desc[window.location.hash] ||
-      'Ремонт рольставней и рольворот в Ростове-на-Дону. Гарантия до 12 месяцев!';
-    document
-      .querySelector('meta[name="description"]')
-      .setAttribute('content', newDesc);
+    const newDesc = desc[window.location.hash] || 'Ремонт рольставней и рольворот в Ростове-на-Дону. Гарантия до 12 месяцев!';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', newDesc);
+    }
 
-    // 2. Обработка якорных ссылок
     const hash = window.location.hash;
     if (!hash) return;
 
     const targetElement = document.querySelector(hash);
     if (!targetElement) return;
 
-    // 3. Отправка в IndexNow для Bing
-    const indexNowUrls = ['#about'];
-    if (indexNowUrls.includes(hash)) {
-      const urlToSubmit = `https://uslugi161.ru/${encodeURIComponent(hash)}`;
-      const indexNowUrl = `https://www.bing.com/indexnow?url=${encodeURIComponent(
-        urlToSubmit
-      )}&key=a5bbdd78a47d4475a14e0607da722d9d`;
-
-      fetch(indexNowUrl)
-        .then(
-          (response) =>
-            response.ok && console.log('URL отправлен в IndexNow:', urlToSubmit)
-        )
-        .catch((error) => console.error('Ошибка отправки в IndexNow:', error));
-    }
-
-    // 4. Подсветка элемента
+    // Подсветка элемента
     highlightElement(targetElement);
   }
-  // Запрет копирование текста
+
+  // 2. Защита от копирования
   document.addEventListener('keydown', function (e) {
-    if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'Insert')) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'Insert' || e.key === 'u' || e.key === 'U')) {
       e.preventDefault();
-      alert('Копирование запрещено!');
     }
   });
 
-  // Запрет пкм на изображений
   document.addEventListener('contextmenu', (e) => {
     if (e.target.tagName === 'IMG') {
       e.preventDefault();
-      alert('Сохранение изображений запрещено!');
     }
   });
 
-  // Запрет перетаскивания
   document.querySelectorAll('img').forEach((img) => {
     img.draggable = false;
     img.ondragstart = () => false;
   });
 
-  // Функция подсветки элементов
+  // 3. Функция подсветки элементов
   function highlightElement(targetElement) {
-    const answerBlock =
-      targetElement.closest(
-        '.section, .section1, .term-item, p, .problem-title'
-      ) || targetElement;
-
-    // Активация скрытых блоков
+    const answerBlock = targetElement.closest('.section, .section1, .term-item, p, .problem-title') || targetElement;
     const adviceBlock = answerBlock.closest('.additional-block');
+    
+    // Активация скрытых блоков (только через класс, CSS сделает остальное)
     if (adviceBlock && !adviceBlock.classList.contains('active')) {
       adviceBlock.classList.add('active');
-      const content = adviceBlock.querySelector('.additional-content');
-      if (content) content.style.display = 'block';
-      const toggleIcon = adviceBlock.querySelector('.toggle-icon');
-      if (toggleIcon) toggleIcon.textContent = '-';
     }
 
     // Удаление старой подсветки
-    document
-      .querySelectorAll('.highlighted-answer')
-      .forEach((el) => el.classList.remove('highlighted-answer'));
+    document.querySelectorAll('.highlighted-answer').forEach((el) => el.classList.remove('highlighted-answer'));
 
     // Новая подсветка
     targetElement.classList.add('highlighted-answer');
-    const problemTitle =
-      targetElement.querySelector('.problem-title') ||
-      targetElement.previousElementSibling;
+    const problemTitle = targetElement.querySelector('.problem-title') || targetElement.previousElementSibling;
     if (problemTitle && problemTitle.classList.contains('problem-title')) {
       problemTitle.classList.add('highlighted-answer');
     }
 
     // Плавная прокрутка
-    setTimeout(
-      () =>
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }),
-      300
-    );
+    setTimeout(() => {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
 
-    // Снятие подсветки
+    // Снятие подсветки через 3 секунды (1 секунды слишком мало, пользователь не успеет прочитать)
     setTimeout(() => {
       targetElement.classList.remove('highlighted-answer');
       if (problemTitle) problemTitle.classList.remove('highlighted-answer');
-    }, 1000);
+    }, 3000);
   }
 
-  // Инициализация обработчиков событий
+  // Инициализация хэшей
   window.addEventListener('load', handleHashChange);
   window.addEventListener('hashchange', handleHashChange);
 
@@ -119,19 +83,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Кнопка "Позвонить"
+  // 4. Кнопка "Позвонить"
   const callButton = document.getElementById('callButton');
   if (callButton) {
     let isTimeoutPassed = false;
     const checkScroll = () => {
-      const scrollPercentage =
-        (window.scrollY /
-          (document.documentElement.scrollHeight - window.innerHeight)) *
-        100;
-      callButton.classList.toggle(
-        'visible',
-        isTimeoutPassed && scrollPercentage > 25
-      );
+      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      callButton.classList.toggle('visible', isTimeoutPassed && scrollPercentage > 25);
     };
 
     callButton.addEventListener('click', function () {
@@ -147,101 +105,74 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', checkScroll, { passive: true });
   }
 
-  // Кнопка "Наверх"
+  // 5. Кнопка "Наверх"
   const scrollToTopButton = document.querySelector('.scroll-to-top');
   if (scrollToTopButton) {
     window.addEventListener('scroll', function () {
-      const scrollPercentage =
-        window.scrollY /
-        (document.documentElement.scrollHeight - window.innerHeight);
+      const scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
       scrollToTopButton.classList.toggle('visible', scrollPercentage > 0.2);
-    });
+    }, { passive: true });
 
     scrollToTopButton.addEventListener('click', (e) => {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    scrollToTopButton.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
   }
 
-  //Мобильное меню
+  // 6. Мобильное меню
   const menuButton = document.getElementById('menuButton');
   const dropdownMenu = document.getElementById('dropdownMenu');
   let menuOpen = false;
 
-  // Закрытие всех подменю
   function closeAllSubmenus() {
     document.querySelectorAll('.mobile-submenu').forEach((sm) => {
       sm.classList.remove('active');
     });
   }
 
-  // Открытие/закрытие главного меню
-  menuButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    menuOpen = !menuOpen;
-    dropdownMenu.classList.toggle('active', menuOpen);
-    if (!menuOpen) closeAllSubmenus();
-  });
-
-  // Заменяем только обработчик для кнопок подменю
-  document.querySelectorAll('.mobile-submenu-toggle').forEach((toggle) => {
-    toggle.addEventListener('click', function (e) {
+  if (menuButton && dropdownMenu) {
+    menuButton.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-
-      const submenu = this.closest('.mobile-submenu');
-
-      // Закрываем только другие подменю
-      document.querySelectorAll('.mobile-submenu').forEach((sm) => {
-        if (sm !== submenu) sm.classList.remove('active');
-      });
-
-      // Всегда переключаем текущее подменю
-      submenu.classList.toggle('active');
-
-      // Гарантируем открытое состояние меню
-      menuOpen = true;
-      dropdownMenu.classList.add('active');
+      menuOpen = !menuOpen;
+      dropdownMenu.classList.toggle('active', menuOpen);
+      if (!menuOpen) closeAllSubmenus();
     });
-  });
 
-  // Добавляем отдельный обработчик для ссылок в подменю
-  document.querySelectorAll('.mobile-submenu-items a').forEach((link) => {
-    link.addEventListener('click', function (e) {
-      // Закрываем меню после микро-задержки
-      setTimeout(() => {
+    document.querySelectorAll('.mobile-submenu-toggle').forEach((toggle) => {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const submenu = this.closest('.mobile-submenu');
+        document.querySelectorAll('.mobile-submenu').forEach((sm) => {
+          if (sm !== submenu) sm.classList.remove('active');
+        });
+        submenu.classList.toggle('active');
+        menuOpen = true;
+        dropdownMenu.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.mobile-submenu-items a').forEach((link) => {
+      link.addEventListener('click', function () {
+        setTimeout(() => {
+          menuOpen = false;
+          dropdownMenu.classList.remove('active');
+          closeAllSubmenus();
+        }, 50);
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!dropdownMenu.contains(e.target) && !menuButton.contains(e.target)) {
         menuOpen = false;
         dropdownMenu.classList.remove('active');
         closeAllSubmenus();
-      }, 10); // Минимальная задержка
+      }
     });
-  });
+  }
 
-  // Закрытие при клике вне меню
-  document.addEventListener('click', function (e) {
-    if (!dropdownMenu.contains(e.target) && !menuButton.contains(e.target)) {
-      menuOpen = false;
-      dropdownMenu.classList.remove('active');
-      closeAllSubmenus();
-    }
-  });
-
-  // Дополнительная защита от закрытия при клике на тоггл
-  document.querySelectorAll('.mobile-submenu-toggle').forEach((toggle) => {
-    toggle.addEventListener('click', function (e) {
-      e.stopImmediatePropagation();
-    });
-  });
-
-  // Подсказки
+  // 7. Подсказки (Tooltips)
   document.querySelectorAll('.tooltip').forEach((tooltip) => {
     const tooltipText = tooltip.querySelector('.tooltiptext');
     if (!tooltipText) return;
@@ -251,29 +182,19 @@ document.addEventListener('DOMContentLoaded', function () {
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
 
-      tooltipText.classList.remove(
-        'top-out',
-        'left-out',
-        'right-out',
-        'bottom-out'
-      );
+      tooltipText.classList.remove('top-out', 'left-out', 'right-out', 'bottom-out');
 
       if (rect.top < 0) tooltipText.classList.add('bottom-out');
       if (rect.left < 0) tooltipText.classList.add('left-out');
       if (rect.right > viewportWidth) tooltipText.classList.add('right-out');
 
-      if (
-        tooltipText.classList.contains('bottom-out') &&
-        rect.bottom > viewportHeight
-      ) {
+      if (tooltipText.classList.contains('bottom-out') && rect.bottom > viewportHeight) {
         tooltipText.classList.remove('bottom-out');
         tooltipText.classList.add('top-out');
       }
 
-      tooltipText.style.whiteSpace =
-        tooltipText.scrollWidth > viewportWidth * 0.8 ? 'normal' : 'nowrap';
-      tooltipText.style.maxWidth =
-        tooltipText.scrollWidth > viewportWidth * 0.8 ? '200px' : 'none';
+      tooltipText.style.whiteSpace = tooltipText.scrollWidth > viewportWidth * 0.8 ? 'normal' : 'nowrap';
+      tooltipText.style.maxWidth = tooltipText.scrollWidth > viewportWidth * 0.8 ? '200px' : 'none';
     });
 
     tooltip.addEventListener('mouseleave', () => {
@@ -282,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Галерея изображений
+  // 8. Галерея изображений (Полноэкранный просмотр)
   const overlay = document.getElementById('fullscreen-overlay');
   if (overlay) {
     const fullscreenImage = document.querySelector('.fullscreen-image');
@@ -312,16 +233,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       function prevImage() {
         if (currentImages.length === 0) return;
-        currentImageIndex =
-          (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+        currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
         updateFullscreenImage();
         resetAutoSlide();
       }
 
       function startAutoSlide() {
         stopAutoSlide();
-        if (currentImages.length > 1)
-          autoSlideInterval = setInterval(nextImage, 3000);
+        if (currentImages.length > 1) autoSlideInterval = setInterval(nextImage, 3000);
       }
 
       function stopAutoSlide() {
@@ -341,19 +260,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       function handleKeyDown(e) {
         if (overlay.style.display !== 'flex') return;
-        switch (e.key) {
-          case 'Escape':
-          case 'Enter':
-          case ' ':
-            closeOverlay();
-            break;
-          case 'ArrowRight':
-            nextImage();
-            break;
-          case 'ArrowLeft':
-            prevImage();
-            break;
-        }
+        if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') closeOverlay();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
       }
 
       function handleTouchStart(e) {
@@ -368,17 +277,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
       document.querySelectorAll('.service-card').forEach((card) => {
         const mainImage = card.querySelector('.service-image img.main-image');
-        const additionalImages = card.querySelectorAll(
-          '.service-image .additional-images img:not(.main-image)'
-        );
+        const additionalImages = card.querySelectorAll('.service-image .additional-images img:not(.main-image)');
         const titleElement = card.querySelector('.service-title h2');
 
         if (mainImage && titleElement) {
           mainImage.addEventListener('click', () => {
-            currentImages = [
-              mainImage.src,
-              ...Array.from(additionalImages).map((img) => img.src),
-            ];
+            currentImages = [mainImage.src, ...Array.from(additionalImages).map((img) => img.src)];
             currentTitles = [titleElement.textContent];
             currentImageIndex = 0;
             updateFullscreenImage();
@@ -390,8 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       imageContainer.addEventListener('click', (e) => {
-        if (e.target === imageContainer || e.target === fullscreenImage)
-          closeOverlay();
+        if (e.target === imageContainer || e.target === fullscreenImage) closeOverlay();
       });
 
       overlay.addEventListener('click', (e) => {
@@ -399,26 +302,31 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       document.addEventListener('keydown', handleKeyDown);
-      imageContainer.addEventListener('touchstart', handleTouchStart, {
-        passive: true,
-      });
-      imageContainer.addEventListener('touchend', handleTouchEnd, {
-        passive: true,
-      });
+      imageContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+      imageContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
     }
   }
 
-  // Раскрывающиеся блоки
+  // 9. Раскрывающиеся блоки (Аккордеон)
   document.querySelectorAll('.additional-header').forEach((header) => {
-    header.addEventListener('click', function () {
+    header.addEventListener('click', function (e) {
+      // Предотвращаем всплытие, чтобы глобальный клик не закрыл блок сразу же
+      e.stopPropagation(); 
       const block = this.closest('.additional-block');
+      
+      // Если хотим, чтобы открывался только один блок за раз, раскомментируйте следующие 2 строки:
+      // document.querySelectorAll('.additional-block').forEach(b => { if(b !== block) b.classList.remove('active'); });
+      
       block.classList.toggle('active');
       if (block.classList.contains('active')) {
-        block.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        setTimeout(() => {
+            block.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
       }
     });
   });
 
+  // Закрытие аккордеона при клике вне его
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.additional-block')) {
       document.querySelectorAll('.additional-block').forEach((block) => {
@@ -427,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Стикеры
+  // 10. Стикеры (3D эффект на десктопе, клик на мобильном)
   document.querySelectorAll('.sticker').forEach((sticker) => {
     if (window.innerWidth <= 768) {
       sticker.addEventListener('click', function () {
@@ -445,21 +353,4 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
-
-  // Меню с выпадающим списком
-  const desktopButton = document.getElementById('desktopMenuButton');
-  const desktopDropdown = document.getElementById('desktopDropdownMenu');
-  if (menuButton && dropdownMenu) {
-    menuButton.addEventListener('click', function (e) {
-      e.preventDefault();
-      dropdownMenu.style.display =
-        dropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', function (e) {
-      if (!menuButton.contains(e.target)) {
-        dropdownMenu.style.display = 'none';
-      }
-    });
-  }
 });
