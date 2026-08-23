@@ -1,12 +1,20 @@
 User-agent: *
 Allow: /
 
+# Игнорировать параметр отслеживания кликов Яндекса
+Clean-param: etext
+
+# Технические и служебные директории
 Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /.vscode/
 Disallow: /dist/
+
+# Ваши личные страницы-подсказки (они не будут индексироваться, что вам и нужно)
 Disallow: /page.html
 Disallow: /page/kontakty
 Disallow: /collection/frontpage
+Disallow: /python.html
+Disallow: /dwin-technology.html
 
 Sitemap: https://uslugi161.ru/sitemap.xml
